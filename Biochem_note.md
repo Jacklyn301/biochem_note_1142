@@ -277,3 +277,302 @@ Eth-.->NAD2((NAD+))
 - 雖然糖解作用產生的ATP不多，但是其在身體裡面大量反應，產生ATP的速率因此提高 (氧化磷酸化的100倍)，屬於非常快速但效率低的能量使用方式
 - 肌肉跟癌細胞就大量利用糖解作用活動跟生長
 
+### Gluconeogenesis
+- 身體需要讓血糖維持在一個level，糖質新生就是幫忙重生葡萄糖的好方法
+
+#### 簡單來說
+- 它用特定的酵素來取代糖解作用中的不可逆反應
+- 基本上，在糖解作用中，不可逆反應都是屬於高放能反應，例如hexokinese、posphofructokinase、pyruvate kinase。而糖質新生就是用特定的其餘三個酶 "繞過" 原反應。這個過程需要大量能量
+
+##### 1. 丙酮酸變成PEP
+- 通常反應分為兩部分。第一部分是利用pyruvate carboxylase，把pyruvate變成oxaloacetate (草醯乙酸):
+
+$$
+\text{pyruvate}+HCO_3^{-}+ATP \rightleftharpoons OAA + ADP + Pi + 2H^{+}\quad \Delta G^\circ\text{'}=-2.1\ \text{kJ/mol}
+$$
+
+- 此時的OAA需要被轉到細胞質中，但是粒線體沒有專門運輸OAA的蛋白質，因此要經過轉換。轉換的重點就是malate dehydrogenase
+- 這東西在粒線體跟細胞質裡面都有，而malate才能夠在粒線體跟細胞質間 "穿梭自如"。反應如下: 
+
+```mermaid
+flowchart LR
+
+OAA1((草醯乙酸))
+OAA1-->|透過|mdhm(粒線體中的<br>蘋果酸去氫酶)
+mdhm-->|形成|m1((蘋果酸))
+
+NADH1((NADH))-.->|被消耗|mdhm
+m1-->|經過|makt[malate–α-<br>ketoglutarate<br>transporter]
+makt-->|進到<br>細胞質|m2((蘋果酸))
+
+m2-->|透過|mdhc(細胞質體中的<br>蘋果酸去氫酶)
+mdhc-->|變回|OAA2((草醯乙酸))
+mdhc-.->|重生|NADH2((NADH))
+
+%% 色彩調整中
+
+style OAA1 fill: #9df178, stroke: #000
+style OAA2 fill: #9df178, stroke: #000
+style mdhm fill: #fae58f, stroke: #000
+style mdhc fill: #fae58f, stroke: #000
+style makt fill: #5ce1e6, stroke: #006e72, stroke-dasharray: 5 5
+style m1 fill: #ff9dd9, stroke: #000
+style m2 fill: #ff9dd9, stroke: #000
+
+style NADH1 fill: #a8a8a8, stroke: #5b5b5b, stroke-dasharray: 3 3
+style NADH2 fill: #a8a8a8, stroke: #5b5b5b, stroke-dasharray: 3 3
+
+```
+- 然後OAA再透過phosphoenolpyruvate carboxykinase (PEPCK) ，並且在GTP的情況下形成PEP:
+
+$$OAA + GTP \rightleftharpoons PEP + CO_2 + GDP\quad \Delta G^\circ\text{'}=+2.9\ \text{kJ/mol}$$
+
+- 當還有另外一種路徑可以參考，就是透過乳酸跟乳酸脫氫酶 (lactate dehydrogenase)
+- 這個路徑跟糖解作用路徑完美循環，這個循環又被稱為**Cori cycle**
+
+```mermaid
+flowchart LR
+
+L((lactate))
+L-->|透過|LDH(乳酸脫氫酶)
+LDH-->|形成|Py1(pyruvate)
+LDH-.->|產生|NADH((NADH))
+Py1-->|透過|Pt1[內膜運輸系統]
+Pt1-->|進到<br>粒線體|Py2(pyruvate)
+Py2-->|轉換成|OAA((草醯乙酸))
+OAA-->|透過|PEPCK(粒線體中的<br>PEPCK)
+PEPCK-->|形成|PEP1(PEP)
+PEP1-->|透過|Pt2[內膜運輸系統]
+Pt2-->|被運回<br>細胞質|PEP2(PEP)
+
+style L fill: #ffffff, stroke: #000
+style LDH fill: #fae58f, stroke: #000
+style Py1 fill: #ffb181, stroke: #000
+style Py2 fill: #ffb181, stroke: #000
+style NADH fill: #a8a8a8, stroke: #5b5b5b, stroke-dasharray: 3 3
+style Pt1 fill: #5ce1e6, stroke: #006e72, strke-dasharray: 5 5
+style Pt2 fill: #5ce1e6, stroke: #006e72, strke-dasharray: 5 5
+style OAA fill: #9df178, stroke: #000
+style PEPCK fill: #e2a9f1, stroke: #750692, stroke-dasharray: 5 5 
+style PEP1 fill: #7bb8ff, strole: #000
+style PEP2 fill: #7bb8ff, strole: #000
+
+```
+
+##### 2. F-1,6-BP變成F6P
+- 在 $Mg^{2+}$ 跟 fructose-1,6- bisphosphatase 作用下形成:
+
+$$
+\text{F-1,6-BP} + H_2O\rightarrow \text{F6P} + Pi\quad G^\circ\text{'}=-16.3\ \text{kJ/mol}
+$$
+
+##### 3. G6P變成葡萄糖
+- 在 $Mg^{2+}$ 跟 glucose-6-phosphatase 作用下形成:
+
+$$
+\text{G6P} + H_2O\rightarrow \text{glucose} + Pi\quad G^\circ\text{'}=-13.8\ \text{kJ/mol}
+$$
+
+#### 總消耗
+
+$$
+\begin{align}
+& 2\ \text{pyruvate} + 4ATP + 2GTP + 2NADH + 2H^{+} + 4H_2O\rightarrow \text{glucose} + 4ADP + 2GDP + 6Pi + 2NAD^{+}\\
+& G^\circ\text{'}=-33\ \text{kJ/mol}
+\end{align}
+$$
+
+> [!Important] 
+> 要是我們全部換成高能磷酸鹽的形式來看， $1NADH=2.5\ ATP$ ，總體來說就是**使用11個ATP來把兩個丙酮酸變成一個葡萄糖**
+
+#### 底物介紹
+- 糖質新生的前驅物包含lactate、alanine、glycerol、propionate (丙酸)
+
+![image](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/gluconeogenesis_cycle_0304.png)
+
+##### amino acid
+- 主要是用降解途徑，生成TCA cycle中間體，然後它們都可以透過循環變成OAA，進而進入我們剛才的反應鏈
+- 能夠透過糖質新生產生葡萄糖的胺基酸被稱為glucogenic (leucine跟lysine例外)
+
+##### glycerol
+- 這東西難以進行糖質新生，因為脂肪酸主要透過 $\beta$ 氧化形成acetyl-CoA，而acetyl-CoA不能拿來做甚麼，無法形成任何糖質新生前體 🙂
+- 唯一能做糖質新生的東西叫做甘油，甘油透過磷酸化形成甘油-3-磷酸，並且轉換成DHAP，而DHAP就可以進入糖質新生的路徑上
+
+##### propinate
+- 這東西在草食動物比較常見，咱們用一個公式帶過就好:
+
+$$
+\text{propionyl-CoA}\overset{CO_2}{\rightarrow} \text{methylmalonyl-CoA}\rightarrow \text{succinyl-CoA}\rightarrow \text{OAA}
+$$
+
+#### 酒精跟糖質新生
+- 可能會導致低血糖 (hypoglycemia)，因為乙醇會把 $NAD^+$ 給用光:
+
+$$C_2H_5OH + NAD^{+}\rightleftharpoons CH_3COH + NADH + H^{+}$$
+
+#### 腎臟如何做酸鹼中和
+- 人體代謝會產酸，這些多出來的氫離子 (通常跟 $HCO_3^-$ 結合)，會在腎臟透過跟氨來結合，形成 $NH_4^+$ 排入尿液
+- 那氨怎麼產生的? 答案叫做glutamine (麩醯胺酸)。
+- glutamine會在glutaminase and glutamate dehydrogenase的作用下，經過兩步，生成兩個氨:
+
+$$
+\begin{array}
+\text{glutamine} + H_2O\rightarrow \text{glutamate} + NH_4^+\\
+\text{glutamate} + NAD^+ + H_2O\rightarrow \alpha -\text{ketoglutarate} + NH_4^+ + NADH
+\end{array}
+$$
+
+- $\alpha$ -ketoglutarate可以在TCA循環裡面變成OAA，後進入糖質新生
+
+### 影響因素
+- 糖質新生極大受到飲食的影響。在低碳的情況下，或是斷食的時後，這條路徑會被放大。這東西也受到激素影響，例如insulin跟glucagon 
+- 基本上糖質新生跟糖解作用，我們只需要focus on各自的三個酵素: 糖解作用就是HK、PFK、PK。而糖質新生就是G6Pase、FBPase、以及pyruvate carboxylase + PEPCK
+> [!Important]
+> 再提醒一次，調控只能作用於遠離平衡的反應
+
+```mermaid
+flowchart RL
+
+subgraph G
+  direction LR
+  Glu(Glucose)-->|HK|G6P(G6P)
+  G6P-->|G6Pase|Glu
+end
+
+subgraph F
+  direction LR
+  F6P(F6P)-->|PFK|FBP(F16BP)
+  FBP-->|FBPase|F6P
+end
+
+subgraph P
+  direction LR
+  PEP(PEP)-->|PK|Pyr(Pyruvate)
+  Pyr-->|PC+PEPCK|PEP
+end
+
+G==>|糖酵解|F==>|糖酵解|P
+P==>|糖異生|F==>|糖異生|G
+
+style Glu fill: #e2a9f1, stroke: #000
+style G6P fill: #fd7fcc, stroke: #000
+style F6P fill: #5ce1e6, stroke: #000
+style FBP fill: #8e99fa, stroke: #000
+style PEP fill: #ffdf7d, stroke: #000
+style Pyr fill: #ff9c7d, stroke: #000
+```
+> [!Tip]
+> 促進糖解作用的狀況通常會抑制糖質新生，反之
+
+#### PFK and F16BPase
+- PFK會被AMP跟ADP激活 (因為能量變少了)，而F16BPase相反，會被AMP跟ADP抑制 (能量都不夠了還跟你造糖?)
+- PFK會被ATP跟檸檬酸抑制
+- 同時還有一個特別的物質: **F-2,6-BP**，會促進糖解作用 (活化PFK)，同時會抑制糖質新生 (抑制F16BPase)
+> [!Important]
+> 最強的糖解作用促進劑，就是F-2,6-BP 🐱
+
+##### PFK 跟 ATP 的愛恨情仇
+- PFK在作用時需要ATP提供Pi好對F6P進行磷酸化。但是ATP本身的濃度會影響PFK的活性。我們一樣可以用R state跟T state來說明
+- 當ATP作為底物
+  - 在低ATP濃度時，ATP主要與活性位點結合，促進反應進行。此時PFK偏向R state，酵素活性高，糖解作用加速
+- 當 ATP 作為抑制劑
+  - 在高 ATP 濃度時，ATP除了結合活性位點，還會結合到同源異構位點 (allosteric site)。這會穩定酵素的T state，降低對F6P的親和力，抑制反應
+- F26BP會強力促進R state，提高PFK對F6P的親和力，是糖解的主要激活因子
+- Citrate在高濃度時促進T state，降低親和力
+
+![image](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/blackboard_reaction_curve_0305.png)
+
+
+##### PFK-2/BFPase-2: 當一人包攬了兩個工作時
+- F-2,6-BP的形成來自於一個特殊的酵素: PFK-2/BFPase-2
+- 這是一個 "雙功能酵素"，同一條多肽上有兩個不同的催化域
+  - PFK-2 活性: F6P → F2,6BP
+  - FBPase-2 活性: F2,6BP → F6P
+- 這個反應的 $\Delta G$ 相對較小，所以可以在生理條件下雙向進行
+- 它的主要角色就是生成或是代謝F-2,6-BP 來控制PFK-1和FBPase-1的活性。而這個雙功能酵素的活性受激素調控:
+  - insulin → 活化 PFK-2 → 增加 F2,6BP → 促進糖解
+  - glucagon → 活化 FBPase-2 → 降低 F2,6BP → 促進糖質新生
+- 一張圖讓你懂:
+```mermaid
+flowchart LR
+
+in((insulin<br>結合受體))
+in-->TKC(啟動tyrosine<br>kinase cascade)
+TKC-->PP1(活化蛋白磷酸酶1，PP1)
+PP1-->R1(去磷酸化肝臟型<br> PFK-2/FBPase-2)
+R1-->PFK2[活化PFK-2]
+PFK2-->F26BPU[F26BP<br>濃度上升]
+F26BPU-.->Gy{促進<br>糖解作用}
+
+in-->PDE(活化磷酸二酯酶，PDE)
+PDE-->cAMPD(cAMP被水解)
+cAMPD-->R2(降低 PFK-2/FBPase-2 被磷酸化的程度)
+R2-->PFK2
+
+ga((glucagon<br>結合受體))
+ga-->cAMPU(cAMP產生)
+cAMPU-->PKA(激活PKA)
+PKA-->R3(磷酸化肝臟型<br> PFK-2/FBPase-2)
+R3-->FBPase-2[活化FBPase-2]
+FBPase-2-->F26BPD[F26BP<br>濃度下降]
+F26BPD-.->Gng{促進<br>糖質新生}
+
+```
+ 
+![image](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/PFK-2_FBPase_structure_0305%20180248.png)
+
+- 心肌跟骨骼肌的PFK-2/BFPase-2，主要是透過別的方式來調控活性，而不是激素
+- 🫀心肌的部分:
+   - 主要調控因子: epinephrine
+   - 腎上腺素透過 $\beta$ -adrenergic receptor → 活化 PKA → 磷酸化心肌型 PFK-2 → 增加 F26BP → 促進糖解作用
+- 💪骨骼肌的部分: 
+   - 主要調控因子: 肌肉的收縮訊號
+   - AMP/ADP在肌肉收縮時累積，活化 AMPK → 促進 PFK-2 活性 → 增加 F26BP → 促進糖解作用
+
+
+#### PK and PC+PEPCK
+- 高ATP會降低PK跟PEP的親合度，除此之外，alanine (要用來被糖質新生)、acetyl-CoA、cAMP-介導的磷酸化也會降低該酵素的活性 (尤其是在肝臟)
+- 相反，F-1,6-BP可以促進PK的活化 (因為它就是要被糖解的東西，促進PK活化可以避免受質累積)，這又被稱為 "前饋活化" (feedforward activation)
+- PC主要受到Acetyl-CoA活化 (代表TCA cycle的能量多，剩下的可以糖質新生)
+- 而PEPCK很特別，受到激素的調控，而且調控的是基因水平，是 "增加或是減少PEPCK的轉錄轉譯"。具體來說:
+  - Glucagon: 透過 cAMP → PKA → 活化CREB，促進 PEPCK 基因的轉錄。
+  - Cortisol: 透過 glucocorticoid receptor，結合到 PEPCK 基因的 promoter，增強轉錄
+  - Insulin: 透過降低FOXO1等轉錄因子活性，抑制 PEPCK 的基因表現
+
+##### 升糖素 and PK
+- 升糖素的路徑對應，在**肝臟**中，其實可以用一張圖解釋:
+```mermaid
+flowchart LR
+Ga{glucagon}
+Ga-->|活化|cAMP((cANP))
+cAMP-->|活化|PKA((PKA))
+PKA-->|磷酸化|PFK2(PFK-2/FBPase-2)
+PFK2-->|導致|F26BP(F-2,6-BP<br>濃度降低)
+F26BP-->|導致|PFK1(PFK-1<br>活性下降)
+PFK1-->|導致|R{肝臟的<br>糖解作用<br>被抑制}
+
+PKA-->|磷酸化|PK(L isoform<br>的PK)
+PK-->|導致|Da(PK失活)
+Da-->|導致|R
+```
+> [!Warning]
+> 這個調控主要存在於肝臟 isoform，骨骼肌的 PK 不受同樣的激素調控。
+
+#### HK 跟 G6Pase
+- 它們同時受到一個東西影響: G6P。G6P增加，抑制糖解，促進糖質新生，反之
+- G6Pase會因為反應物G6P增加而增加活性 (廢話)，而HK情形更為複雜: 通常，HK-I、II、III在組織中，G6P會反過來結合到HK，降低其活性。但是在肝臟的HK (HK-IV，葡萄糖激酶，Glucokinase) 不會受到G6P影響
+- HK-IV受到葡萄醣激酶調節蛋白 (GKRP) 影響。GKRP會把HK-IV鎖起來，不讓它跟葡萄糖反應
+
+##### 備註: GKRP受到誰控制?
+- 通常，F6P促進GKRP鎖住HK-IV，F1P促進GKRP釋放HK-IV
+- 假如說用F6P來思考邏輯:
+  - 胰島素來臨 → 促進PFK-2活化 → F6P被消耗形成F26BP → 促進PFK-1活化 → F6P被消耗形成F16BP → 糖解加速中...
+  - 同時: F6P大量減少 → HK-IV被解放 → 增加葡萄糖分解 → F6P補充 → 糖解持續...
+  - 升糖素來臨 → 促進FBPase-2活化 → F26BP降低 → 糖解下降中...
+  - 同時，由於F6P濃度並沒有下降，HK-IV被鎖住 → 糖解減弱
+- 也就是說，胰島素可以透過導致F6P濃度的下降，促使HK-IV被解放
+
+##### 不只如此
+- HK-IV本來就可以跟去磷酸化的PFK-2/FBPase-2結合，形成複合物，這會影響HK-IV對葡萄糖的親和性，進一步促進糖解
+- 也就是說，胰島素也可以透過PFK-2/FBPase-2，直接增加HK活性
+
