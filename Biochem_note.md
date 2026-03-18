@@ -217,6 +217,11 @@ style Gng fill:#d4a5f9,stroke:#4b0082,stroke-width:3px
 |PEP → Pyr|PK||$-16.7\times 2$|
 |**Net**||$+2$|$-102.9$|
 
+> 大家可以點以下的3D影片來看看喔 👀
+> 
+> [![image](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/HHMI_vedio_image_0311.png)](https://www.youtube.com/watch?v=BO0zL03CtDs&t=149s)
+
+
 ---
 
 ### Metabolic fates of pyruvate
@@ -575,4 +580,329 @@ Da-->|導致|R
 ##### 不只如此
 - HK-IV本來就可以跟去磷酸化的PFK-2/FBPase-2結合，形成複合物，這會影響HK-IV對葡萄糖的親和性，進一步促進糖解
 - 也就是說，胰島素也可以透過PFK-2/FBPase-2，直接增加HK活性
+
+---
+
+### 別的物質進入糖解作用
+#### 單醣代謝
+- HK的不同isoform也可以代謝葡萄糖以外的單醣
+
+##### galactose utilization
+- 半乳糖主要透過**Leloir pathway**來變成葡萄糖，主要參與的酵素有四種:
+   - **Galactokinase (半乳糖激酶)**， Gal → Gal-1-P，消耗1 ATP
+   - **Galactose-1-phosphate uridylyltransferase (GALT)**，作用就是讓UDP-Glc跟Gal-1-P的 "基團交換"，產生UDP-Gal跟Glc-1-P
+   - **UDP-galactose 4-epimerase (GALE)**，把UDP-Gal轉換成UDP-Glc，這樣就可以繼續跟另一個Gal-1-P反應
+   - **Phosphoglucomutase (磷酸葡萄糖異構酶)**，把Glc-1-P變成G6P，進入glycolysis
+
+```mermaid
+flowchart LR
+
+bgal(beta-galactose)
+bgal-.->|mutarotase|agal(alpha-galactose)
+agal-.->|mutarotase|bgal
+
+agal-->|galactokinase|gal1p(Gal-1-P)
+ATP((ATP))-.->|消耗|gal1p
+gal1p-.->|產生|ADP((ADP))
+
+gal1p-->|透過|galt((GALT))
+galt-->|形成|glc1p(Glc-1-P)
+
+galt-->|形成|udpgal(UDP-Gal)
+
+udpgal-.->|GALE|udpglc(UDP-Glc)
+udpglc-.->|GALE|udpgal
+
+udpglc-->|透過|galt
+
+glc1p-->|phosphoglucomutase|G6P{Glc-6-P}
+
+
+style galt fill: #adadad, stroke: #646464, stroke-dasharray: 3 3
+style ATP fill: #ff9f61, stroke: #000, stroke-dasharray: 3 3
+style ADP fill: #7edcff, stroke: #000, stroke-dasharray: 3 3
+```
+- 半乳糖血症 (galactosemia)，是因為GALP的缺陷或是缺乏，導致Gal-1-P的累積，導致黃疸跟白內障
+
+##### fructose utilization
+- 果糖在大部分組織中是以F6P存在 (這大家都還記得吧?)
+- 有一種特殊的代謝方式，是用果糖激酶來把果糖變成F1P，然後被aldolase B水解，形成DHAP + 甘油醛。DHAP就可以直接進入糖解途徑
+- 甘油醛在利用ATP的情況下，變成GAP
+- 過多的DHAP會變成G3P，GsP可以轉化成甘油
+> [!Note]
+> 果糖厲害的地方，就是他的代謝基本上直接跑到DNAP + GAP這個下游路徑，沒有經過PFK-1的代謝調控，所以難以嚴格控制在熱量限制範圍內，這就是為啥他容易讓人變胖。同時F1P也有在肝臟內加快糖解代謝的效果 (釋放GK)
+
+#### 雙糖代謝
+- 目前我們已經知道:
+
+$$
+\begin{align}
+maltose + H_2O\quad &\underrightarrow{maltase}\quad 2\ glucose\\
+lactose + H_2O\quad &\underrightarrow{lactase}\quad galactose + glucose\\
+sucrose + H_2O\quad &\underrightarrow{sucrase}\quad fructose + glucose
+\end{align}
+$$
+
+- 大多數人在成年之後，乳糖酶會缺乏 (尤其是亞洲人)
+
+#### 中性脂肪代謝
+- 三酸甘油脂會被代謝成甘油，甘油可以透過以下路徑進入糖解作用
+
+$$
+\begin{align}
+& glycerol + ATP\rightarrow G3P + ADP + H^+\\
+& G3P + NAD^+\rightarrow DHAP + NADH + H^+
+\end{align}
+$$
+
+- DHAP再進入糖解作用
+
+#### 給個總結
+
+```mermaid
+flowchart LR
+
+lac(lactose)
+mal(maltose)
+suc(sucrose)
+
+lac-->gal(galactose)
+gal-->|Leloir<br>pathway|G1P(G1P)
+
+mal-->Glc(glucose)
+Glc-->|HK|G6P(G6P)
+
+
+Gly{glycogen}
+Gly==>G1P
+G1P==>G6P
+G6P==>|PGI|F6P
+F6P==>|PFK + ALD|DHAP(DHAP)
+DHAP==>|TPI|GAP{GAP}
+
+
+suc-->fru(fructose)
+fru-->f1p(F1P)
+fru-->F6P
+
+f1p-->DHAP
+f1p-->ga(glyceraldehyde)
+ga-->GAP
+
+man(mannose)
+man-->M6P(M6P)
+M6P-->F6P
+
+gly(glycerol)
+gly-->G3P(G3P)
+G3P-->DHAP
+```
+### 多糖代謝
+- 多數的動物都是用肝糖的方式把葡萄糖儲存起來
+- 而身體也會對攝取的多糖進行消化
+- 動員肝糖利用的是 "磷酸解" (phosphoroolysis，加上磷酸機分子斷開糖苷鍵)，分解澱粉的方式叫做 "水解" (hydrolysis，加上水分子斷開糖苷鍵)
+> [!Tip]
+> - 所以肝糖被動員時，單糖的形式就是G1P，能在不需要再額外使用ATP的情況下進入糖解代謝。G1P經過一些反應會變成G6P，如下:
+> 
+> $$
+> \begin{align}
+> & \text{enzyme-Ser-P}+G1P \rightleftharpoons \text{enzyme-ser}+G16BP\\
+> & G16BP + \text{enzyme-Ser}\rightleftharpoons \text{enzyme-Ser-P}+G6P\\
+> & G1P\rightleftharpoons G6P,\quad \Delta G^\circ\text{'}=-7.3\ KJ/mol
+> \end{align}
+> $$
+> 
+> - 磷酸解是由磷酸化酶 (phosphorylase) 作用形成
+
+- 澱粉的消化大概在動物身上如下:
+```mermaid
+flowchart LR
+S{starch or glycogen}
+S-->A(上面有alpha-1→4糖苷鍵)
+A-->|alpha-<br>amylase|B(alpha-1→4糖苷鍵斷開)
+B-->R1(產生少量麥芽糖跟葡萄糖)
+R1-->|alpha-1→6-<br>glucosidase|C(斷開alpha-1→6糖苷鍵)
+C-->R2(暴露出新的alpha-1→4糖苷鍵)
+R2-.->|一直循環|A
+```
+- $\alpha (1\rightarrow 6)$ 屬於支鏈澱粉會出現的鍵結
+- 最後肝糖幾乎代謝完成，其中九成都是G1P (其餘是水解的葡萄糖)
+
+#### 肝糖代謝跟合成
+- 肝糖為骨骼肌的主要能源，肝糖作為血糖的調節器之一，肝臟相對來說有比較多的肝糖
+- 每加上一個Pi，就磷酸解一個葡萄糖，由於在身體需要能量時，磷酸基相對較多，所以整體就會促進分解 (標準狀態下， $\Delta G^\circ\text{'}=+3.1\ kJ/mol$  )
+- 肝糖合成會有UDP的幫助 (不是ATP喔)，如下:
+```mermaid
+flowchart LR
+
+Glu{Glucose}
+Glu-->|HK|G6P(G6P)
+ATP((ATP))-.->|使用於|G6P
+G6P-->|UDP-Glc<br>pyrophosphorylase|UDPG(UDP-Glc)
+G6P-.->|產生|ADP((ADP))
+
+UTP((UTP))-.->|利用|UDPG
+UDPG-->|glycogen<br>synthase|G(肝糖慢慢合成)
+UDPG-.->|產生|PP((PPi))
+
+G-.->|去除|UDP((UDP))
+G-->|branching<br>enzyme|B(分支酶會切下一段直鏈，使其變成支鏈)
+```
+- glycogen synthase產生 $\alpha(1\rightarrow 4)$ 鍵結
+- 過程中，需要消耗一個ATP (變成ADP)，也要消耗一個UTP (變成UDP)，所以**總共需要兩個高能磷酸鍵**
+- 下一個鍵結的地方，就是肝糖的四號碳上的 $-OH$ 位點
+- branching enzyme (amylo-(1,4→1,6)-transglycosylase) 產生的是 $\alpha(1\rightarrow 6)$ 鍵結。他會從某個單糖的1號碳上面切下來，然後把那一段 (大概5~9個單糖合成的短鏈) 接到某個葡萄糖的1,6 branching上面
+- 這樣就會有兩個四號碳上的 $-OH$ 位點，然後分支就越來越多...
+
+#### Phosphorylase 的調控
+- 磷酸化酶會受到升糖素調控，因為細胞通路主要就是**cAMP/PKA**路徑，因此它受到cAMP。具體來說，cAMP磷酸化PKA，**PKA磷酸化Phosphorylase**，增加活性，促進肝糖的代謝
+- btw，腎上腺素受體也是GPCR，所以也有類似升糖素的功能。cAMP在各個方面都增加了 "戰或逃" 反應 🐱
+
+##### 備註: Phosphorylase b kinase
+- 這東西同時可以被兩個東西活化: 一個是PKA，一個是 $Ca^{2+}$ 。
+- 它一共有四個次單元: $\alpha$ 、 $\beta$ 、 $\gamma$ 、 $\delta$ ，前兩個亞基 $\alpha\beta$ 負責接受磷酸基 (受到PKA路徑影響) ，後面的亞基 $\delta$ 接受鈣離子 (它就是鈣調蛋白)
+- 鈣離子在肌肉收縮的時候就會釋放，因此，**肌肉收縮本身就會促進肝糖的分解 !!**
+
+#### glycogen synthase 的調控
+- glycogen synthase在沒有磷酸化的時候屬於有活性的形式
+- PKA會使glycogen synthase磷酸化，使其失活，抑制肝糖的合成
+- 而 PPi (也就是生成UDP-Glc時的副產物)，反而會促進glycogen synthesis的活化
+> [!Tip]
+> - 還記得嗎? cAMP也會磷酸化PFK-2/FBPase-2，導致F26BP濃度下降，加強糖質新生，抑制糖解作用
+> - 總之，這**四個反應 (肝糖分解 + 抑制肝糖合成 + 糖質新生 + 抑制糖解)** 總是透過升糖素一起出現 !!
+
+---
+
+## Citric Acid Cycle
+### 宏觀角度下的TCA cycle
+```mermaid
+flowchart LR
+
+OAA1(oxaloacetate<br>草醯乙酸)
+OAA1==>Cit(citrate<br>檸檬酸)
+AcoA(Acetyl-CoA)==>|縮合反應|Cit
+Cit==>|脫水|cAco(cis-aconitate<br>順烏頭酸)
+Cit-.->CoA1((CoA-SH))
+cAco==>|水合|Icit(isocitrate<br>異檸檬酸)
+Icit==>|氧化脫酸|aketo(α-ketoglutarate<br>α-酮戊二酸)
+
+NAD1((NAD+))-.->|利用生成|aketo
+aketo==>|氧化脫酸|ScoA(Succinyl-CoA<br>琥珀醯輔酶A)
+aketo-.->|同時產生|NADH1((NADH))
+aketo-.->|同時產生|CO21((CO2))
+
+CoA2((CoA-SH))-.->|用於形成|ScoA
+ScoA==>|底物磷酸化|Sc(Succinate<br>琥珀酸)
+NAD2((NAD+))-.->|利用生成|ScoA
+ScoA-.->|同時產生|NADH2((NADH))
+ScoA-.->|同時產生|CO22((CO2))
+
+ADP1((ADP))-.->|利用生成|Sc
+P1((Pi))-.->|利用生成|Sc
+Sc==>|脫水|Fu(Fumerase<br>延胡索酸)
+Sc-.->ATP1((ATP))
+Sc-.->CoA3((CoA-SH))
+
+FAD1((E-FAD))-.->|利用|Fu
+Fu-.->FADH2((E-FADH2))
+Fu==>|水合|Ma(malate<br>蘋果酸)
+
+Ma==>|脫水|OAA2(oxaloacetate<br>草醯乙酸)
+NAD3((NAD))-.->|利用生成|OAA2
+OAA2-.->NADH3((NADH))
+
+OAA2==>|不斷繼續<br>循環下去|OAA1
+
+%% ===== TCA styling (matched to your node names) =====
+
+%% entry / citrate formation
+style OAA1 fill:#ffe4c4,stroke:#c77b00
+style Cit fill:#ffe4c4,stroke:#c77b00
+style AcoA fill:#ffe4c4,stroke:#c77b00
+
+%% early rearrangement
+style cAco fill:#d6eaff,stroke:#1f4e79
+style Icit fill:#d6eaff,stroke:#1f4e79
+
+%% oxidative decarboxylation (🔥 core oxidation zone)
+style aketo fill:#ffd6d6,stroke:#b22222
+style ScoA fill:#ffd6d6,stroke:#b22222
+style CO21 fill:#ffd6d6,stroke:#b22222
+style CO22 fill:#ffd6d6,stroke:#b22222
+
+%% energy harvest (ATP / NADH / FADH2)
+style NADH1 fill:#e0d6ff,stroke:#5e35b1
+style NADH2 fill:#e0d6ff,stroke:#5e35b1
+style NADH3 fill:#e0d6ff,stroke:#5e35b1
+style ATP1 fill:#e0d6ff,stroke:#5e35b1
+style FADH2 fill:#e0d6ff,stroke:#5e35b1
+
+%% regeneration phase (cycle closing 🌱)
+style Sc fill:#d6f5d6,stroke:#2e7d32
+style Fu fill:#d6f5d6,stroke:#2e7d32
+style Ma fill:#d6f5d6,stroke:#2e7d32
+style OAA2 fill:#d6f5d6,stroke:#2e7d32
+
+%% cofactors / carriers (neutral background)
+style NAD1 fill:#eeeeee,stroke:#888
+style NAD2 fill:#eeeeee,stroke:#888
+style NAD3 fill:#eeeeee,stroke:#888
+style ADP1 fill:#eeeeee,stroke:#888
+style P1 fill:#eeeeee,stroke:#888
+style CoA1 fill:#eeeeee,stroke:#888
+style CoA2 fill:#eeeeee,stroke:#888
+style CoA3 fill:#eeeeee,stroke:#888
+style FAD1 fill:#eeeeee,stroke:#888
+
+```
+#### 起源
+- 由Hans krebs發現，並且跟Fritz Lipmann (發現Coenzyme的人) 一起得到諾貝爾獎
+- 起初是它在慎在或是肝臟切片中，發現各種有機酸 (如citrate、succinate、fumerate、malate、acetate等) 大量消耗的狀況，並且在了解一些先前知識 (例如isocitrate、 $\alpha$ -glutarate、succinate可以互相轉換) 下，得到了這些物質的相互關係
+- citric acid cycle又被稱為Krebs cycle或是tricarboxylic acid (TCA) cycle
+
+### 丙酮酸的氧化
+- 這個步驟需要PDC (pyruvate degydrogenase complex，它是一個由三種酵素: E1、E2、E3形成的複合體) ，以及五種coenzymes (TPP、lipoid acid、CoA、FAD、NAD+) 的幫忙
+- 用來decorboxylation丙酮酸 (就是把 $COO^-$ 基團變成 $CO^2$ ，簡單吧)
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/PDC_structure_0318.png)
+
+- 步驟總體是:
+
+$$pyruvate + NAD^+ + CoA-SH\rightarrow Acetyl-CoA + NADH + CO_2\quad G^\circ\text{'}=-33.5\ KJ/mol$$
+
+- 這個步驟極度放能，因次屬於不可逆反應，在動物身體裡面，沒有任何酵素可以把acetyl-CoA重新變回pyruvate
+
+#### 介紹各種coenzyme
+##### thiamine pyrophoshpate (硫胺素焦磷酸酯，TPP)
+- TPP是維生素B1的活化形式，位於E1，把pyruvate的 $COO^-$ 拔掉，形成一個二碳化合物 (羥二基，不穩定的活性醛)
+- 這跟酒精發酵的機制是一樣的
+
+##### 硫辛胺酸 (lipoid acid, lipoamide)
+- 通常該輔酶以醯胺鍵和E1的lysine結合，因此又被稱為lipoamide
+- 長相是一條長長的臂膀 (swinging arm) ，末端帶著雙硫鍵，在接收電子還原後，形成兩個 $-SH$ 末端
+- 其中一個末端就是負責接收TPP的二碳化合物，讓其轉化成Acetyl的形式，並把其傳給CoA
+
+##### coenzyme A (輔酶A，CoA)
+- 其來自維生素B5，有一個硫醇基 $-SH$ ，幫忙接住lipoamide的乙醯，形成Acetyl-CoA
+
+##### 核黃素腺嘌呤二核甘酸 (FAD)
+- 來自維生素B2，位於E3。核黃素是由一條核糖醇，以及一個三個六元環串聯環 (叫做isoalloxazine ring) 組成的東西。
+- 這個三環構造可以接收兩個電子 (對，就是把lipoamide的電子搶走，讓lipoamide恢復雙硫鍵)
+- 接收電子後，其變成 $FADH_2$ 
+
+##### (菸鹼醯胺腺嘌呤二核甘酸) NAD+ 
+- 接收兩個 $FADH_2$ 的電子，使對方變回FAD，自己變成NADH，成為淨產出的一部份
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/PDH_mechanism_0318.png)
+
+##### 硫酯的威力
+- 我們知道以氧為核心的酯類的結構是什麼( $RCOOR\text{'}$ )，然而，以硫為核心的酯類 ( $RCOSR\text{'}$ )，通常更不穩定，產生的能量也更高
+- 主要是因為以氧為主的酯類，兩個O之間的電子有類似共振的感覺，穩定其結構，而硫酯缺乏這種東西
+- 因此，乙醯輔酶A可以說是一種相對高能的物質，也讓乙醯基變得更容易從輔酶上脫去
+
+> 大家可以點以下這個3D影片來看看喔 👀
+> 
+> [![image](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/HHMI_video_image_0318.png)](https://www.youtube.com/watch?v=rSPUYA3gWK8)
+
+
 
