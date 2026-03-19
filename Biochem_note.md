@@ -868,7 +868,7 @@ style FAD1 fill:#eeeeee,stroke:#888
 
 - 步驟總體是:
 
-$$pyruvate + NAD^+ + CoA-SH\rightarrow Acetyl-CoA + NADH + CO_2\quad G^\circ\text{'}=-33.5\ KJ/mol$$
+$$pyruvate + NAD^+ + CoA-SH\rightarrow Acetyl-CoA + NADH + CO_2\quad \Delta G^\circ\text{'}=-33.5\ KJ/mol$$
 
 - 這個步驟極度放能，因次屬於不可逆反應，在動物身體裡面，沒有任何酵素可以把acetyl-CoA重新變回pyruvate
 
@@ -926,7 +926,7 @@ reaction 5: -SH的電子透過FAD<br>在E3傳給NAD+ : 生成一個NADH
 ##### 1. 二碳化合物的加入
 - 透過citrate sythase利用Acetyl-CoA跟草醯乙酸，透過類似羥醛縮合反應的方式形成檸檬酸:
 
-$$Acetyl-CoA + OAA + H_2O\rightarrow Citrate + CoSH + H^+\quad G^\circ\text{'}=-32.2\ KJ/mol$$
+$$Acetyl-CoA + OAA + H_2O\rightarrow Citrate + CoSH + H^+\quad \Delta G^\circ\text{'}=-32.2\ KJ/mol$$
 
 - 酵素結合位點的375-Asp奪走乙醯輔酶A的質子，274-His質子化乙醯輔酶A的羰，使乙醯輔酶A形成烯醇 (Enol)。它和OAA反應，生成citroyl-CoA
 - citroyl-CoA非常不穩定，會自發水解成檸檬酸跟CoA-SH
@@ -937,7 +937,7 @@ $$Acetyl-CoA + OAA + H_2O\rightarrow Citrate + CoSH + H^+\quad G^\circ\text{'}=-
 - aconitase (烏頭酸酶) 異構化檸檬酸，使其成為isocitrate
 - 其中順烏頭酸，*cis*-aconitate，還是跟酵素連在一起，因此僅能算是中間產物:
 
-$$\text{citrate} \overset{\text{脫水}}{\rightleftharpoons} \text{cis-aconitate} \overset{\text{水合}}{\rightleftharpoons} \text{isocitrate}\quad G^\circ\text{'}= +6.3\ kJ/mol$$
+$$\text{citrate} \overset{\text{脫水}}{\rightleftharpoons} \text{cis-aconitate} \overset{\text{水合}}{\rightleftharpoons} \text{isocitrate}\quad \Delta G^\circ\text{'}= +6.3\ kJ/mol$$
 
 - 異檸檬酸屬於一個二級醇，接下來的酵素才能順利進行氧化反應
 - 這些反應都是可逆的，而且標準狀態下還是個吸能反應，要依賴接下來反應的放能性質推動整個反應往右走
