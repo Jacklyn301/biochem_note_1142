@@ -700,7 +700,7 @@ G3P-->DHAP
 ### 多糖代謝
 - 多數的動物都是用肝糖的方式把葡萄糖儲存起來
 - 而身體也會對攝取的多糖進行消化
-- 動員肝糖利用的是 "磷酸解" (phosphoroolysis，加上磷酸機分子斷開糖苷鍵)，分解澱粉的方式叫做 "水解" (hydrolysis，加上水分子斷開糖苷鍵)
+- 動員肝糖利用的是 "磷酸解" (phosphorolysis，加上磷酸機分子斷開糖苷鍵)，分解澱粉的方式叫做 "水解" (hydrolysis，加上水分子斷開糖苷鍵)
 > [!Tip]
 > - 所以肝糖被動員時，單糖的形式就是G1P，能在不需要再額外使用ATP的情況下進入糖解代謝。G1P經過一些反應會變成G6P，如下:
 > 
@@ -941,8 +941,182 @@ $$\text{citrate} \overset{\text{脫水}}{\rightleftharpoons} \text{cis-aconitate
 
 - 異檸檬酸屬於一個二級醇，接下來的酵素才能順利進行氧化反應
 - 這些反應都是可逆的，而且標準狀態下還是個吸能反應，要依賴接下來反應的放能性質推動整個反應往右走
-- fluoroacetate (氟乙酸) ，會走類似乙醯基的路線，在之後透過酵素跟CoA-SH形成氟乙醯輔酶A，以及和OAA形成氟檸檬酸。但是氟檸檬酸碰到烏頭酸酶會抑制該酵素的活性。這東西在以前當作滅鼠劑
+- 異檸檬酸屬於一個二級醇，接下來的酵素才能順利進行氧化反應
+- 這些反應都是可逆的，而且標準狀態下還是個吸能反應，要依賴接下來反應的放能性質 (也就是第三步) 推動整個反應往右走
+- fluoroacetate (氟乙酸) ，會走類似乙醯基的路線，在之後透過酵素跟CoA-SH形成氟乙醯輔酶A，以及和OAA形成氟檸檬酸。但是氟檸檬酸碰到烏頭酸酶會抑制該酵素的活性。這東西在以前當作滅鼠劑 👀
+
+##### 3. 跟NAD+有關的脫氫酶催化
+- 在isocitrate dehydrogenase的催化下形成，異檸檬酸有三個 $COO^-$ 基，在反應中脫去一個 $COO^-$ ，形成二氧化碳:
+
+$$\text{isocitrate}+NAD^+ \rightarrow \text{(Oxalosuccinate)} \rightarrow \alpha\text{-ketoglutarate}+NADH+CO_2\quad \Delta G^\circ\text{'}=-11.6\ KJ/mol$$
+
+- 由於其產生的NADH和電子傳遞鏈有關係，這個步驟也是反應的調控位點之一
 
 
+##### 4. 再一次脫去COO-基團
+- 該反應的酵素為 $\alpha$- ketoglutarate dehydrogenase  complex (組合跟PDC有點像，就連5種輔酶也完全一樣 👀)，輔酶A再次幫助，並且一樣產生 $CO_2$ ，至此兩個碳都被脫去: 
+
+$$\alpha\text{-ketoglutarate}+NAD^+ + CoA-SH\rightarrow \text{succinyl-}CoA + CO_2 + NADH\quad \Delta G^\circ\text{'}=-33.5\ KJ/mol$$
+
+- 產物已經再次變成四碳化合物，接下來的步驟就是把succinyl-CoA變回OAA
+
+##### 5. 一次底物磷酸化
+- succinyl-CoA是個高能的物質 (水解自由能為 $\Delta G^\circ\text{'}=-36\ KJ/mol$ ，遠高過形成三磷酸核甘酸的能量 $30.5\ KJ/mol$ )，因此在succinyl-CoA synthetase的幫助下，產生了一個ATP or GDP:
+
+$$\text{succinyl-}CoA + Pi + ADP \rightleftharpoons \text{succinate} + ATP + CoA-SH$$
+
+- 合成的是ATP還是GTP，取決於該酵素的 $\beta$ 次單元比較喜歡ADP還是GDP，例如，大部分需能量的組織中，酵素偏好ADP，而肝臟這種合成器官偏好GDP
+> [!Note]
+> 在肝臟中，標準情況下，GTP跟ATP的比例是類似的，接近1:1
+
+##### 6. 核黃素依賴性的脫氫反應
+- 利用succinate dehydrogenase催化
+- succinate的結構如下: 兩個碳以單鍵結合，每一個碳的其餘三隻手臂分別接上一個carboxyl group跟兩個氫。酵素在的事情就是從兩個碳上面各拔掉一個氫，使其產生C=C雙鍵: 
+
+$$\text{succinate} + Enz-FAD\rightarrow \text{fumarate}+Enz-FADH_2$$
+
+- 也就是說，FAD其實是屬於這種酶上面的一個coenzyme，該酵素能夠重新利用的方法，其實就是把電子轉移出去 (具體是給輔酶Q)，重新變回Enz-FAD形式。因此整個反應式也可以變成:
+
+$$\text{succinate} + Q\rightleftharpoons  \text{fumarate}+QH_2$$
+
+> [!Tip]
+> succinate dehydrogenase就是電子傳遞鏈中的複合體II
+
+##### 7. C=C 雙鍵的水解
+- 由fumarate hydratase (or fumarase) 催化形成
+
+$$\text{fumarate} + H_2O\rightleftharpoons \text{malate}\quad \Delta G^\circ\text{'}=-3.8\ KJ/mol$$
 
 
+##### 8. 脫氫再次產生OAA
+- 由malate dehydrogenase作用
+
+$$\text{malate} + NAD^+ \rightleftharpoons \text{oxaloacetate} + NADH + H^+\quad \Delta G^\circ\text{'}=+29.7\ KJ/mol$$
+
+- 標準狀況為高度吸能反應，因此，在粒線體中，OAA的濃度會特別的低，以利反應向右進行
+
+#### 來做個小總結
+
+|reaction|enzyme|實際釋放的 $\Delta G$ |
+|--------|------|--------------------|
+|Acetyl-CoA + OAA + H2O → citrate + CoA + H+|citrate synthase|$-55$|
+|citrate → *cis*-aconitate + H2O → isocitrate|aconitase|$\approx 0$|
+|isocitrate + NAD+ $\alpha$-ketoglutarate + CO2 + NADH|isocitrate dehydrogenase|-20|
+|$\alpha$-ketoglutarate + NAD+ + CoA → succinyl-CoA + CO2 + NADH|$\alpha$-ketoglutarate dehydrogenase complex|-40|
+|succinyl-CoA + Pi + ADP → succinate + ATP + CoA|succinyl-CoA synthetase|$\approx 0$|
+|succinate + Q → fumarate + QH2|succinate dehydrogenase|$\approx 0$|
+|fumarate + H2O → malate|fumarase|$\approx 0$|
+|malate + NAD+ → OAA + NADH + H+|malate dehydrogenase|$\approx 0$|
+
+- 一個循環下來的總體反應為:
+
+$$Acetyl-CoA + 2H_2O + 3NAD^+ + ADP + Pi + Q \rightarrow 2CO_2 + 3NADH + QH_2 + CoA-SH + ATP$$    
+
+- 如果把剛才TCA cycle的東西跟前面的PDC、以及糖解作用的步驟全物加起來，整個總反應為:
+
+$$\text{glucose} + 2H_2O + 10\ NAD^+ + 2Q + 4ADP + 4\ Pi\rightarrow 6\ CO_2 + 10\ NADH + 2QH_2 + 4ATP$$
+
+> 大家可以點以下這個3D影片來看看喔 👀
+> 
+> [![image](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/HHMI_vedio_image_0319.png)](https://www.youtube.com/watch?v=IlSFn0gRyC4)
+
+---
+
+
+### PDC 跟 TCA cycle 的調控
+#### 丙酮酸氧化的控制
+- acetyl-CoA來自pyruvate脫氫後的結果，或是脂肪酸 $\beta$ -氧化的結果
+- E2受到Acetyl-CoA的濃度抑制、E3受到NADH的濃度抑制，也就是說，如果這些東西生成後消耗不完，pyruvate的脫氫就會先被抑制
+- 最主要的調控位置其實是在E1 (也就是pyruvate degydrogenase, PD)，E1的Serine殘基 (R group為 $-CH_2OH$ ) 可以被磷酸化，當其被磷酸化時，酵素會失去活性
+- E1由一種特殊的kinase (PDK，目前發現四種isozymes) 抑制。同時，也有一種磷酸酶 (PDP，目前發現兩種isozymes) 會水解PDC磷酸基，重新使PDC活化
+- 比較一下兩個共同影響E1的酵素:
+
+|enzyme|pyruvate dehydrogenase kinase|pyruvate dehydrogenase phosphatase|
+|------|-----------------------------|----------------------------------|
+|功能|活化後磷酸化PDC|活化後去磷酸化PDC|
+|導致|PDC失活，丙酮酸脫氫抑制|PDC活化，丙酮酸脫氫啟動|
+|誰會活化它|NADH、Acetyl-CoA、ATP|鈣離子、鎂離子、胰島素作用|
+|誰會抑制它|ADP、pyruvate||
+
+> [!Tip]
+> 鈣離子在肌肉收縮時會大幅升高濃度，所以其增加代表能量需求增加 → 需活化PDP → PDC活化 → pyruvate脫氫增加。上一張也有提到它會透過活化Phosphorylase b kinase增加肝糖的分解 🐱
+
+- 由於ATP跟鎂離子的結合力，比ADP更強，因此，當鎂離子濃度變高時，就代表ADP變多了 (that is， $Mg^{2+}$ 受到ATP/ADP的濃度比值影響)，能量可能不夠。PDP因此也受到 $Mg^{2+}$ 影響。
+
+#### TCA cycle 的控制
+- 主要受到三個酵素的活性來調控: citrate synthase (第一步)、isocitrate dehydrogenase (第三步)、以及 $\alpha$ -ketoglutarate dehydrogenase (第四步)
+- 這幾步的共同點都一樣: 自由能釋放特別多 💪
+- 控制TCA cycle的重點是NAD+/NADH的濃度比值
+
+| 調控酵素 | 作用反應 | 誰幫忙活化 | 誰幫忙抑制 |
+|----------|----------|----------|------|
+| **Citrate synthase** | Acetyl-CoA + OAA → Citrate | |NADH、Succinyl-CoA|
+| **Isocitrate dehydrogenase** | Isocitrate → $\alpha$ -Ketoglutarate + CO₂ + NADH | ADP、 $Ca^{2+}$ |ATP、NADH | 
+| **$\alpha$ -Ketoglutarate dehydrogenase** | $\alpha$ -Ketoglutarate → Succinyl-CoA + CO2 + NADH | $Ca^{2+}$ |ATP、NADH、Succinyl-CoA| 
+
+> 註: citrate synthase的活性其實接近平衡狀態，它被認為是調控點的主要因素，其實是OAA濃度 (反應物) 變化特別大所導致的
+
+#### enzyme的型式組成
+- 事實上，TCA cycle的酵素很有可能是以多種酵素的複合物組成，又被稱為代謝體 (melabolon)
+- 這些代謝體可能就跟內膜 (matrix那一側) 有互相連結，甚至是錨定 (例如succinate dehydrogenase)
+
+#### 疾病跟TCA cycle
+- 在這個循環中的酵素缺陷可能不會導致致命，但是可能跟一些神經退化性疾病或是癌症有關係
+- 例如，succinate dehydrogenase的缺陷可能導致副神經節瘤，fumarase的基因突變可能導致子宮頸癌或是Laigh syndrome、isocitrate dehydrogenase的基因突變可能跟惡性膠質瘤有關
+
+---
+
+### anaplerotic sequences
+- TCA cycle的中間產物，跟其他有機物的合成也有關係
+- 由於很多反應都會消耗循環裡面的中間體，因此 "補充" 就變得特別重要
+
+```mermaid
+flowchart TB
+
+G{glucose}
+G==>|glucolysis|pep(PEP)
+pep==>p(pyruvate)
+p==>Acoa(Acetyl-CoA)
+Acoa==>c(citrate)
+c==>akg(α-ketoglutarate)
+akg==>Scoa(succinyl-CoA)
+Scoa==>M(malate)
+M==>OAA(OAA)
+OAA==>c
+
+c-.->|形成|F((脂肪酸、<br>固醇類))
+Glu(麩胺酸)-.->|轉胺作用|akg
+Scoa-.->|形成|Heme((血基質))
+
+M-.->|malic<br>enzyme|p
+p-.->|malic<br>enzyme|M
+
+p-.->|pyruvate<br>carboxylase|OAA
+
+OAA-.->|PEPCK|pep
+pep-.->|（植物才有的）PEP<br>carboxylase|OAA
+Asp(天冬胺酸)-.->|轉胺作用|OAA
+
+pep==>|gluconeogenesis|G
+
+```
+#### OAA, PEP and pyruvate
+- pyruvate變成OAA，然後OAA透過PEPCK變成PEP，這是糖質新生的一部份
+- pyruvate跟OAA之間的轉換由pyruvate carblxylase催化:
+
+$$\text{pyruvate} + HCO_3^- + ATP \rightarrow OAA + ADP + Pi + 2H^+$$
+
+- 該酵素由Acetyl-CoA活化。因此，**Acetyl-CoA可以透過pyruvate carboxylase增加OAA，OAA的增加能夠促進其跟Acetyl-CoA結合形成citrate。**
+
+#### the malic enzyme
+- 該反應雙向調控pyruvate變成malate:
+
+$$pyruvate + HCO_3^- + NADPH + H^+ \rightleftharpoons malate + NADP^+ + H_2O$$
+
+- NADPH主要功能是作為脂肪合成時的重要角色
+
+#### 和胺基酸有關的反應
+- 利用轉胺作用的幫忙，形成循環的中間產物 (雖然不是這麼常見)。機制就是某個胺基酸把自己的胺基接到其他胺基酸殘基上面
+- 這剛剛好發生在Asparate、glutamate、 $\alpha$ -ketoglutarate、OAA之間 (俗稱: 有我就沒有你，有你就沒有我 🙂)
+
+$$\text{aspartate} + \alpha\text{-ketoglutarate}\leftrightharpoons \text{glutarate}+\text{oxaloacetate}$$
