@@ -878,9 +878,12 @@ $$pyruvate + NAD^+ + CoA-SH\rightarrow Acetyl-CoA + NADH + CO_2\quad G^\circ\tex
 - 這跟酒精發酵的機制是一樣的
 
 ##### 硫辛胺酸 (lipoid acid, lipoamide)
-- 通常該輔酶以醯胺鍵和E1的lysine結合，因此又被稱為lipoamide
-- 長相是一條長長的臂膀 (swinging arm) ，末端帶著雙硫鍵，在接收電子還原後，形成兩個 $-SH$ 末端
+- 通常該輔酶以醯胺鍵和E2的lysine結合，因此又被稱為lipoamide
+- 長相是一條長長的臂膀 (swinging arm)，這整個區域非常flexible，又被稱為E2區的lipoyl domain
+- 由於其活動性，lipoamide基本上跟三個酵素都有互動
+- 末端帶著雙硫鍵，在接收電子還原後，形成兩個 $-SH$ 末端
 - 其中一個末端就是負責接收TPP的二碳化合物，讓其轉化成Acetyl的形式，並把其傳給CoA
+- 砷中毒的原因，通常是因為砷化合物習慣跟-SH基反應，Arsenite ( $^{-}O-As-(OH)_2$ ) 的兩個羥基會跟-SH基脫水後結合，使其失去接住乙醯基的能力
 
 ##### coenzyme A (輔酶A，CoA)
 - 其來自維生素B5，有一個硫醇基 $-SH$ ，幫忙接住lipoamide的乙醯，形成Acetyl-CoA
@@ -900,9 +903,46 @@ $$pyruvate + NAD^+ + CoA-SH\rightarrow Acetyl-CoA + NADH + CO_2\quad G^\circ\tex
 - 主要是因為以氧為主的酯類，兩個O之間的電子有類似共振的感覺，穩定其結構，而硫酯缺乏這種東西
 - 因此，乙醯輔酶A可以說是一種相對高能的物質，也讓乙醯基變得更容易從輔酶上脫去
 
+#### 總結
+```mermaid
+timeline 
+title PDC mechanisms
+raction 1: 丙酮酸跟E1的TPP<br>碳負離子反應，發生<br>decarboxylation : 產生羥乙基-TPP<br>跟二氧化碳
+reaction 2: 二碳化合物變成乙醯基: 同時lipoamine的雙硫鍵<br>斷開，形成兩個-SH: 羥乙基從E1<br>轉到E2上的<br>lipoamine擺動臂上面
+reaction 3: 乙醯基轉移到CoA-SH: 生成一個acetyl-CoA
+reaction 4: 電子從lipoamine被<br>轉移到E3的雙硫鍵上面<br>，形成兩個-SH: 擺動臂重新氧化，<br>雙硫鍵形成
+reaction 5: -SH的電子透過FAD<br>在E3傳給NAD+ : 生成一個NADH
+```
+
+
 > 大家可以點以下這個3D影片來看看喔 👀
 > 
 > [![image](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/HHMI_video_image_0318.png)](https://www.youtube.com/watch?v=rSPUYA3gWK8)
+
+---
+
+### The citric acid cycle
+#### 步驟介紹
+##### 1. 二碳化合物的加入
+- 透過citrate sythase利用Acetyl-CoA跟草醯乙酸，透過類似羥醛縮合反應的方式形成檸檬酸:
+
+$$Acetyl-CoA + OAA + H_2O\rightarrow Citrate + CoSH + H^+\quad G^\circ\text{'}=-32.2\ KJ/mol$$
+
+- 酵素結合位點的375-Asp奪走乙醯輔酶A的質子，274-His質子化乙醯輔酶A的羰，使乙醯輔酶A形成烯醇 (Enol)。它和OAA反應，生成citroyl-CoA
+- citroyl-CoA非常不穩定，會自發水解成檸檬酸跟CoA-SH
+- 屬於高度放能反應，平衡常數 $K_{eq}\approx 3\times 10^5$ ，OAA就算濃度很低也能照常反應，因此也屬於重要的調控位點
+
+##### 2. 檸檬酸的異構化
+- 檸檬酸屬於三級醇 (中間的碳已經接了一個 $-COO^-$ ，兩個 $-CH_2COO^-$ 跟一個羥基了)，碳上面根本沒有任何氫可以抓，難以被氧化
+- aconitase (烏頭酸酶) 異構化檸檬酸，使其成為isocitrate
+- 其中順烏頭酸，*cis*-aconitate，還是跟酵素連在一起，因此僅能算是中間產物:
+
+$$\text{citrate} \overset{\text{脫水}}{\rightleftharpoons} \text{cis-aconitate} \overset{\text{水合}}{\rightleftharpoons} \text{isocitrate}\quad G^\circ\text{'}= +6.3\ kJ/mol$$
+
+- 異檸檬酸屬於一個二級醇，接下來的酵素才能順利進行氧化反應
+- 這些反應都是可逆的，而且標準狀態下還是個吸能反應，要依賴接下來反應的放能性質推動整個反應往右走
+- fluoroacetate (氟乙酸) ，會走類似乙醯基的路線，在之後透過酵素跟CoA-SH形成氟乙醯輔酶A，以及和OAA形成氟檸檬酸。但是氟檸檬酸碰到烏頭酸酶會抑制該酵素的活性。這東西在以前當作滅鼠劑
+
 
 
 
