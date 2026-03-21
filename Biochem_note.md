@@ -1223,6 +1223,57 @@ $$Ph-CH_2-CH_2-\cdots-CH_2-COO^-$$
 - 因此，脂肪酸的氧化，其實是一片段一片段逐步進行的，該過程不斷重複，直到剩餘的酸無法進一步被代謝，並且被排泄掉
 
 #### 基本輪廓
+
+```mermaid
+flowchart LR
+    FA{脂肪酸<br>FA}:::start
+    FA==>faa(脂醯腺苷酸<br>FA-AMP):::activation
+
+    ATP((ATP)):::cofactor-.->faa
+    faa-.->PPi((PPi)):::byproduct
+
+    faa==>FaCoA1(脂醯輔酶A<br>FA-CoA):::transport
+    CoA1(CoA-SH):::cofactor-.->FaCoA1
+
+    FaCoA1==>|替換成肉鹼|FAC(脂醯肉鹼<br>FA-carnitine):::transport
+    Ca1(carnitine):::cofactor-.->FAC
+
+    FAC==>imm[穿過粒線體內膜<br>來到基質]:::membrane
+
+    imm==>|移除肉鹼|FaCoA2(脂醯輔酶A<br>FA-CoA):::betaoxidation
+    CoA(CoA-SH):::cofactor-.->FaCoA2
+    FaCoA2-.->Ca2(carnitine):::cofactor
+
+    FaCoA2==>|第一次<br>脫氫|A(反式-Δ2-烯醯輔酶A<br>trans-Δ2-enoyl-CoA):::betaoxidation
+    FAD((FAD)):::cofactor-.->A
+    A-.->FADH2((FADH2)):::product
+
+    A==>|跟水結合|B(L-3-羥基醯輔酶A<br>L-3-hydroxyacyl-CoA):::betaoxidation
+    H2O((H2O)):::cofactor-.->B
+
+    B==>|第二次<br>脫氫|C(3-酮醯輔酶A<br>3-ketoacyl-CoA):::betaoxidation
+    NAD((NAD+)):::cofactor-.->C
+    C-.->NADH((NADH)):::product
+
+    C==>|硫解降解|D(Acetyl-CoA):::product
+    C==>|硫解降解|E(FA-CoA<br>但少了兩個碳):::betaoxidation
+
+    CoA2(CoA-SH):::cofactor-.->E
+
+    D-.->TCA[進入<br>TCA cycle]:::tca
+    E==>|反覆循環|FaCoA2
+
+    classDef start fill:#FFB347,stroke:#333,stroke-width:2px,color:#000
+    classDef activation fill:#4A90E2,stroke:#333,stroke-width:2px,color:#fff
+    classDef transport fill:#5D9BEC,stroke:#333,stroke-width:2px,color:#fff
+    classDef membrane fill:#9B59B6,stroke:#333,stroke-width:2px,color:#fff
+    classDef betaoxidation fill:#2ECC71,stroke:#333,stroke-width:2px,color:#000
+    classDef cofactor fill:#F4D03F,stroke:#333,stroke-width:2px,color:#000
+    classDef product fill:#95A5A6,stroke:#333,stroke-width:2px,color:#fff
+    classDef byproduct fill:#E67E22,stroke:#333,stroke-width:2px,color:#fff
+    classDef tca fill:#1ABC9C,stroke:#333,stroke-width:2px,color:#fff
+```
+
 - 脂肪酸的氧化包含carboxyl group的活化、粒線體基質的轉運、以及從 $-COO^-$ 開始，一次氧化兩個碳原子，逐步氧化碳鏈
 - 粒線體內膜對於游離的長鏈脂肪酸跟醯基輔酶A不通透，它們需要特定的轉運系統
 - acyl-CoA synthetases根據不同的種類，會跟不同長度的脂肪酸反應，形成以下反應:
