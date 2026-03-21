@@ -1120,3 +1120,113 @@ $$pyruvate + HCO_3^- + NADPH + H^+ \rightleftharpoons malate + NADP^+ + H_2O$$
 - 這剛剛好發生在Asparate、glutamate、 $\alpha$ -ketoglutarate、OAA之間 (俗稱: 有我就沒有你，有你就沒有我 🙂)
 
 $$\text{aspartate} + \alpha\text{-ketoglutarate}\leftrightharpoons \text{glutarate}+\text{oxaloacetate}$$
+
+---
+
+## lipid metabolism
+### 脂肪的儲備跟相關疾病
+- 三酸甘油脂 (triacylglycerol, TAG) 的還原程度比多數醣類還要高，這代表脂肪的代謝氧畫比醣類消耗更多的氧氣，並相應的會產生更多能量，由於其無極性的特質，動物可以在不用儲存大量水分的情況下 (肝糖需要大量的水分)，利用脂肪儲存能量。鳥類就是一個例子
+- 脂肪再小腸重新和成三酸甘油脂，並與載脂蛋白結合形成乳糜微粒。膽酸 (cholic acid) 為疏水的四元環上面有幾處親水端 (如 $-OH$ 或是 $-COOH$ 基團)，它們朝外，然後好幾個膽酸圍繞著TAG，四元環面向TAG
+
+#### 運輸方式
+- 通常用的是lipoprotein來運輸脂肪，這種蛋白質的多肽區域，又被稱為apoproteins
+- AopB 基因由29個exons組成，在肝臟中，該mRNA轉譯出的apoprotein為B-100 (後來近一步變成低密度脂蛋白)，而在腸道中，由於腸道內的酵素，轉化了一個核甘酸的變化: CAA → UAA (stop)，轉譯出來的apoprotein就變成了B48 (後來近一步變成乳糜微粒)
+- 脂蛋白密度越高，含有的脂質越少，所以就包含VLDL、LDL、IDL、HDL等，由一層磷脂質組成，磷脂質層上面還有一些蛋白質 (蛋白質帶電或是親水的氨基酸面向外面，疏水胺基酸面向裡面) 、膽固醇等，內層的輸水層就是被運輸的脂質
+- 有些apoprotein也有其他的生化特性，例如apoC-II (也常常在乳糜微粒或是VLDL出現) 可活化lipoprotein lipase (位於血管內皮細胞表面，由多糖連接細胞膜) 來水解TAG
+- 有些apoprotein會跟特定受體結合，apoE的基因變異跟阿茲海默症風險增加呈現相關聯
+- 脂防備水解之後，脂蛋白的殘餘物會被肝臟細胞吸收，被溶體降解並回收apoprotein
+- 肝臟功能障礙的一個主要狀況是無法合成apoprotein，因此導致無法把脂肪從肝臟運出去
+```mermaid
+flowchart LR
+in{小腸}
+li{肝臟}
+ti{周邊組織}
+
+li-.->|產生膽鹽|in
+in-.->|產生|chy((乳糜微粒))-.->|經過|ly(淋巴管)
+ly-->|進入|ca1{微血管}
+ca1-->|剩下|rchy(乳糜微粒<br>殘餘物)
+rchy-->|進入|li
+
+li-->|生物合成脂質|VLDL((VLDL))
+VLDL-->ca2{微血管}-->|殘餘|IDL((IDL))
+
+IDL-->|回到|li
+IDL-.->|透過<br>lipoprotein<be>lipase|LDL((LDL))
+
+LDL-->li
+
+LDL-->|進入|ti
+ti-->|ApoB-100+膽固醇<br>形成|IDL
+ti-->HDL((HDL))-->|回到|li
+HDL-.->|進到|endo(進到內分泌腺形成激素)
+
+ca1-->hy(脂肪酸的水解)
+ca2-->hy
+```
+- 膽固醇長期累積在血液中會在動脈內壁積累，吸引巨噬細胞。這些巨噬細胞的殘骸會跟脂肪沉積物形成斑塊
+- 這是導致動脈硬化 (atherosclerotis) 的主要原因之一
+
+#### 高膽固醇血症的研究和脂蛋白的吸收
+- hypercholesterolemia (FH) 是由於基因的缺陷導致，患者的纖維母細胞會以異常高的速率合成膽固醇
+- 正常細胞的HMG-CoA還原酶 (負責調控膽固醇的生成) 在LDL的增加時，活性會迅速降低，也就是說，一般情況下，膽固醇會被吞噬轉運到細胞內部，並透過抑制酵素的活性來降低生成，而FH的患者酵素活性沒有因為LDL濃度改變而改變
+- 細胞上的受體會透過辨識出脂蛋白的apoprotein，把整個脂蛋白吞噬進細胞內部 (這叫做受體介導的胞吞作用)，這些吞進來的膽固醇會進到平滑內質網用於細胞膜合成，有三種調節作用:
+  - HMG-CoA還原酶抑制 (降低內源性膽固醇的合成)
+  - 活化ACAT，合成膽固醇酯 (膽固醇以液滴的型式儲存)
+  - 降低合成跟apoprotein結合的受體
+- 因此，HMG-CoA還原酶抑制劑，就是一種降膽固醇藥，促進細胞吸收血液中的膽固醇 
+- PUFAs (多元不飽和脂肪酸) 似乎有降低血清中膽固醇跟TAG的水平 (雖然還不知道為甚麼 🙂)
+
+#### 再進一部探討動脈硬化
+- LDL被氧化的時候，被稱為oxidized LDL (oxLDL)，這些LDL會被巨噬細胞的 "清道夫受體" (scarvengern receptor) 辨識，並被巨噬細胞吞下肚
+- 但是清道夫受體並不會因為吞噬了oxLDL而表現下調，因此這些巨噬細胞長期吞噬大量的oxLDL，會變成泡沫細胞，這些泡沫細胞才會堆積在血管壁。同時其會產生趨化作用，吸引更多的免疫細胞，導致它們累積更多膽固醇
+
+### 脂肪的第一步水解
+- 脂肪水解會變成甘油和游離脂肪酸 (FFA)，這些脂肪酸的羰股價最終都會以雙碳的型式分解 (aka Acetyl-CoA)
+- 共有三種酶參與水解TAG: hormone-sensitive lipase (HSL)、adipose triglyceride lipase (ATGL)、monoacylglycerol lipase (MGL)。通常來說:
+
+```mermaid
+flowchart LR
+TAG(三酸甘油脂)-->|透過|ATGL((ATGL))-->|形成|DAG(二醯甘油)-->|透過|HSL((HSL))-->|形成|MAG(單醯甘油)-->|透過|MGL((MGL))-->|形成|G(甘油)
+
+FFA{游離<br>脂肪酸}
+
+ATGL-.->FFA
+HSL-.->FFA
+MGL-.->FFA
+
+FFA-.->export[輸出至血漿]
+G-.->export
+G-.->Gly[糖解作用]
+G-.->Glu[糖質新生]
+```
+- 其中，HSL酵素其實可以同時對TAG、DAG、MAG做反應，只是其活性最高時是跟DAG做反應
+- 游離脂肪酸被釋放到血液中，並跟白蛋白 (albumin) 結合
+> [!Tip]
+> 簡單來說，一個酵素斷一個酯鍵 🐱
+
+- HSL受到cAMP活化 (沒錯又是它)， $\beta$ -腎上腺素受體能透過活化腺苷酸環化酶來產生cAMP
+
+> [!Note]
+> 可以結合 $\beta$ -receptor的激素有很多種，包含: 升糖素、腎上腺素、副甲狀腺素、促甲狀腺素、促腎上腺皮質激素等等
+
+- cAMP活化PKA，PKA除了會促進HSL的活性，還能夠在脂肪滴表面的蛋白 (又稱為脂肪滴蛋白，perilipin，PL) 上面作用，使PL磷酸化，便能促進已經被磷酸化的HSL招募到脂肪滴附近，促進脂肪水解
+- 同時，一種脂肪滴上的表面蛋白叫做CGI-58，它會脫離脂肪滴表面，並且跟ATGL結合。該複合物也可以受到PL的招募
+
+### 脂肪的氧化
+#### 早期實驗
+- Knoop 早期在做實驗時，嘗試給動物餵食脂肪酸。他讓脂肪酸末端的甲基被苯基取代，如下:
+
+$$Ph-CH_2-CH_2-\cdots-CH_2-COO^-$$
+
+- 他發現，如果碳鏈的碳數為偶數，產生的代謝物為苯乙酸: $Ph-CH_2-COO^-$ ，而如果是奇數，產生的代謝物為苯甲酸 Ph-COO^-$$
+- 因此，脂肪酸的氧化，其實是一片段一片段逐步進行的，該過程不斷重複，直到剩餘的酸無法進一步被代謝，並且被排泄掉
+
+#### 基本輪廓
+- 脂肪酸的氧化包含carboxyl group的活化、粒線體基質的轉運、以及從 $-COO^-$ 開始，一次氧化兩個碳原子，逐步氧化碳鏈
+- 粒線體內膜對於游離的長鏈脂肪酸跟醯基輔酶A不通透，它們需要特定的轉運系統
+- acyl-CoA synthetases根據不同的種類，會跟不同長度的脂肪酸反應，形成以下反應:
+
+$$R-COO^- + ATP + CoA-SH \leftrightharpoons R-COS-CoA + AMP + PPi\quad \Delta G^\circ\text{'}=-15\ KJ/mol$$
+
+
