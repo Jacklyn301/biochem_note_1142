@@ -1106,7 +1106,15 @@ pep==>|gluconeogenesis|G
 
 $$\text{pyruvate} + HCO_3^- + ATP \rightarrow OAA + ADP + Pi + 2H^+$$
 
-- 該酵素由Acetyl-CoA活化。因此，**Acetyl-CoA可以透過pyruvate carboxylase增加OAA，OAA的增加能夠促進其跟Acetyl-CoA結合形成citrate。**
+- 該酵素由Acetyl-CoA活化。因此，**Acetyl-CoA可以透過pyruvate carboxylase增加OAA，OAA的增加能夠促進其跟Acetyl-CoA結合形成citrate**
+- pyruvate carboxylase是一種四聚體分子，主要是兩個兩個一組，每一組是兩個亞基: BC domain & CT domain，以及一個擺動基: BCCP domain 
+  - BC domain (Biotin Carboxylase): 負責利用 ATP 將碳酸氫根 ( $HCO_3^-$ ) 活化，並把一個羧基加到生物素上
+  - BCCP domain (Biotin Carboxyl Carrier Protein): 像是一個「手臂」或「搖擺吊橋」，把已經羧化的生物素攜帶到另一個活性位點
+  - CT domain (Carboxyltransferase)：接受 BCCP 帶來的羧基，並把它轉移到丙酮酸上，生成OAA
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/PC_0324.jpeg)
+
+- PEP也可以變成OAA，這是在植物中才有的反應，由PEP carboxylase催化。由於PEP本身就是高能量的物質，所以該反應不需要任何輔因子。在C4植物中，其扮演重要角色
 
 #### the malic enzyme
 - 該反應雙向調控pyruvate變成malate:
@@ -1120,6 +1128,51 @@ $$pyruvate + HCO_3^- + NADPH + H^+ \rightleftharpoons malate + NADP^+ + H_2O$$
 - 這剛剛好發生在Asparate、glutamate、 $\alpha$ -ketoglutarate、OAA之間 (俗稱: 有我就沒有你，有你就沒有我 🙂)
 
 $$\text{aspartate} + \alpha\text{-ketoglutarate}\leftrightharpoons \text{glutarate}+\text{oxaloacetate}$$
+
+### Glyoxylate cycle: TCA cycle的合成代謝變體
+- 我們知道，acetyl-CoA無法變成糖類，但是OAA可以。不過由於TCA cycle在循環時會把兩個碳給釋放掉，並非碳中性循環，因此無法累積OAA
+- Glyoxylate cycle就是TCA cycle的一種變體，透過以其他酵素代替，跳過中間釋放碳的步驟，而能累積OAA，以進行糖質新生
+
+具體來說如下:
+
+```mermaid
+flowchart LR
+    AcoA{acetyl-CoA}:::start
+
+    Ace(acetate<br>乙酸):::substrate-.->AcoA
+    FA(fatty acid<br>脂肪酸):::substrate-.->AcoA
+    AcoA-->|citrate<br>synthase|citrate(citrate<br>檸檬酸，6C):::tca
+    citrate-->|aconitase|isocitrate(isocitrate<br>異檸檬酸，6C):::tca
+    isocitrate-->|isocitrate<br>lyase|glyo(glyoxylate<br>乙醛酸，2C):::glyoxylate
+    isocitrate-->|isocitrate<br>lyase|suc(succinate<br>琥珀酸，4C):::tca
+    suc-->fum(fumarase<br>延胡索酸，4C):::tca
+    fum-->mal(malate<br>蘋果酸，4C):::tca
+
+    glyo-->|malate<br>synthase|mal
+    AcoA-->|malate<br>synthase|mal
+
+    mal-->|malate<br>dehydrogenase|OAA(oxaloacetate<br>草醯乙酸，4C):::oaa
+
+    OAA-->|citrate<br>synthase|citrate
+
+    OAA-->Glu{gluconeogenesis<br>進行糖質新生}:::glu
+
+    classDef start fill:#FFB347,stroke:#333,stroke-width:2px,color:#000
+    classDef substrate fill:#82df5b,stroke:#333,stroke-width:2px,color:#000
+    classDef tca fill:#0c9db6,stroke:#333,stroke-width:2px,color:#fff
+    classDef glyoxylate fill:#ffde59,stroke:#333,stroke-width:2px,color:#000
+    classDef oaa fill:#E74C3C,stroke:#333,stroke-width:2px,color:#fff
+    classDef glu fill:#a556bb,stroke:#333,stroke-width:2px,color:#fff
+
+```
+
+##### 跳過脫羧步驟
+- 在 TCA cycle 中，isocitrate會經由異檸檬酸脫氫酶 → $\alpha$ -ketoglutarate，再經脫羧反應釋放 $CO_2$
+- 在 glyoxylate cycle 中，isocitrate被 isocitrate lyase 分解成 succinate + glyoxylate，避免了 $CO_2$ 的釋放
+
+##### 利用 glyoxylate 合成新碳骨架
+- Glyoxylate 與另一分子 acetyl-CoA 在 malate synthase 的作用下生成 malate
+- 這樣就能把脂肪分解的碳原子保留下來，轉換成可進一步合成葡萄糖的中間產物
 
 ---
 
