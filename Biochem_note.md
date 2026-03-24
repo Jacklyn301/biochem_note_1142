@@ -1280,4 +1280,61 @@ flowchart LR
 
 $$R-COO^- + ATP + CoA-SH \leftrightharpoons R-COS-CoA + AMP + PPi\quad \Delta G^\circ\text{'}=-15\ KJ/mol$$
 
+#### 肉鹼穿梭機制
+
+- 這一個過程是在粒線體外膜上面形成的，但是他們還要穿過粒線體才能被氧化。這個過程涉及把醯基 (也就是脂肪鏈的部分) 轉移到肉鹼 (carnitine) 上面
+- 該替換的反應由膜上的CPT-I (carnitine palmitoyltransferase I) 完成，產生脂肪醯肉鹼 (fatty acyl-carnitine咱們現在稱呼為FA-carnitine)，然後由translocase搬到內膜裡面去
+- 到了膜間腔之後，第二種酵素 CPT-II，又會把上面的carnitine換成CoA-SH，產生脂肪醯輔酶A並丟到基質裡面，完成轉運
+- CPT-I是脂質代謝的速率限制步驟，它會被malonyl-CoA抑制 (這東西是脂肪合成的第一個中間體，它出現代表脂肪要被和成)，身體不會讓氧化跟和成脂肪酸同時進行
+
+#### $\beta$ -oxydation
+- 每一次循環，FA-CoA都會縮短兩個碳的長度，形成一個acetyl-CoA，同時伴隨兩個雙電子氧化還原反應 (產失NADH跟FADH2)
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/beta_oxydation_0321.png)
+
+##### 1. 第一次脫氫
+- 由acyl-CoA dehydrogenase催化該反應，**在第二和第三個碳上面 (也就是 $\alpha$ 跟 $beta$) 產生C=C雙鍵，各自脫去一個氫** (先奪取 $\alpha$ 上的 $H^+$ ，產生碳負離子中間體，促進 $\beta$ 碳的 $H^+$ 一起脫去)
+- 兩顆電子會透過 "電子傳遞核黃素蛋白" (ETF-Q) 的FADH2傳給輔酶Q，形成 $QH_2$
+- 這時的產物叫做 *trans*- $\Delta$ 2-Enoyl-CoA
+
+##### 2&3. 水合跟第二次脫氫
+- 這一部有點類似succinate的氧化 (就是先用FAD脫氫，再水合，再用NAD脫氫)，第二跟第三步透過enoyl-CoA hydratase 跟 3-L-hydroxyacyl-CoA dehydrogenase催化
+- 就是**原本的C=C雙鍵被 $H_2O$ 打斷之後，連接 $-OH$ 基的那個碳 (也就是 $\beta$ ) 被奪走兩個氫，形成羰基 (C=O)**
+- 這時的產物叫做3-ketoacyl-CoA
+>[!Note] 
+>取名由來: 每一次循環開始時，這一步驟是導致 $\beta$ -C的氧化，所以叫做 $\beta$ 氧化 🤔
+
+##### 4. 硫解裂解
+- 這一步就是輔酶A (CoA-SH) 的 $S$ ，去攻擊剛成為羰基的 $\beta$ 碳，導致 $\alpha$ 跟 $\beta$ 碳 "決裂" 。$\alpha$ 碳成為了產物acetyl-CoA的一部份，而 $\beta$ 碳和CoA透過 $S$ 相連
+
+#### 來做個小總結
+- 讓我們以棕梠酸 (palmitate, $16:0$ ) 為例:
+
+$$\text{Palmitoyl-CoA}+7CoA-SH + 7Q + 7 NAD^+ + 7H_2O\rightarrow 8\ acetyl-CoA + 7FADH_2 + 7NADH + 7 H^+$$
+
+|reaction|產生的ATP量|
+|---|---|
+|palmitate → palmitoyl-CoA| $-2$ |
+|8 acetyl-CoA的氧化| $8\times 10=80$ |
+|7FADH2的氧化| $7\times 1.5=10.5$ |
+|7NADH的氧化| $7\times 2.5=17.5$ |
+|總共| $106$ |
+
+
+#### isozymes 的不同
+- 氧化第一步的acyl-CoA dehydrogenase (CAD) 存在多個isozymes，是根據不同的脂肪酸鏈長短去選則跟特定isozymes結合的
+- 分為short-、medium-、long-、very long-幾種，除了非常長鏈CAD是結合在內膜之外，其他的蛋白質都可溶於基質裡面
+- 後面的兩個反應的酵素都各有兩種isozymes，一種isozyme可以溶於基質，另一種isozyme特異性作用於長鏈脂肪酸上面
+- 有些疾病就跟這些氧化脂肪酸的酵素失常有關係，例如MCAD缺乏、LCHAD缺乏，甚至是三種酵素活性都很低的 (被稱為完全的MTP缺乏症)
+
+### 不飽和脂肪酸的氧化
+- 需要用到 enoyl-CoA isomerase 和 2,4-dienoyl-CoA reductase 這兩個酵素
+- 當遇到順式雙鍵的時候 (尤其是第三個 $\beta$ 碳跟第四個碳中間有雙鍵) ， enoyl-CoA isomerase 可以把順式的 3-4碳雙鍵，變成反式的2-3碳雙鍵，然後再水合
+- 2,4-dienoyl-CoA reductase 在多元不飽和脂肪酸上面發揮其作用，舉linoleic acid ( $18:2c\Delta 9,12$ )為例，其有9-10碳雙鍵跟12-13碳雙鍵
+- 當遇到第一個雙鍵時往往雙鍵位於3-4碳，在 enoyl-CoA isomerase 作用下變成2-3碳反式雙鍵後繼續分解
+- 遇到第二個雙鍵時，其位於4-5碳位置，首先，Acyl-CoA dehydrogenase會先在2-3碳位置產生反式雙鍵，這時，2,4-dienoyl-CoA reductase 出現，利用**消耗NADPH** (注意! 不是NADH !!)，把整個構造還原成3-4碳順式雙鍵的樣子，繼續進行氧化
+
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/Linoleic_acid_beta_oxidation.svg.png)
+
 
