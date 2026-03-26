@@ -1390,6 +1390,74 @@ $$\text{Palmitoyl-CoA}+7CoA-SH + 7Q + 7 NAD^+ + 7H_2O\rightarrow 8\ acetyl-CoA +
 
 ![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/Linoleic_acid_beta_oxidation.svg.png)
 
-### 奇數碳脂肪酸的氧化
+#### 奇數碳脂肪酸的氧化
 - 如果脂肪酸鏈是偶數碳，那能夠全部切成acetyl-CoA
-- 但是如果是奇數碳數，那麼每次切完就還剩下三個碳，形成的剩餘產物叫做丙醯輔酶A (propionyl-CoA)
+- 但是如果是奇數碳數，那麼每次切完就還剩下三個碳，形成的剩餘產物叫做丙醯輔酶A (propionyl-CoA，也就是 $CH_3-CH_2-C=O-S-CoA$ )
+- 丙醯輔酶A會經過一系列的過程形成succinyl-CoA，進入TCA cycle
+
+```mermaid
+flowchart LR
+
+pcoA (propionyl-CoA<br>丙醯輔酶A)
+pcoA-->|propionyl-CoA<br>carboxylase, biotin|DmethcoA(D-methylmalonyl-CoA<br>右旋甲基丙二醯輔酶A)
+
+ATP((ATP))-.->|利用|DmethcoA
+HCO3((HCO3-<br>碳酸氫根))-.->DmethcoA
+
+DmethcoA-.->|產生|ADP((ADP))
+DmethcoA-->|methylmalonyl-CoA<br>epimerase|LmethcoA(L-methylmalonyl-CoA<br>左旋甲基丙二醯輔酶A)
+
+LmethcoA-->|methylmalonyl-CoA<br>mutase, vitamin B12|SuccoA(succinyl-CoA<br>琥珀醯輔酶A)
+```
+- propionyl-CoA carboxylase含有生物素，其酵素結構域類似之前學的pyruvate carboxylase，其將丙醯輔酶A變成甲基丙二醯輔酶A (加一個carboxyl group)
+- 在異構酶的作用下，生成左旋的異構體
+- 然後透過methylmalonyl-CoA mutase (甲基丙二醯輔酶A變位酶) 生成succinyl-CoA，該酵素需要5'-deoxyadenosylcobalamin (5'-去氧腺甘鈷胺素，鈷胺素就是維生素B12)
+- methylmalonyl-CoA mutase的合成出現異常，會導致甲基丙二醯輔酶A的異常累積，代謝出methylmalonic acid，導致酸中毒
+
+#### 脂肪酸氧化的調控
+- triacylglycerol lipase (HSL) 受到cAMP調控，因此升糖素或是腎上腺素的作用會導致脂肪的分解跟釋放
+- malonyl-CoA和脂肪酸合成有關係'其抑制CPT-1 (carnitine穿梭的第一個酵素)，而malonyl-CoA的水平眼會受到激素調控
+
+#### 過氧化體 $\beta$ 氧化
+- 過氧化體可以負責極長鏈脂肪酸 (VLCFA) 的初步處理
+- 也就是說，它負責先把長鏈脂肪酸 $\beta$ 氧化成一些acetyl-CoA之後，再把剩餘的中鏈acyl-CoA透過carnitine穿梭帶到粒線體氧化完成
+- 過氧化體在 $\beta$ 氧化的過程中， $FADH_2$ 的電子不走完電子傳遞鏈，而是直接跟氧氣結合，形成 $H_2O_2$ ，再由過氧化體內的酵素catalase 分解
+- 如果這個步驟出現問題，過氧化體無法分解長鏈脂肪酸，這些脂肪酸就會在神經系統累積，破壞髓鞘 (又稱為X-連鎖腦腎上腺白質營養不良，X-ALD)
+
+#### $\alpha$ 氧化跟過氧化體
+- $\beta$ -氧化需要脂肪酸的 $\beta$ -碳有氫原子可以被移除
+- 但某些脂肪酸 (例如 phytanic acid，植烷酸) 在 $\beta$ -碳上有甲基取代基，阻礙了其氧化。因此，細胞必須先用 $\alpha$ -氧化，把第一個碳 (也就是 $\alpha$ 碳) 移除，讓脂肪酸結構變得適合 $\beta$ -氧化
+
+```mermaid
+timeline
+title alpha oxydation
+  羧基活化 : phytanic acid <br>先被活化成 <br>phytanoyl-CoA
+  羥化反應 : 由phytanoyl-CoA<br>hydroxylase 催化 : 在 α-碳上<br>加上羥基
+  lyase 作用: 脂肪酸縮短一個碳 : 原本的α-碳<br>變成醛基
+  乙醛脫氫酶作用 : 生成 pristanic acid<br>，進入β-氧化途徑
+  β-氧化 : 在有甲基的地方<br>會生成丙醯輔酶A <br>(最後形成<br>succinyl-CoA)，<br>其餘直鏈處形成<br>acetyl-CoA
+```
+- Refsum disease的患者缺乏phytanoyl-CoA hydroxylase，導致植烷酸無法進行 $\alpha$ -氧化。植烷酸在血液和組織中累積，導致神經病變或是視網膜退化
+
+### 酮體生成 ketogenesis
+- 當acetyl-CoA在身體裡面太多時，就會生成酮體，通常發生在OAA量太少 (都被拿去糖質新生了)，TCA cycle運行緩慢，導致acetyl-CoA累積的情況 (也就是餓太久啦)
+- 首先會產生縮合反應，兩分子acetyl-CoA 形成 acetoacetyl-CoA。該反應由thiolase (也就是負責 $\beta$ 氧化的硫解裂解反應的酵素) 的逆反應完成
+- acetoacetyl-CoA再加上一個acetyl-CoA，形成3-Hydroxy-3-methylglutaryl-CoA，縮寫為HMG-CoA (由 HMG-CoA synthase 催化)，這一步是酮體生成的 "關鍵調控步驟"
+
+> [!Tip]
+> HMG-CoA = 3個acetyl-CoA 🐱
+
+- HMG-CoA在HMG-CoA lyase的催化下，形成一分子acetoacetate (乙醯乙酸)和一分子乙醯輔酶A
+- acetoacetate可以直接作為酮體燃料，或是還原成 $\beta$ -hydroxybutyrate (主要循環中的酮體)，或是自發脫羧成acetone，經呼吸排出）
+- 在目標細胞中，$\beta$ -hydroxybutyrate 會先被氧化成 acetoacetate。
+- acetoacetate 接著被thiophorase活化成acetoacetyl-CoA，然透過thiolase再形成兩分子的乙醯輔酶A:
+
+$$\beta-hydroxybutyrate\xrightarrow[]{+NAD} acetoacetate\xrightarrow[\beta-ketoacyl-CoA\ transferase]{+succinyl-CoA} acetoacetyl-CoA\xrightarrow[thiolase]{}2\ acetyl-CoA$$
+
+> [!Note]
+> 由於肝臟缺乏 $\beta$ -ketoacyl-CoA transferase，所以肝臟不會跟其他組織競爭酮體
+
+- 由於糖尿病患者無法有效利用葡萄糖，酮體的產生量遠超過周邊組織的利用能力 (這被稱為ketosis)，可能會導致ketoacidosis (酮酸中毒)
+
+
+
