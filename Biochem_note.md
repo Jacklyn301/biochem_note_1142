@@ -1390,4 +1390,6 @@ $$\text{Palmitoyl-CoA}+7CoA-SH + 7Q + 7 NAD^+ + 7H_2O\rightarrow 8\ acetyl-CoA +
 
 ![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/Linoleic_acid_beta_oxidation.svg.png)
 
-
+### 奇數碳脂肪酸的氧化
+- 如果脂肪酸鏈是偶數碳，那能夠全部切成acetyl-CoA
+- 但是如果是奇數碳數，那麼每次切完就還剩下三個碳，形成的剩餘產物叫做丙醯輔酶A (propionyl-CoA)
