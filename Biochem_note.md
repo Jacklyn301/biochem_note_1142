@@ -1459,5 +1459,39 @@ $$\beta-hydroxybutyrate\xrightarrow[]{+NAD} acetoacetate\xrightarrow[\beta-ketoa
 
 - 由於糖尿病患者無法有效利用葡萄糖，酮體的產生量遠超過周邊組織的利用能力 (這被稱為ketosis)，可能會導致ketoacidosis (酮酸中毒)
 
+---
 
+
+## metabolism of notrogenous compound
+> 由於生化老師生病，因此她快速帶過了這個章節，要是嫌這個筆記過短，敬請見諒 🙂
+
+### ammonia的利用
+- 身體在代謝胺基酸後，會把其胺基脫去，留下碳骨架，作為其他代謝物的生成，但是 $NH_3$ 有毒，身體會用一系列反應來處理，重點圖如下
+
+```mermaid
+flowchart LR
+    ammonia{ammonia<br>NH3，氨}:::ammonia
+
+    ammonia-->|加上|akg(α-ketoglutarate<br>α-酮戊二酸):::carbon
+    ammonia-->|加上|glu1(glutamate<br>麩胺酸):::glutamate
+    ammonia-->|加上|asp(aspartate<br>天門冬氨酸):::aspartate
+    ammonia-->|加上|co2(CO2, ATP):::cofactor
+
+    akg-.->|Glutamate<br>dehydrogenase|glu2(glutamate<br>麩胺酸):::glutamate
+    glu1-.->|Glutamine<br>synthetase|gln(glutamine<br>麩醯氨酸):::glutamine
+    asp-.->|Asparagine<br>synthetase|asn(asparagine<br>天門冬醯胺):::asparagine
+    co2-.->|Carbamoyl<br>phosphate<br>synthetase|cp(Carbamoyl phosphate<br>氨基甲醯磷酸):::carbamoyl
+
+    gln-.->|Glutamate<br>synthase|glu2
+    akg-.->|Glutamate<br>synthase|glu2
+
+    classDef ammonia fill:#ff4dad,stroke:#333,stroke-width:2px,color:#fff
+    classDef carbon fill:#4aa5c2,stroke:#333,stroke-width:2px,color:#fff
+    classDef glutamate fill:#4aa5c2,stroke:#333,stroke-width:2px,color:#fff
+    classDef glutamine fill:#c6ff93,stroke:#333,stroke-width:2px,color:#000
+    classDef aspartate fill:#FFB347,stroke:#333,stroke-width:2px,color:#000
+    classDef asparagine fill:#F39C12,stroke:#333,stroke-width:2px,color:#000
+    classDef carbamoyl fill:#9B59B6,stroke:#333,stroke-width:2px,color:#fff
+    classDef cofactor fill:#ffef64,stroke:#333,stroke-width:2px,color:#000
+```
 
