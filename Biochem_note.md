@@ -1125,9 +1125,9 @@ $$pyruvate + HCO_3^- + NADPH + H^+ \rightleftharpoons malate + NADP^+ + H_2O$$
 
 #### 和胺基酸有關的反應
 - 利用轉胺作用的幫忙，形成循環的中間產物 (雖然不是這麼常見)。機制就是某個胺基酸把自己的胺基接到其他胺基酸殘基上面
-- 這剛剛好發生在Asparate、glutamate、 $\alpha$ -ketoglutarate、OAA之間 (俗稱: 有我就沒有你，有你就沒有我 🙂)
 
-$$\text{aspartate} + \alpha\text{-ketoglutarate}\leftrightharpoons \text{glutarate}+\text{oxaloacetate}$$
+> [!note]
+> 相關知識，我們會在胺基酸代謝的時候近一步說明 🙂
 
 ### Glyoxylate cycle: TCA cycle的合成代謝變體
 - 我們知道，acetyl-CoA無法變成糖類，但是OAA可以。不過由於TCA cycle在循環時會把兩個碳給釋放掉，並非碳中性循環，因此無法累積OAA
@@ -1360,6 +1360,8 @@ $$R-COO^- + ATP + CoA-SH \leftrightharpoons R-COS-CoA + AMP + PPi\quad \Delta G^
 ##### 4. 硫解裂解
 - 這一步就是輔酶A (CoA-SH) 的 $S$ ，去攻擊剛成為羰基的 $\beta$ 碳，導致 $\alpha$ 跟 $\beta$ 碳 "決裂" 。$\alpha$ 碳成為了產物acetyl-CoA的一部份，而 $\beta$ 碳和CoA透過 $S$ 相連
 
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/thiolytic_cleavage_0327.png)
+
 #### 來做個小總結
 - 讓我們以棕梠酸 (palmitate, $16:0$ ) 為例:
 
@@ -1398,7 +1400,7 @@ $$\text{Palmitoyl-CoA}+7CoA-SH + 7Q + 7 NAD^+ + 7H_2O\rightarrow 8\ acetyl-CoA +
 ```mermaid
 flowchart LR
 
-pcoA (propionyl-CoA<br>丙醯輔酶A)
+pcoA(propionyl-CoA<br>丙醯輔酶A)
 pcoA-->|propionyl-CoA<br>carboxylase, biotin|DmethcoA(D-methylmalonyl-CoA<br>右旋甲基丙二醯輔酶A)
 
 ATP((ATP))-.->|利用|DmethcoA
@@ -1433,7 +1435,7 @@ timeline
 title alpha oxydation
   羧基活化 : phytanic acid <br>先被活化成 <br>phytanoyl-CoA
   羥化反應 : 由phytanoyl-CoA<br>hydroxylase 催化 : 在 α-碳上<br>加上羥基
-  lyase 作用: 脂肪酸縮短一個碳 : 原本的α-碳<br>變成醛基
+  lyase 作用: 脂肪酸縮短一個碳 : 原本的α-碳<br>變成醛基，形成pristanal
   乙醛脫氫酶作用 : 生成 pristanic acid<br>，進入β-氧化途徑
   β-氧化 : 在有甲基的地方<br>會生成丙醯輔酶A <br>(最後形成<br>succinyl-CoA)，<br>其餘直鏈處形成<br>acetyl-CoA
 ```
@@ -1466,7 +1468,17 @@ $$\beta-hydroxybutyrate\xrightarrow[]{+NAD} acetoacetate\xrightarrow[\beta-ketoa
 > 由於生化老師生病，因此她快速帶過了這個章節，要是嫌這個筆記過短，敬請見諒 🙂
 
 ### ammonia的利用
-- 身體在代謝胺基酸後，會把其胺基脫去，留下碳骨架，作為其他代謝物的生成，但是 $NH_3$ 有毒，身體會用一系列反應來處理，重點圖如下
+- 身體在代謝胺基酸後，會把其胺基脫去，留下碳骨架，作為其他代謝物的生成
+
+|胺基酸|脫去氨基之後|用於|
+|----|----|----|
+|Gly、Ser|形成嘌呤骨架|核酸合成|
+|Met|提供甲基|表觀遺傳調控 (甲基化)|
+|Ala|形成pyruvate|葡萄糖代謝、糖質新生|
+|Glu、Gln|$\alpha$ -ketoglutarate|TCA cycle|
+|Asp、Asn|形成oxaloacetate|TCA cycle、糖質新生|
+
+- 但是 $NH_3$ 有毒，身體會用一系列反應來處理，重點圖如下
 
 ```mermaid
 flowchart LR
