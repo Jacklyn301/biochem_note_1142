@@ -1507,3 +1507,162 @@ flowchart LR
     classDef cofactor fill:#ffef64,stroke:#333,stroke-width:2px,color:#000
 ```
 
+
+#### glutamate dehydrogenase
+- 作用於 $\alpha$ -ketoglutarate跟glutamate之間的轉換
+
+$$\alpha -ketoglutarate + NH_3 + NADH + 2H^2\rightleftharpoons glutamate + H_2O + NAD^2$$
+
+- 此酵素用於 $NH_3$ 的固定，或是在尿素合成的過程中，用來釋出 $NH_3$
+- 除了麩胺酸脫氫酶，還有一種為**glutamate synthase**，其參與的反應跟glutamate dehydrogenase很像，但是主要用於glutamate的合成
+
+$$\alpha -ketoglutarate + glutamine + \text{還原劑}\rightarrow 2\ glutamate + \text{氧化過後的還原劑}$$
+
+#### glutamine synthetase, GS
+- glutamine還可以再接收一個氨，變成glutamine ( $Mn^{2+}$ 為重要的輔因子)
+
+$$glutamate\xrightarrow[]{+ATP} \gamma- glutamyl\ phosphate + ADP\xrightarrow[]{+NH_3}glutamine + Pi$$
+
+> [!Caution]
+> synthase = 不需要ATP，通常為可逆反應的合成酶
+> synthetase = 需要ATP幫助，通常用於同化代謝的合成酶
+
+- glutamine的醯胺氮常常用在多種氨基酸的合成、或是用於合成嘌呤、嘧啶、或是胺基糖。總之，它就是一個胺基的儲存庫
+- 這個酵素受到多種方式調控其活性，包含以下:
+
+##### 共價修飾
+- 在細菌（如 E. coli）中，GS可被腺苷酸化(adenylylation，也就是在酵素上面加上AMP)，使其活性下降
+- 該反應為可逆反應，由腺苷酸化由 adenylyl transferase (ATase) 控制，ATase的活性又受到 $P_{II}$ 蛋白 (如 GlnB/GlnK) 調控
+- 這是一種快速且可逆的調控方式，讓細胞依氮源狀態調整GS活性
+
+##### 代謝物的feedback inhibitor
+- GS是氮代謝的樞紐，因此受到多種代謝物的協同抑制
+- 抑制分子包括：氨基酸 (如 glycine、alanine、histidine、tryptophan)、核苷酸 (AMP、CTP)、以及carbamoyl phosphate等
+- 這些分子會結合在不同的位點，形成 "多重抑制" 機制，確保在氮源充足時減少不必要的 glutamine 合成。
+
+##### 寡聚體結構調控 (Oligomeric state regulation)
+- GS 通常以十二聚體 (dodecamer) 形式存在
+- 在某些古菌中，GS的寡聚體結構會因代謝物 (如 2-oxoglutarate) 結合而改變，進而影響活性
+- 這是一種結構層次的調控，讓GS活性與碳氮代謝狀態緊密連結
+
+#### asparagine synthetase
+- 該合成酶利用glutamine的氨來源，把aspartate轉換成asparagine
+
+$$aspartate + ATP + glutamine\rightarrow asparagine + AMP + PPi + glutamate$$
+
+#### carbamoyl phosphate stnthetase
+- carbamoyl phosphate由 **"氨基+ $CO_2$ + 磷酸基"** 形成，化學式大概為 $H_2N-C=O-O-PO_3^{2-}$
+- 氨基來源可以是來自於glutamine，或是直接來自氨
+
+$$
+\begin{align}
+& NH_3 + HCO_3^- + 2ATP\rightarrow carbamoyl\ phosphate + 2ADP + Pi\\
+& glutamine + H_2O + HCO_3^- + 2ATP\rightarrow carbamoyl\ phosphate + 2ADP + Pi + glutamate\\
+\end{align}
+$$
+
+### transamination: $\alpha$ -amino acid & $\alpha$ -keto acid
+- 在轉氨作用裡面，通常都會有兩個物質，一對一的關係
+- 一個 $\alpha$ -amino acid，就會配對上一個 $\alpha$ -keto acid。這種反應由轉氨酶transaminases (又被稱為aminotransferases) 催化。具體來說:
+
+$$glutamate + \alpha -keto\ acid\rightleftharpoons \alpha -ketoglutarate + \alpha -amino\ acid$$
+
+- 有些胺基酸並沒有相應的 $\alpha$ -keto acid 的碳骨架，因此生物無法自行合成。這些無法自行合成的胺基酸，就是 "必需胺基酸"
+- transamination的輔酶為磷酸吡哆醛 (來自維生素B6)，該輔酶上面有醛基 ( $CHO$ )，胺基酸的胺基和它的醛基起縮合反應，生成席夫鹼 (Schiff base)
+- 由於轉氨作用屬於可逆反應，因此它除了能夠生成胺基酸，也能幫助分解過量累積的胺基酸
+
+
+|人體的必需胺基酸|人體的非必需胺基酸|
+|-------------|---------------|
+|Arg (僅能少量合成), His, Ile, Leu, Lys, Met (僅能少量合成), Phe, Thr, Trp, Val|Ala, Asn, Asp, Cys, Glu, Gln, Gly, Pro, Ser, Tyr|
+
+- 多數轉氨酶用的一對一物質為glutamate/ $\alpha$ -ketoglutarate
+- 如果想要形成aspartate，就用OAA+氨基，然後用serum glutamate-oxaloacetate transaminase (SGOT) 催化
+- 如果想要形成alanine，就用pyruvate+氨基，然後用serum glutamate-pyruvate transaminase (SGPT) 催化
+
+$$
+\begin{align}
+glutamate + oxaloacetate & \xrightarrow[]{SGOT} \alpha -ketoglutarate + aspartate\\
+glutamate + pyruvate & \xrightarrow[]{SGPT}\alpha -ketoglutarate + alanine
+\end{align}
+$$
+
+> [!Note]
+> SGOT跟SGPT只在肝臟中出現，如果在血液裏面偵測到了他們，表示肝臟有受損或是發炎的問題 👀
+
+### 胺基酸骨架的去處
+#### 生糖胺基酸 Glucogenic
+- 也就是分解後生成丙酮酸或TCA循環中間物 (例如OAA、 $\alpha$ -ketoglutarate、succinyl-CoA、fumarase、malate)，可進入糖質新生
+- 例如: 
+  - pyruvate 前驅物: Ala, Gly, Ser, Cys, Thr, trp
+  - $\alpha$ -ketoglutarate 前驅物: Gln, Glu, Pro, Arg, His
+  - succinyl-CoA 前驅物: Met, Val
+  - OAA前驅物: Asp, Asn
+
+#### 生酮胺基酸 Ketogenic
+- 共有三個: Leu, Thr, Lys
+
+#### 兼具生糖跟生酮的胺基酸
+- Ile: 可分解成succinyl-CoA (用來生糖)，也可以產生acetyl-CoA (用來生酮)
+- Phe, Tyr: 可分解成fumarate (用來生糖) ，也可以產生acetoacetate (用來生酮)
+- Trp: 可分解成alanine (用來生糖)， 也可以產生 acetoacetyl-CoA (用來生酮)
+- Thr: 可分解成glycine (用來生糖)， 也可以產生acetyl-CoA (用來生酮)
+
+| 類別 | 代表胺基酸 |
+| --- | --- |
+| **生糖** | Ala, Gly, Ser, Cys, Thr, Gln, Glu, Pro, Arg, His, Met, Val, Asp, Asn |
+| **生酮** | Leu, Lys, Thr |
+| **都有** | Ile, Phe, Tyr, Trp, Thr |
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/fates_of_the_amino_acid_carbon_skeletons_0327.png)
+
+### the Kreb-Henseleit urea cycle
+- 尿素由肝臟合成，化學式為 $H_2N-C=O-NH_2$ ，其具有很高的溶解性，而且它沒有電離基團，因此不會影響到pH值
+
+##### 1. carbamoyl phosphate形成
+- 產生的 $NH_3$ 會先跟 $CO_2$ 結合，生成carbamoyl phosphate (該反應由Carbamoyl phosphate synthetase I催化，需要ATP)
+
+##### 2. 鳥氨酸跟瓜氨酸
+- carbamoyl phosphate跟ornithine (鳥氨酸) 結合，形成citrulline (瓜氨酸)
+- 此反應在粒線體中進行
+
+##### 3. argininosuccinate的中間產物形成
+- citrulline 跟 aspartate 結合，形成argininosuccinate (由arininosuccinate synthetase 催化)
+
+##### 4. 形成arginine跟fumarase
+- argininosuccinate在rgininosuccinate lyase的催化下，形成arginine跟fumarase
+
+##### 5. 再生成ornithine
+- arginine變成ornithine跟urea
+- urea再經過血流從腎臟過濾出去
+
+![image alt](https://microbenotes.com/wp-content/uploads/2023/10/Urea-Cycle-Steps-and-Reactions.jpeg)
+
+#### 循環特色
+-其中一個氨一個來自粒線體中的自由氨 (後來傳給carbamoyl phosphate跟citrulline)
+- 產生carbamoyl phosphate，需要用到兩個ATP，一個是為了活化碳酸氫根 $HCO_3^-$ ，另一個就是產生carbamoyl phosphate的酵素使用
+- 在citrulline跟aspartate形成Argininosuccinate時，會消耗一個ATP，形成AMP跟PPi，邏輯上來說，我相當於耗去了兩個磷酸鍵
+
+$$
+\begin{align}
+& NH_3+2ATP\xrightarrow[carbamoyl\ phosphate\ synthetase]{} carbamoyl\ phosphate+2ADP+2Pi\\
+& carbamoyl\ phosphate+ ornithine\xrightarrow[ornithine\ transcarbamoylase]{} citrulline\\
+& citrilline + aspartate + ATP\xrightarrow[argininosuccinate\ 
+synthetase]{} argininosuccinate + AMP + PPi
+\end{align}
+$$
+
+- 另一個氨來自於aspartate，但是aspartate從哪裡來? 其實是透過glutamate/ $\alpha$ -ketoglutarate的轉氨作用，把一個 $NH_3$ 給了oxaloacetate，形成aspartate
+- 而glutamate從哪裡來? 就是來自於麩氨酸脫氫酶。所以整個流程其實是:
+
+$$
+\begin{align}
+& \alpha -ketoglutarate + NH_3\xrightarrow[glutamate\ dehydrogenase]{+NADH} glutamate + NAD^+\\
+& glutamate+oxaloacetate\xrightarrow[transaminase]{} aspartate + \alpha -ketoglularate
+\end{align}
+$$
+
+- 因此，尿素循環跟TCA cycle其實有一部份是重疊的
+
+> [!Note]
+> 產生一個urea，消耗四個高能磷酸鍵 🐱
