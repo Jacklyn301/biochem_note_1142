@@ -1600,13 +1600,16 @@ $$
   - OAA前驅物: Asp, Asn
 
 #### 生酮胺基酸 Ketogenic
+- 也就是分解後生成乙醯輔酶A或乙醯乙酸，進一步形成酮體
 - 共有三個: Leu, Thr, Lys
 
 #### 兼具生糖跟生酮的胺基酸
-- Ile: 可分解成succinyl-CoA (用來生糖)，也可以產生acetyl-CoA (用來生酮)
-- Phe, Tyr: 可分解成fumarate (用來生糖) ，也可以產生acetoacetate (用來生酮)
-- Trp: 可分解成alanine (用來生糖)， 也可以產生 acetoacetyl-CoA (用來生酮)
-- Thr: 可分解成glycine (用來生糖)， 也可以產生acetyl-CoA (用來生酮)
+- 也就是分解後既能生成糖質新生前驅物，也能生成酮體前驅物
+- 例如: 
+   - Ile: 可分解成succinyl-CoA (用來生糖)，也可以產生acetyl-CoA (用來生酮)
+   - Phe, Tyr: 可分解成fumarate (用來生糖) ，也可以產生acetoacetate (用來生酮)
+   - Trp: 可分解成alanine (用來生糖)， 也可以產生 acetoacetyl-CoA (用來生酮)
+   - Thr: 可分解成glycine (用來生糖)， 也可以產生acetyl-CoA (用來生酮)
 
 | 類別 | 代表胺基酸 |
 | --- | --- |
