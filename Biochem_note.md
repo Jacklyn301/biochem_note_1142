@@ -581,6 +581,98 @@ Da-->|導致|R
 - HK-IV本來就可以跟去磷酸化的PFK-2/FBPase-2結合，形成複合物，這會影響HK-IV對葡萄糖的親和性，進一步促進糖解
 - 也就是說，胰島素也可以透過PFK-2/FBPase-2，直接增加HK活性
 
+### 調控機制總結
+```mermaid
+flowchart LR
+%% glycolysis
+subgraph glycolysis [🔥 糖解作用<br>Glycolysis]
+    G{glucose}:::substrate
+    G==>|Hexokinase|G6P(G6P):::intermediate
+    G6P==>F6P(F6P):::intermediate
+    F6P==>|PFK-1|F16BP(F16BP):::intermediate
+    F16BP==>PEP(PEP):::intermediate
+    PEP==>|Pyruvate kinase|Pyr{pyruvate}:::product
+end
+
+%% major control mechanism
+G6P-.->HKi([G6P 抑制 HK]):::inhibition
+
+F16BP-.->PFKa([F26BP、AMP、ADP<br>活化 PFK]):::activation
+F16BP-.->PFKi([ATP、citrate 抑制 PFK]):::inhibition
+
+Pyr-.->PKa([F16BP 活化 PK]):::activation
+Pyr-.->PKi([Acetyl-CoA、ATP、alanine、cAMP 級聯反應 抑制 PK]):::inhibition
+
+%% 輔因子/調控分子節點（用小圓形表示）
+ATP((ATP)):::cofactor
+ADP((ADP)):::cofactor
+AMP((AMP)):::cofactor
+citrate((citrate)):::cofactor
+AcetylCoA((Acetyl-<br>CoA)):::cofactor
+alanine((alanine)):::cofactor
+cAMP((cAMP)):::cofactor
+F26BP((F26BP)):::cofactor
+
+%% 將調控分子連接到對應的抑制/活化節點（讓圖更完整）
+ATP -.-> PFKi
+citrate -.-> PFKi
+F26BP -.-> PFKa
+AMP -.-> PFKa
+ADP -.-> PFKa
+AcetylCoA -.-> PKi
+alanine -.-> PKi
+cAMP -.-> PKi
+
+classDef substrate fill:#FFB347,stroke:#333,stroke-width:2.5px,color:#000
+classDef intermediate fill:#F39C12,stroke:#333,stroke-width:2px,color:#fff
+classDef product fill:#E67E22,stroke:#333,stroke-width:2.5px,color:#fff
+classDef activation fill:#2ECC71,stroke:#333,stroke-width:1.5px,color:#000
+classDef inhibition fill:#E74C3C,stroke:#333,stroke-width:1.5px,color:#fff
+classDef cofactor fill:#F1C40F,stroke:#333,stroke-width:2px,color:#000
+
+```
+
+```mermaid
+flowchart LR
+%% gluconeogenesis
+
+subgraph gluconeogenesis [💧 糖質新生<br>Gluconeogenesis]
+    Pyr{pyruvate}:::substrate
+    Pyr==>|pyruvate<br>carboxylase|OAA(oxaloacetate):::intermediate
+    OAA==>|PEPCK|PEP(PEP):::intermediate
+    PEP==>F16BP(F16BP):::intermediate
+    F16BP==>|Fructose-1,6-<br>bisphosphatase|F6P(F6P):::intermediate
+    F6P==>G6P(G6P):::intermediate
+    G6P==>|Glucose-6-<br>phosphatase|G{glucose}:::product
+end
+
+%% major control mechanism
+G-.->G6Pasea([G6P 在基質控制下活化<br>Glucose-6-phosphatase]):::activation
+
+F6P-.->F16BPaseI([F26BP、AMP 抑制<br>Fructose-1,6-<br>bisphosphatase]):::inhibition
+
+OAA-.->PCa([Acetyl-CoA 活化<br>pyruvate carboxylase]):::activation
+PEP-.->PEPCKa([激素促進<br>該酵素的轉錄]):::activation
+
+%% 輔因子/調控分子節點（用小圓形表示）
+AcetylCoA((Acetyl-<br>CoA)):::cofactor
+F26BP((F26BP)):::cofactor
+AMP((AMP)):::cofactor
+hormone((激素)):::cofactor-.->PEPCKa
+
+%% 將調控分子連接到對應的活化/抑制節點
+AcetylCoA -.-> PCa
+F26BP -.-> F16BPaseI
+AMP -.-> F16BPaseI
+
+classDef substrate fill:#5DADE2,stroke:#333,stroke-width:2.5px,color:#fff
+classDef intermediate fill:#48C9B0,stroke:#333,stroke-width:2px,color:#fff
+classDef product fill:#2E86C1,stroke:#333,stroke-width:2.5px,color:#fff
+classDef activation fill:#2ECC71,stroke:#333,stroke-width:1.5px,color:#000
+classDef inhibition fill:#E74C3C,stroke:#333,stroke-width:1.5px,color:#fff
+classDef cofactor fill:#F1C40F,stroke:#333,stroke-width:2px,color:#000
+```
+
 ---
 
 ### 別的物質進入糖解作用
