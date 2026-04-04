@@ -3,23 +3,6 @@ title: biochemistry_1st midterm
 
 ---
 
-<style>
-    .markdown-body {
-        max-width: 1200px !important;
-        margin: 0 auto;
-    }
-    .markdown-body img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .markdown-body table {
-        width: 800px
-        max-width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>
 # biochemistry 2nd midterm
 ## Carbs metabolism
 ### glycolysis 簡介
@@ -55,11 +38,13 @@ $$
 
 - homolactic fermentation (所有糖變成乳酸) 用於發酵食物
 - 酒精發酵涉及丙酮酸變成乙醛跟二氧化碳，然後轉化成乙醇:
+  
 $$
 \begin{array}{l r}
 \text{acetaldehyde}+\text{NADH}+H^+\rightleftharpoons\text{ethanol}+\text{NAD}^+ & \Delta G = -23.7\ \text{kJ/mol}
 \end{array}
 $$
+
 - 主要類型包含Homolactic (產生乳酸)、Alcoholic (產生酒精)、Butanediol (產生丁二醇)
 - 這些被稱為無氧糖解作用，因為pyruvate會被還原，總體來說葡萄糖沒有發生淨氧化
 - 骨骼肌劇烈運動主要導致乳酸發酵
@@ -116,21 +101,23 @@ classDef pi fill:#ff21ef,stroke:#000,stroke-width:2px,stroke-dasharray:5 5,color
 ### 糖解的能量投資時期
 #### 1. 第一次ATP消耗
 - 利用hexokinase，在葡萄糖的六號碳身上加上一個磷酸基
-- 需要用到$Mg^{2+}$
+- 需要用到 $Mg^{2+}$
 > [!Tip] 
 > 基本上所有和ATP作用有關的酵素都需要用到鎂離子 !
 
 - 哺乳動物身上有不同的hexokinase，催化同一個分子的不同酵素被稱為isoenzyme 或是 isozyme
-- 細胞內的葡萄糖濃度高 (通常高於任何hexokinase的$K_m$值)
+- 細胞內的葡萄糖濃度高 (通常高於任何hexokinase的 $K_m$ 值)
 - 其中，hexokinase IV (又稱為glucokinase) 對葡萄糖有較低親和力，在圖呈現S (sigmoidal) 曲線，它主要在肝臟中出現，只有在極高血糖時才開始利用葡萄糖
 >[!Important] 
 >這種特性讓肝臟能調節葡萄糖使用跟提供
 ##### 備註: 葡萄糖磷酸轉移酶系統 (PTS)
 - 細菌的特殊醣類運作機制
 - 能量來源以PEP為主，如下:
+  
 $$
 \text{PEP}_{in}+\text{glucose}_{out}\rightarrow \text{pyruvate}_{in}+\text{G6P}_{in}
 $$
+
 #### 2. G6P的異構轉換
 - 利用G6P isomerase，從G6P (aldose) 異構轉換成 F6P (ketose)
 - 反應透過烯二醇中間體進行
@@ -146,16 +133,18 @@ $$
 >[!Note]
 >在這裡，我們會將甘油醛-3-磷酸稱呼為GAP，將甘油-3-磷酸稱呼為G3P
 
-- 雖然這個反應在標準狀態下是吸能的 ($\Delta\ G$ 在10個步驟裡面最高，為 $+23.9\ \text{kJ/mol}$)，但是由於該反應在細胞中進行，只要產物濃度夠低，反應就可以自然進行，因為:
+- 雖然這個反應在標準狀態下是吸能的 ( $\Delta\ G$ 在10個步驟裡面最高，為 $+23.9\ \text{kJ/mol}$ )，但是由於該反應在細胞中進行，只要產物濃度夠低，反應就可以自然進行，因為:
+
 $$
 \Delta\ G=\Delta G^\circ\text{'} + RT\ln\frac{[product]}{[reactants]}
 $$
+
 >[!Tip] 
 >只要GAP消耗得快，反應就能一直進行 !
 
 ##### 備註: 席夫鹼的功能
 - Schiff base是一種亞胺，醛縮酶活性位點上的Lys殘基，其胺基可以跟F16BP的羰基結合，形成Schiff base
-- Schiff base幫忙穩定反應中間體，並且讓電子重新分布，好讓C-C鍵更容易斷裂，也讓反應更容易進行 ($E_a\downarrow$)
+- Schiff base幫忙穩定反應中間體，並且讓電子重新分布，好讓C-C鍵更容易斷裂，也讓反應更容易進行 ( $E_a\downarrow$ )
 
 #### 5. DHAP轉換
 - triose phosphate isomerase把DHAP變成GAP
@@ -165,26 +154,30 @@ $$
 #### 6. 先產生NADH
 - GAP在NAD+跟一個磷酸基，在glyceraldehyde-3-phosphate dehydrogenase (GAPDH) 作用下，形成1,3二磷酸甘油酸 (1,3-BPG)，同時生成NADH，一個高能的化合物
 - 在標準狀態寫屬於稍微吸能的反應
-- GAPDH上面有一個cysteine殘基，其$-SH$基攸關於反應的成功。$-SH$會跟GAP的醛基結合，使其能夠穩定傳遞電子給NAD+，同時和另一個磷酸基結合
+- GAPDH上面有一個cysteine殘基，其 $-SH$ 基攸關於反應的成功。 $-SH$ 會跟GAP的醛基結合，使其能夠穩定傳遞電子給NAD+，同時和另一個磷酸基結合
 - 整體反應其實是放能 (醛變成酸) 跟吸能 (磷酸化) 兩個反應結合的結果:
+  
 $$\boxed{\text{aldehyde}}+H_2O+NAD^+\rightarrow \boxed{\text{acid}}+NADH+H^+\overset{+\text{Pi}}{\rightarrow}\boxed{\text{醯基磷酸酯}}+H_2O$$
+
 - 碘乙酸會不可逆的烷基化GAPDH的cysteine殘基，導致酵素失去活性:
+  
 $$
 \boxed{GAPDG}-SH+ICH_2COO^- \rightarrow \boxed{GAPDG}-S-CH_2COO^- + HI
 $$
+
 #### 7. 第一次底物水平磷酸化
-- 1,3-BPG在phosphoglycerate kinase的作用，$Mg^{2+}$的催化下，一號碳脫去一個磷酸基團，形成ATP，和3-磷酸甘油酸 (3-PG)
+- 1,3-BPG在phosphoglycerate kinase的作用， $Mg^{2+}$ 的催化下，一號碳脫去一個磷酸基團，形成ATP，和3-磷酸甘油酸 (3-PG)
 - 和上一個反應做結合，相當於把醛變成酸所產生的能量，透過ATP的形式保存下來
 - 3-PG的磷酸轉移能力較低
 #### 8. 再一次異構化改變
-- 在phosphoglycerate mutase和$Mg^{2+}$作用下，移動Pi位置，形成2-PG
+- 在phosphoglycerate mutase和 $Mg^{2+}$ 作用下，移動Pi位置，形成2-PG
 - 雖然為吸能反應，但是由於3-PG在細胞內濃度往往比2-PG多，反應能正常進行
 - 該酵素的作用位點是一個磷酸化的His殘基，然後酵素 "丟Pi給二號碳，再拿走對方三號碳上的Pi"，完成交換
 #### 9. 合成第二個高能化合物
-- 在$Mg^{2+}$跟enolase的幫助下，2-PG脫水變成PEP
-- PEP是一個磷酸轉移能力特別高的化合物，由於PEP的Pi連接在烯醇結構上 ($C=C-OH$)，非常不穩定，因此其脫去Pi，轉變成Pyruvate時，會釋放出極大的能量
+- 在 $Mg^{2+}$ 跟enolase的幫助下，2-PG脫水變成PEP
+- PEP是一個磷酸轉移能力特別高的化合物，由於PEP的Pi連接在烯醇結構上 ( $C=C-OH$ )，非常不穩定，因此其脫去Pi，轉變成Pyruvate時，會釋放出極大的能量
 #### 10. 第二次底物水平磷酸化
-- 在pyruvate kinase (PK) 跟$Mg^{2+}$作用下，PEP轉移磷酸基給ADP，形成ATP跟pyruvate，並釋放大量能量，屬於**不可逆反應**
+- 在pyruvate kinase (PK) 跟 $Mg^{2+}$ 作用下，PEP轉移磷酸基給ADP，形成ATP跟pyruvate，並釋放大量能量，屬於**不可逆反應**
 - PK 在代謝上也有做調控，也有多個isozymes，不同的isozymes在不同地方工作，例如，PK-M1在肌肉跟大腦中常見，PK-M2除了在胚胎發育中常見，也在腫瘤中出現
 - 除了PK-M1之外，其他PK都需要F-1,6-BP進行變構變化才可以活化
 - 當你吃了很多carbs，你的身體會大量製造PK，增加人體從糖解作用獲取能量的能力
@@ -246,9 +239,11 @@ classDef gng fill:#d4a5f9,stroke:#4b0082,stroke-width:3px,color:#000
 - 第二步驟利用乙醇脫氫酶，把乙醛變成乙醇。這一步驟為可逆反應，同時在新生NAD+
 - 生物燃料的其中一個選項就是乙醇，透過培養或是改造細菌，使其可以分解纖維素
 - 動物也有乙醇脫氫酶。由於我們剛才已經說了，乙醇跟乙醛的反應是可逆的:
+
 $$
 CH_3COH + NADH + H^{+}  \rightleftharpoons CH_3CH_2OH + NAD^+
 $$
+
 - 人類就是做逆反應，所以反而會大量消耗NAD+，導致糖解作用的抑制
 ```mermaid
 flowchart LR
@@ -381,9 +376,7 @@ $$
 #### 底物介紹
 - 糖質新生的前驅物包含lactate、alanine、glycerol、propionate (丙酸)
 
-<div style="display: flex; gap: 20px">
-    <img src="https://raw.githubusercontent.com/Jacklyn301/image_bank/main/gluconeogenesis_cycle_0304.png" style="width: 60%; margin-right: 20%; margin-left: 20%;">
-</div>
+![image](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/gluconeogenesis_cycle_0304.png)
 
 ##### amino acid
 - 主要是用降解途徑，生成TCA cycle中間體，然後它們都可以透過循環變成OAA，進而進入我們剛才的反應鏈
@@ -391,7 +384,7 @@ $$
 
 ##### glycerol
 - 這東西難以進行糖質新生，因為脂肪酸主要透過 $\beta$ 氧化形成acetyl-CoA，而acetyl-CoA不能拿來做甚麼，無法形成任何糖質新生前體 🙂
-- 唯一能做糖質新生的東西叫做甘油，甘油透過磷酸化形成甘油-3-磷酸 (G3P)，並且轉換成DHAP，而DHAP就可以進入糖質新生的路徑上
+- 唯一能做糖質新生的東西叫做甘油，甘油透過磷酸化形成甘油-3-磷酸 (G3P)，並且轉換成DHAP，而DHAP就可以進入糖質新生的路徑上，這咱們之後會再討論討論
 
 ##### propinate
 - 這東西在草食動物比較常見，咱們用一個公式帶過就好:
@@ -475,10 +468,7 @@ classDef pyr fill:#ff9c7d,stroke:#000,stroke-width:2px,color:#000
 - F26BP會強力促進R state，提高PFK對F6P的親和力，是糖解的主要激活因子
 - Citrate在高濃度時促進T state，降低親和力
 
-<div style="display: flex; gap: 20px">
-    <img src="https://raw.githubusercontent.com/Jacklyn301/image_bank/main/blackboard_reaction_curve_0305.png" style="width: 60%; margin-right: 20%; margin-left: 20%;">
-</div>
-
+![image](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/blackboard_reaction_curve_0305.png)
 
 ##### PFK-2/BFPase-2: 當一人包攬了兩個工作時
 - F-2,6-BP的形成來自於一個特殊的酵素: PFK-2/BFPase-2
@@ -516,9 +506,7 @@ F26BPD-.->Gng{促進<br>糖質新生}
 
 ```
  
-<div style="display: flex; gap: 20px">
-    <img src="https://raw.githubusercontent.com/Jacklyn301/image_bank/main/PFK-2_FBPase_structure_0305%20180248.png" style="width: 60%; margin-right: 20%; margin-left: 20%;">
-</div>
+![image](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/PFK-2_FBPase_structure_0305%20180248.png)
 
 - 心肌跟骨骼肌的PFK-2/BFPase-2，主要是透過別的方式來調控活性，而不是激素
 - 🫀心肌的部分:
@@ -719,6 +707,7 @@ style ADP fill: #7edcff, stroke: #000, stroke-dasharray: 3 3
 
 #### 雙糖代謝
 - 目前我們已經知道:
+
 $$
 \begin{align}
 maltose + H_2O\quad &\underrightarrow{maltase}\quad 2\ glucose\\
@@ -775,6 +764,7 @@ G3P-->DHAP
 - 動員肝糖利用的是 "磷酸解" (phosphorolysis，加上磷酸機分子斷開糖苷鍵)，分解澱粉的方式叫做 "水解" (hydrolysis，加上水分子斷開糖苷鍵)
 > [!Tip]
 > - 所以肝糖被動員時，單糖的形式就是G1P，能在不需要再額外使用ATP的情況下進入糖解代謝。G1P經過一些反應會變成G6P，如下:
+>   
 > $$
 > \begin{align}
 > & \text{enzyme-Ser-P}+G1P \rightleftharpoons \text{enzyme-ser}+G16BP\\
@@ -782,6 +772,7 @@ G3P-->DHAP
 > & G1P\rightleftharpoons G6P,\quad \Delta G^\circ\text{'}=-7.3\ KJ/mol
 > \end{align}
 > $$
+> 
 > - 磷酸解是由磷酸化酶 (phosphorylase) 作用形成
 
 - 澱粉的消化大概在動物身上如下:
@@ -931,12 +922,10 @@ style FAD1 fill:#eeeeee,stroke:#888
 - citric acid cycle又被稱為Krebs cycle或是tricarboxylic acid (TCA) cycle
 
 ### 丙酮酸的氧化
-- 這個步驟需要PDC (pyruvate deㄘydrogenase complex，它是一個由三種酵素: E1、E2、E3形成的複合體) ，以及五種coenzymes (TPP、lipoid acid、CoA、FAD、NAD+) 的幫忙
+- 這個步驟需要PDC (pyruvate dehydrogenase complex，它是一個由三種酵素: E1、E2、E3形成的複合體) ，以及五種coenzymes (TPP、lipoid acid、CoA、FAD、NAD+) 的幫忙
 - 用來decorboxylation丙酮酸 (就是把 $COO^-$ 基團變成 $CO^2$ ，簡單吧)
 
-<div style="display: flex; gap: 20px">
-    <img src="https://raw.githubusercontent.com/Jacklyn301/image_bank/main/PDC_structure_0318.png" style="width: 80%; margin-right: 10%; margin-left: 10%;">
-</div>
+![image](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/PDC_structure_0318.png)
 
 - 步驟總體是:
 
