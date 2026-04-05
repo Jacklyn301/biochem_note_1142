@@ -148,7 +148,7 @@ $$
 
 #### 5. DHAP轉換
 - triose phosphate isomerase把DHAP變成GAP
-- 這反應也是屬於若生理反應，但是一樣，只要GAP消耗得快就好
+- 這反應也是屬於弱吸能反應，但是一樣，只要GAP消耗得快就好
 
 ### 糖解的能量產生時期
 #### 6. 先產生NADH
@@ -1329,6 +1329,84 @@ G-.->Glu[糖質新生]
 
 - cAMP活化PKA，PKA除了會促進HSL的活性，還能夠在脂肪滴表面的蛋白 (又稱為脂肪滴蛋白，perilipin，PL) 上面作用，使PL磷酸化，便能促進已經被磷酸化的HSL招募到脂肪滴附近，促進脂肪水解
 - 同時，一種脂肪滴上的表面蛋白叫做CGI-58，它會脫離脂肪滴表面，並且跟ATGL結合。該複合物也可以受到PL的招募
+
+#### 補充: $\beta$ -receptor的活化造成的影響
+
+```mermaid
+flowchart LR
+
+%% ========== 訊息傳遞起點 ==========
+Start{Epinephrine 結合<br>Beta-Receptor}:::receptor ==> Gs([Gs蛋白活化]):::gs
+Gs ==> AC([Adenylate Cyclase<br>活化]):::ac
+AC ==> cAMP((cAMP<br>濃度上升)):::camp
+cAMP ==> PKA((PKA活化)):::pka
+
+%% ========== 🔴 脂肪分解 (Lipolysis) ==========
+subgraph Lipolysis [🔴 脂肪分解<br>Lipolysis]
+    PKA --磷酸化--> PL([Perilipin<br>磷酸化]):::sub_red
+    PL -->|促進| HSL_act
+    PL --釋放--> CGI([CGI-58<br>釋放]):::sub_red
+    CGI -->|和 ATGL 結合| ATGL([ATGL<br>活化]):::sub_red
+    ATGL -->|導致| DAG[TAG → DAG]:::substrate
+    DAG -->|HSL 作用| MAG[DAG → MAG]:::substrate
+
+    PKA --磷酸化--> HSL_act([HSL 活化<br>並招募至脂肪滴]):::sub_red
+    HSL_act -->|HSL 作用| MAG
+    
+    MAG -->|MGL 作用| MGL([MGL 分解]):::sub_red
+    MGL ==>|產生| FA((游離脂肪酸<br>FFA + 甘油)):::product_red
+end
+
+%% ========== 🟡 肝糖代謝 (Glycogen) ==========
+subgraph Glycogen [🟡 肝糖代謝 Glycogen<br>Metabolism]
+    PKA --磷酸化--> PhK([Phosphorylase<br>Kinase<br>活化]):::sub_yellow
+    PhK --磷酸化--> GP([Glycogen<br>Phosphorylase<br>活化]):::sub_yellow
+    GP --> GB[肝糖分解]:::substrate
+    GB ==> G1P((G1P 生成)):::product_yellow
+
+    PKA --磷酸化--> GS([Glycogen<br>Synthase<br>失活]):::sub_yellow
+    GS ==> GSI((抑制肝糖合成)):::inhibit_yellow
+end
+
+%% ========== 🔵 糖解與糖質新生 ==========
+subgraph Gluco [🔵 糖解與糖質新生<br>Glycolysis/Gluconeogenesis]
+    PKA --磷酸化--> PKL([Pyruvate Kinase-L<br>失活]):::sub_blue
+    PKL ==> GLI((抑制肝臟<br>糖解作用)):::inhibit_blue
+
+    PKA --磷酸化--> PFK2([PFK-2/FBPase-2<br>複合物]):::sub_blue
+    PFK2 --活化 FBPase-2--> F26BD([F-2,6-BP<br>濃度下降]):::substrate
+    F26BD --> FBPase1a[解除對 FBPase-1 抑制]:::substrate ==> GNG((促進<br>糖質新生)):::product_blue
+    F26BD --> PFK1i[減少對 PFK-1 活化]:::substrate ==> GLI
+    PFK1i --> F6Pi[F6P 堆積]:::substrate
+    F6Pi -->|促使| GKRP([GKRP 把 HK-IV<br>鎖進細胞核裡]):::sub_blue
+    GKRP ==> GLI
+end
+
+%% ========== 形狀與顏色定義 ==========
+%% 訊息傳遞層
+classDef receptor fill:#ffadad,stroke:#c0392b,stroke-width:3px,color:#000
+classDef gs fill:#ffd6a5,stroke:#e67e22,stroke-width:2px,color:#000
+classDef ac fill:#ffd6a5,stroke:#e67e22,stroke-width:2px,color:#000
+classDef camp fill:#fdffb6,stroke:#f39c12,stroke-width:2px,color:#000
+classDef pka fill:#9bf6ff,stroke:#2980b9,stroke-width:3px,color:#000
+
+%% 🔴 脂肪分解
+classDef sub_red fill:#ffe0e0,stroke:#e74c3c,stroke-width:2px,color:#000
+classDef product_red fill:#ff9999,stroke:#c0392b,stroke-width:2.5px,color:#000
+
+%% 🟡 肝糖代謝
+classDef sub_yellow fill:#fff8e0,stroke:#f39c12,stroke-width:2px,color:#000
+classDef product_yellow fill:#ffe699,stroke:#d4ac0d,stroke-width:2.5px,color:#000
+classDef inhibit_yellow fill:#ffe699,stroke:#e67e22,stroke-width:2px,color:#000
+
+%% 🔵 糖質新生
+classDef sub_blue fill:#e0f0ff,stroke:#3498db,stroke-width:2px,color:#000
+classDef product_blue fill:#99ccff,stroke:#2980b9,stroke-width:2.5px,color:#000
+classDef inhibit_blue fill:#99ccff,stroke:#2980b9,stroke-width:2px,color:#000
+
+%% 共用
+classDef substrate fill:#ffffff,stroke:#7f8c8d,stroke-width:1.5px,stroke-dasharray:4 4,color:#000
+```
 
 #### 甘油的部分
 - 甘油可以透過glycerol kinase (甘油激酶) 變成G3P (glycerol-3-phosphate，甘油-3-磷酸)
