@@ -1567,6 +1567,7 @@ flowchart LR
 
     FaCoA1==>|替換成肉鹼|FAC(脂醯肉鹼<br>FA-carnitine):::transport
     Ca1(carnitine):::cofactor-.->FAC
+    FAC-.->|排出|CoA3(CoA-SH):::cofactor
 
     FAC==>imm[穿過粒線體內膜<br>來到基質]:::membrane
 
