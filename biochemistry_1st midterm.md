@@ -321,6 +321,56 @@ $$OAA + GTP \rightleftharpoons PEP + CO_2 + GDP\quad \Delta G^\circ\text{'}=+2.9
 
 - 當還有另外一種路徑可以參考，就是透過乳酸跟乳酸脫氫酶 (lactate dehydrogenase)
 - 這個路徑跟糖解作用路徑完美循環，這個循環又被稱為**Cori cycle**
+
+```mermaid
+flowchart LR
+
+%% ========== 肌肉側 (Muscle) - 🔴 紅色系 ==========
+subgraph Muscle [💪 肌肉 Muscle]
+    direction TB
+    G_M(Glucose<br>葡萄糖):::muscle_sub
+    G_M ==>|糖解作用<br>Glycolysis| Pyr_M(Pyruvate<br>丙酮酸):::muscle_inter
+    Pyr_M ==>|乳酸發酵<br>LDH| Lac_M(Lactate<br>乳酸):::muscle_product
+    
+    %% 肌肉側能量
+ 
+    NADH_M((NADH)):::nadh-.->|還原|Lac_M
+    Lac_M-.->|產生|NAD_M((NAD+)):::nad
+end
+
+%% ========== 血液運輸 ==========
+Lac_M ==>|血液運輸|Lac_L
+
+%% ========== 肝臟側 (Liver) - 🔵 藍色系 ==========
+subgraph Liver [🏥 肝臟 Liver]
+    direction TB
+    Lac_L(Lactate<br>乳酸):::liver_sub
+    Lac_L ==>|乳酸發酵逆反應<br>LDH| Pyr_L(Pyruvate<br>丙酮酸):::liver_inter
+    Pyr_L ==>|糖質新生<br>Gluconeogenesis| G_L(Glucose<br>葡萄糖):::liver_product
+    
+    %% 肝臟側能量
+    NAD_L((NAD+)):::nad-.->|利用於|Pyr_L
+    Pyr_L-.->|產生|NADH_L((NADH)):::nadh
+end
+
+%% ========== 葡萄糖送回肌肉 ==========
+G_L ==>|血液運輸| G_M
+
+%% ========== 能量分子定義 ==========
+classDef nadh fill:#fff0b5,stroke:#daa520,stroke-width:2px,stroke-dasharray:5 5,color:#000
+classDef nad fill:#c2c2c2,stroke:#000,stroke-width:2px,stroke-dasharray:5 5,color:#000
+
+%% ========== 肌肉側顏色 ==========
+classDef muscle_sub fill:#ffadad,stroke:#c0392b,stroke-width:2.5px,color:#000
+classDef muscle_inter fill:#ffd6d6,stroke:#e74c3c,stroke-width:2px,color:#000
+classDef muscle_product fill:#ff9999,stroke:#c0392b,stroke-width:2.5px,color:#000
+
+%% ========== 肝臟側顏色 ==========
+classDef liver_sub fill:#a8d8ff,stroke:#2980b9,stroke-width:2.5px,color:#000
+classDef liver_inter fill:#d6eaff,stroke:#3498db,stroke-width:2px,color:#000
+classDef liver_product fill:#7fb3d5,stroke:#1f4e79,stroke-width:2.5px,color:#000
+```
+
 ##### 2. F-1,6-BP變成F6P
 - 在 $Mg^{2+}$ 跟 fructose-1,6- bisphosphatase 作用下形成:
 
