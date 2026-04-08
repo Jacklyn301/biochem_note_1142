@@ -3,23 +3,6 @@ title: biochemistry_1st midterm
 
 ---
 
-<style>
-    .markdown-body {
-        max-width: 1200px !important;
-        margin: 0 auto;
-    }
-    .markdown-body img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .markdown-body table {
-        width: 800px
-        max-width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>
 # biochemistry 2nd midterm
 ## Carbs metabolism
 ### glycolysis 簡介
