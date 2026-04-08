@@ -321,32 +321,6 @@ $$OAA + GTP \rightleftharpoons PEP + CO_2 + GDP\quad \Delta G^\circ\text{'}=+2.9
 
 - 當還有另外一種路徑可以參考，就是透過乳酸跟乳酸脫氫酶 (lactate dehydrogenase)
 - 這個路徑跟糖解作用路徑完美循環，這個循環又被稱為**Cori cycle**
-
-```mermaid
-flowchart LR
-
-L((lactate)):::lactate
-L-->|透過|LDH(乳酸脫氫酶):::ldh
-LDH-->|形成|Py1(pyruvate):::pyruvate
-LDH-.->|產生|NADH((NADH)):::nadh
-Py1-->|透過|Pt1[內膜運輸系統]:::transporter
-Pt1-->|進到<br>粒線體|Py2(pyruvate):::pyruvate
-Py2-->|轉換成|OAA((草醯乙酸)):::oaa
-OAA-->|透過|PEPCK(粒線體中的<br>PEPCK):::pepck
-PEPCK-->|形成|PEP1(PEP):::pep
-PEP1-->|透過|Pt2[內膜運輸系統]:::transporter
-Pt2-->|被運回<br>細胞質|PEP2(PEP):::pep
-
-classDef lactate fill:#ffffff,stroke:#000,stroke-width:2px,color:#000
-classDef ldh fill:#fae58f,stroke:#000,stroke-width:2px,color:#000
-classDef pyruvate fill:#ffb181,stroke:#000,stroke-width:2px,color:#000
-classDef nadh fill:#a8a8a8,stroke:#5b5b5b,stroke-width:2px,stroke-dasharray:3 3,color:#000
-classDef transporter fill:#5ce1e6,stroke:#006e72,stroke-width:2px,stroke-dasharray:5 5,color:#000
-classDef oaa fill:#9df178,stroke:#000,stroke-width:2px,color:#000
-classDef pepck fill:#e2a9f1,stroke:#750692,stroke-width:2px,stroke-dasharray:5 5,color:#000
-classDef pep fill:#7bb8ff,stroke:#000,stroke-width:2px,color:#000
-```
-
 ##### 2. F-1,6-BP變成F6P
 - 在 $Mg^{2+}$ 跟 fructose-1,6- bisphosphatase 作用下形成:
 
@@ -563,7 +537,8 @@ Da-->|導致|R
 - HK-IV本來就可以跟去磷酸化的PFK-2/FBPase-2結合，形成複合物，這會影響HK-IV對葡萄糖的親和性，進一步促進糖解
 - 也就是說，胰島素也可以透過PFK-2/FBPase-2，直接增加HK活性
 
-### 調控機制總結
+### 圖表總結
+#### 糖解作用調控
 ```mermaid
 flowchart LR
 %% glycolysis
@@ -613,7 +588,7 @@ classDef inhibition fill:#E74C3C,stroke:#333,stroke-width:1.5px,color:#fff
 classDef cofactor fill:#F1C40F,stroke:#333,stroke-width:2px,color:#000
 
 ```
-
+#### 糖質新生調控
 ```mermaid
 flowchart LR
 %% gluconeogenesis
@@ -653,6 +628,110 @@ classDef product fill:#2E86C1,stroke:#333,stroke-width:2.5px,color:#fff
 classDef activation fill:#2ECC71,stroke:#333,stroke-width:1.5px,color:#000
 classDef inhibition fill:#E74C3C,stroke:#333,stroke-width:1.5px,color:#fff
 classDef cofactor fill:#F1C40F,stroke:#333,stroke-width:2px,color:#000
+```
+#### glycolysis, gluconeogenesis, and Cori cycle
+```mermaid
+flowchart TB
+
+%% ========== 肌肉側 (Muscle) - 🔴 紅色系 ==========
+subgraph Muscle [💪 肌肉 Muscle - 糖解作用<br>Glycolysis]
+    direction TB
+    
+    G_M{Glucose<br>葡萄糖}:::muscle_start
+    G_M ==>|Hexokinase| G6P_M(G6P):::muscle_inter
+    G6P_M ==>|Phosphoglucose isomerase| F6P_M(F6P):::muscle_inter
+    F6P_M ==>|PFK-1| F16BP_M(F-1,6-BP):::muscle_inter
+    F16BP_M ==>|Aldolase| DHAP_M(DHAP):::muscle_inter
+    F16BP_M ==>|Aldolase| GAP_M(GAP):::muscle_inter
+    F16BP_M-.->ADP_M4((ADP)):::adp
+    DHAP_M ==>|Triose<br>phosphate<br>isomerase| GAP_M
+    
+    GAP_M ==>|GAPDH| BPG13_M(1,3-BPG):::muscle_inter
+    BPG13_M ==>|Phosphoglycerate<br>kinase| PG3_M(3-PG):::muscle_inter
+    PG3_M ==>|Phosphoglycerate<br>mutase| PG2_M(2-PG):::muscle_inter
+    PG2_M ==>|Enolase| PEP_M(PEP):::muscle_inter
+    PEP_M ==>|Pyruvate kinase| Pyr_M{Pyruvate}:::muscle_pyr
+    
+    Pyr_M ==>|乳酸發酵 LDH| Lac_M(Lactate<br>乳酸):::muscle_product
+    
+    %% 肌肉側能量標示
+    ATP_M1((ATP)):::atp-.->|消耗|G6P_M
+    ATP_M2((ATP)):::atp-.->|消耗|F16BP_M
+    NAD_M((NAD+)):::nad-.->|消耗|BPG13_M
+    BPG13_M-.->|產生|NADH_M1((NADH)):::nadh
+    Pi_M((Pi))-.->|利用|BPG13_M
+    ADP_M1((ADP)):::adp-.->|磷酸化|PG3_M
+    G6P_M-.->ADP_M2((ADP)):::adp
+    PG3_M-.->|合成|ATP_M3((ATP)):::atp
+    ADP_M3((ADP)):::adp-.->|用於|PEP_M
+    PEP_M-.->|合成|ATP_M4((ATP)):::atp
+   NADH_M2((NADH)):::nadh-.->|還原|Lac_M
+    Lac_M-.->|產生|NAD_lM((NAD+)):::nad
+end
+
+%% ========== 血液運輸 ==========
+Lac_M ==>|"🩸 血液運輸<br>Blood Transport"|Lac_L
+
+%% ========== 肝臟側 (Liver) - 🔵 藍色系 ==========
+subgraph Liver [🏥 肝臟 Liver - 糖質新生<br>Gluconeogenesis]
+    direction TB
+    
+    Lac_L(Lactate<br>乳酸):::liver_start
+    Lac_L ==>|乳酸發酵逆反應 LDH| Pyr_L{Pyruvate}:::liver_pyr
+    
+    Pyr_L ==>|Pyruvate carboxylase| OAA_L(OAA):::liver_inter
+    Pyr_L-.->|產生|NADH_L((NADH)):::nadh
+    OAA_L ==>|PEPCK| PEP_L(PEP):::liver_inter
+    PEP_L ==>|Enolase| PG2_L(2-PG):::liver_inter
+    PG2_L ==>|Phosphoglycerate mutase| PG3_L(3-PG):::liver_inter
+    PG3_L ==>|Phosphoglycerate kinase| BPG13_L(1,3-BPG):::liver_inter
+    BPG13_L ==>|GAPDH| GAP_L(GAP):::liver_inter
+    ATP_L3((ATP)):::atp-.->|消耗|BPG13_L
+    BPG13_L-.->|產生|ADP_L3((ADP)):::adp
+    
+    GAP_L ==>|Triose<br>phosphate<br>isomerase| DHAP_L(DHAP):::liver_inter
+    GAP_L-->|產生|Pi_i((Pi))
+    NADH_Li((NADH)):::nadh-.->|消耗|GAP_L
+    GAP_L-.->|產生|NAD_Li((NAD+)):::nad
+    GAP_L ==>|Aldolase| F16BP_L(F-1,6-BP):::liver_inter
+    DHAP_L ==>|Aldolase| F16BP_L
+    F16BP_L ==>|Fructose-1,6-<br>bisphosphatase| F6P_L(F6P):::liver_inter
+    F6P_L ==>|Phosphoglucose<br>isomerase| G6P_L(G6P):::liver_inter
+    G6P_L ==>|Glucose-6-phosphatase| G_L{Glucose<br>葡萄糖}:::liver_product
+    
+    %% 肝臟側能量標示
+    ATP_L1((ATP)):::atp-.->|消耗|OAA_L
+    GTP_L2((GTP)):::atp-.->|消耗|PEP_L
+    CO21((CO2))-.->|消耗|OAA_L
+    OAA_L-.->|產生|ADP_L1((ADP)):::adp
+    PEP_L-.->|產生|GDP_L2((GDP)):::adp
+    PEP_L-.->|產生|CO22((CO2))
+    NAD_L2((NAD+)):::nad-.->|消耗|Pyr_L
+    F6P_L-.->|水解|Pi_L1((Pi))
+    G_L-.->|水解|Pi_L2((Pi))
+end
+
+%% ========== 葡萄糖送回肌肉 ==========
+G_L ==>|"🩸 血液運輸<br>Blood Transport"|G_M
+
+%% ========== 顏色定義 ==========
+%% 能量分子
+classDef atp fill:#ffae7a,stroke:#ff0211,stroke-width:2px,stroke-dasharray:5 5,color:#000
+classDef adp fill:#02f7ff,stroke:#0075a1,stroke-width:2px,stroke-dasharray:5 5,color:#000
+classDef nadh fill:#fff0b5,stroke:#daa520,stroke-width:2px,stroke-dasharray:5 5,color:#000
+classDef nad fill:#c2c2c2,stroke:#000,stroke-width:2px,stroke-dasharray:5 5,color:#000
+
+%% 肌肉側 (🔴)
+classDef muscle_start fill:#ffadad,stroke:#c0392b,stroke-width:3px,color:#000
+classDef muscle_inter fill:#ffffff,stroke:#e74c3c,stroke-width:2px,color:#000
+classDef muscle_pyr fill:#ffd6d6,stroke:#e74c3c,stroke-width:2px,color:#000
+classDef muscle_product fill:#ff9999,stroke:#c0392b,stroke-width:3px,color:#000
+
+%% 肝臟側 (🔵)
+classDef liver_start fill:#a8d8ff,stroke:#2980b9,stroke-width:3px,color:#000
+classDef liver_pyr fill:#d6eaff,stroke:#2980b9,stroke-width:2px,color:#000
+classDef liver_inter fill:#ffffff,stroke:#3498db,stroke-width:2px,color:#000
+classDef liver_product fill:#7fb3d5,stroke:#1f4e79,stroke-width:3px,color:#000
 ```
 
 
@@ -836,86 +915,73 @@ G-->|branching<br>enzyme|B(分支酶會切下一段直鏈，使其變成支鏈)
 
 ## Citric Acid Cycle
 ### 宏觀角度下的TCA cycle
+
 ```mermaid
 flowchart LR
 
-OAA1(oxaloacetate<br>草醯乙酸)
-OAA1==>Cit(citrate<br>檸檬酸)
-AcoA(Acetyl-CoA)==>|縮合反應|Cit
-Cit==>|脫水|cAco(cis-aconitate<br>順烏頭酸)
-Cit-.->CoA1((CoA-SH))
-cAco==>|水合|Icit(isocitrate<br>異檸檬酸)
-Icit==>|氧化脫酸|aketo(α-ketoglutarate<br>α-酮戊二酸)
+%% ========== 進入/縮合階段 (🟠 橘色) ==========
+OAA1(oxaloacetate<br>草醯乙酸):::entry
+OAA1==>Cit(citrate<br>檸檬酸):::entry
+AcoA(Acetyl-CoA):::entry==>|縮合反應|Cit
+Cit==>|脫水|cAco(cis-aconitate<br>順烏頭酸):::rearrange
+Cit-.->CoA1([CoA-SH]):::cofactor
 
-NAD1((NAD+))-.->|利用生成|aketo
-aketo==>|氧化脫酸|ScoA(Succinyl-CoA<br>琥珀醯輔酶A)
-aketo-.->|同時產生|NADH1((NADH))
-aketo-.->|同時產生|CO21((CO2))
+%% ========== 早期重排 (🔵 藍色) ==========
+cAco==>|水合|Icit(isocitrate<br>異檸檬酸):::rearrange
+Icit==>|氧化脫酸|aketo(α-ketoglutarate<br>α-酮戊二酸):::oxidative
 
-CoA2((CoA-SH))-.->|用於形成|ScoA
-ScoA==>|底物磷酸化|Sc(Succinate<br>琥珀酸)
-NAD2((NAD+))-.->|利用生成|ScoA
-ScoA-.->|同時產生|NADH2((NADH))
-ScoA-.->|同時產生|CO22((CO2))
+NAD1([NAD+]):::cofactor-.->|利用生成|aketo
 
-ADP1((ADP))-.->|利用生成|Sc
-P1((Pi))-.->|利用生成|Sc
-Sc==>|脫水|Fu(Fumerase<br>延胡索酸)
-Sc-.->ATP1((ATP))
-Sc-.->CoA3((CoA-SH))
+%% ========== 氧化脫羧 (🔴 紅色) ==========
+aketo==>|氧化脫酸|ScoA(Succinyl-CoA<br>琥珀醯輔酶A):::oxidative
+aketo-.->|同時產生|NADH1((NADH)):::energy
+aketo-.->|同時產生|CO21((CO2)):::co2
 
-FAD1((E-FAD))-.->|利用|Fu
-Fu-.->FADH2((E-FADH2))
-Fu==>|水合|Ma(malate<br>蘋果酸)
+CoA2([CoA-SH]):::cofactor-.->|用於形成|ScoA
+ScoA==>|基質磷酸化|Sc(Succinate<br>琥珀酸):::regenerate
+NAD2([NAD+]):::cofactor-.->|利用生成|ScoA
+ScoA-.->|同時產生|NADH2((NADH)):::energy
+ScoA-.->|同時產生|CO22((CO2)):::co2
 
-Ma==>|脫水|OAA2(oxaloacetate<br>草醯乙酸)
-NAD3((NAD))-.->|利用生成|OAA2
-OAA2-.->NADH3((NADH))
+%% ========== 能量收穫與再生階段 (🟢 綠色) ==========
+ADP1([ADP]):::cofactor-.->|利用生成|Sc
+P1([Pi]):::cofactor-.->|利用生成|Sc
+Sc==>|脫水|Fu(Fumarate<br>延胡索酸):::regenerate
+Sc-.->ATP1((ATP)):::energy
+Sc-.->CoA3([CoA-SH]):::cofactor
+
+FAD1([E-FAD]):::cofactor-.->|利用|Fu
+Fu-.->FADH2((E-FADH2)):::energy
+Fu==>|水合|Ma(malate<br>蘋果酸):::regenerate
+
+%% ========== 循環閉合 ==========
+Ma==>|脫水|OAA2(oxaloacetate<br>草醯乙酸):::regenerate
+NAD3([NAD+]):::cofactor-.->|利用生成|OAA2
+OAA2-.->NADH3((NADH)):::energy
 
 OAA2==>|不斷繼續<br>循環下去|OAA1
 
-%% ===== TCA styling (matched to your node names) =====
+%% ========== 顏色定義 ==========
+%% 進入/縮合 (🟠)
+classDef entry fill:#ffe4c4,stroke:#e67e22,stroke-width:2px,color:#000
 
-%% entry / citrate formation
-style OAA1 fill:#ffe4c4,stroke:#c77b00
-style Cit fill:#ffe4c4,stroke:#c77b00
-style AcoA fill:#ffe4c4,stroke:#c77b00
+%% 早期重排 (🔵)
+classDef rearrange fill:#d6eaff,stroke:#2980b9,stroke-width:2px,color:#000
 
-%% early rearrangement
-style cAco fill:#d6eaff,stroke:#1f4e79
-style Icit fill:#d6eaff,stroke:#1f4e79
+%% 氧化脫羧 (🔴)
+classDef oxidative fill:#ffd6d6,stroke:#c0392b,stroke-width:2px,color:#000
+classDef co2 fill:#ffd6d6,stroke:#c0392b,stroke-width:2px,color:#000
 
-%% oxidative decarboxylation (🔥 core oxidation zone)
-style aketo fill:#ffd6d6,stroke:#b22222
-style ScoA fill:#ffd6d6,stroke:#b22222
-style CO21 fill:#ffd6d6,stroke:#b22222
-style CO22 fill:#ffd6d6,stroke:#b22222
+%% 再生階段 (🟢)
+classDef regenerate fill:#d6f5d6,stroke:#27ae60,stroke-width:2px,color:#000
 
-%% energy harvest (ATP / NADH / FADH2)
-style NADH1 fill:#e0d6ff,stroke:#5e35b1
-style NADH2 fill:#e0d6ff,stroke:#5e35b1
-style NADH3 fill:#e0d6ff,stroke:#5e35b1
-style ATP1 fill:#e0d6ff,stroke:#5e35b1
-style FADH2 fill:#e0d6ff,stroke:#5e35b1
+%% 能量分子 (🟣)
+classDef energy fill:#e0d6ff,stroke:#8e44ad,stroke-width:2.5px,color:#000
 
-%% regeneration phase (cycle closing 🌱)
-style Sc fill:#d6f5d6,stroke:#2e7d32
-style Fu fill:#d6f5d6,stroke:#2e7d32
-style Ma fill:#d6f5d6,stroke:#2e7d32
-style OAA2 fill:#d6f5d6,stroke:#2e7d32
-
-%% cofactors / carriers (neutral background)
-style NAD1 fill:#eeeeee,stroke:#888
-style NAD2 fill:#eeeeee,stroke:#888
-style NAD3 fill:#eeeeee,stroke:#888
-style ADP1 fill:#eeeeee,stroke:#888
-style P1 fill:#eeeeee,stroke:#888
-style CoA1 fill:#eeeeee,stroke:#888
-style CoA2 fill:#eeeeee,stroke:#888
-style CoA3 fill:#eeeeee,stroke:#888
-style FAD1 fill:#eeeeee,stroke:#888
-
+%% 輔因子 (⚪)
+classDef cofactor fill:#f0f0f0,stroke:#7f8c8d,stroke-width:1.5px,stroke-dasharray:4 4,color:#000
 ```
+
 #### 起源
 - 由Hans krebs發現，並且跟Fritz Lipmann (發現Coenzyme的人) 一起得到諾貝爾獎
 - 起初是它在慎在或是肝臟切片中，發現各種有機酸 (如citrate、succinate、fumerate、malate、acetate等) 大量消耗的狀況，並且在了解一些先前知識 (例如isocitrate、 $\alpha$ -glutarate、succinate可以互相轉換) 下，得到了這些物質的相互關係
