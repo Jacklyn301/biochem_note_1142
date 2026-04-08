@@ -836,6 +836,7 @@ style ADP fill: #7edcff, stroke: #000, stroke-dasharray: 3 3
 
 #### 雙糖代謝
 - 目前我們已經知道:
+
 $$
 \begin{align}
 maltose + H_2O\quad &\underrightarrow{maltase}\quad 2\ glucose\\
@@ -892,6 +893,7 @@ G3P-->DHAP
 - 動員肝糖利用的是 "磷酸解" (phosphorolysis，加上磷酸機分子斷開糖苷鍵)，分解澱粉的方式叫做 "水解" (hydrolysis，加上水分子斷開糖苷鍵)
 > [!Tip]
 > - 所以肝糖被動員時，單糖的形式就是G1P，能在不需要再額外使用ATP的情況下進入糖解代謝。G1P經過一些反應會變成G6P，如下:
+> 
 > $$
 > \begin{align}
 > & \text{enzyme-Ser-P}+G1P \rightleftharpoons \text{enzyme-ser}+G16BP\\
@@ -899,9 +901,11 @@ G3P-->DHAP
 > & G1P\rightleftharpoons G6P,\quad \Delta G^\circ\text{'}=-7.3\ KJ/mol
 > \end{align}
 > $$
+>
 > - 磷酸解是由磷酸化酶 (phosphorylase) 作用形成
 
 - 澱粉的消化大概在動物身上如下:
+  
 ```mermaid
 flowchart LR
 S{starch or glycogen}
@@ -912,6 +916,7 @@ R1-->|alpha-1→6-<br>glucosidase|C(斷開alpha-1→6糖苷鍵)
 C-->R2(暴露出新的alpha-1→4糖苷鍵)
 R2-.->|一直循環|A
 ```
+
 - $\alpha (1\rightarrow 6)$ 屬於支鏈澱粉會出現的鍵結
 - 最後肝糖幾乎代謝完成，其中九成都是G1P (其餘是水解的葡萄糖)
 
@@ -1640,7 +1645,7 @@ $$R-COO^- + ATP + CoA-SH \leftrightharpoons R-COS-CoA + AMP + PPi\quad \Delta G^
 >取名由來: 每一次循環開始時，這一步驟是導致 $\beta$ -C的氧化，所以叫做 $\beta$ 氧化 🤔
 
 ##### 4. 硫解裂解
-- 這一步就是輔酶A (CoA-SH) 的 $S$ ，去攻擊剛成為羰基的 $\beta$ 碳，導致 $\alpha$ 跟 $\beta$ 碳 "決裂" 。$\alpha$ 碳成為了產物acetyl-CoA的一部份，而 $\beta$ 碳和CoA透過 $S$ 相連
+- 這一步就是輔酶A (CoA-SH) 的 $S$ ，去攻擊剛成為羰基的 $\beta$ 碳，導致 $\alpha$ 跟 $\beta$ 碳 "決裂" 。 $\alpha$ 碳成為了產物acetyl-CoA的一部份，而 $\beta$ 碳和CoA透過 $S$ 相連
 
 ![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/thiolytic_cleavage_0327.png)
 
