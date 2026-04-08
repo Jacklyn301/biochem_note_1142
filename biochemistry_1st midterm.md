@@ -1341,6 +1341,14 @@ Gs ==> AC([Adenylate Cyclase<br>活化]):::ac
 AC ==> cAMP((cAMP<br>濃度上升)):::camp
 cAMP ==> PKA((PKA活化)):::pka
 
+subgraph "🧬 細胞核<br>Nuclear Events"
+        PKA-->Nuc(進入細胞核)
+        Nuc--> CREB(CREB<br>活化)
+        CREB --結合<br>CRE 位點--> PEPCK_Gene(PEPCK<br>基因轉錄 ↑)
+        PEPCK_Gene ==> PEPCK_Protein(PEPCK<br>蛋白產量增加)
+        PEPCK_Protein ==> GNG_Long((長期加強<br>糖質新生))
+end
+
 %% ========== 🔴 脂肪分解 (Lipolysis) ==========
 subgraph Lipolysis [🔴 脂肪分解<br>Lipolysis]
     PKA --磷酸化--> PL([Perilipin<br>磷酸化]):::sub_red
