@@ -1,19 +1,8 @@
 ---
-title: biochem 2nd midterm
+title: biochemistry_2nd midterm.md
 
 ---
 
-<style>
-    .markdown-body {
-        max-width: 1000px !important;
-        margin: 0 auto;
-    }
-    .markdown-body p img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>
 # biochem 2nd midterm
 ## electron transport, oxidative phosphorylation, oxygen metabolism
 ### what is mitochondrion
@@ -131,6 +120,7 @@ classDef oxygen fill:#d5dbdb,stroke:#7f8c8d,stroke-width:2px,color:#000
   - 2Fe–2S: 菱形結構，常見於鐵氧還蛋白 (ferredoxin)
   - 4Fe–4S: 立方體結構，常見於電子傳遞鏈的複合體 I、II
 - 配位基: 大部分由蛋白質中的半胱氨酸硫醇基提供，也可能有組氨酸或天冬氨酸參與
+
 ![image alt](https://www.frontiersin.org/files/Articles/735678/fcell-09-735678-HTML/image_m/fcell-09-735678-g001.jpg)
 
 ##### 輔酶Q
@@ -164,6 +154,7 @@ classDef oxygen fill:#d5dbdb,stroke:#7f8c8d,stroke-width:2px,color:#000
 - 無論是NADH、FADH2還是什麼cytochrome，其氧化態跟還原態的吸收光譜都不一樣
 - 例如還原態細胞色素c在550nm附近有明顯正吸光值、NADH於340nm處有明顯正吸光值，黃素蛋白在460nm處有明顯負吸光值
 - 透過在適當時機給粒線體氧氣，並且觀察吸收光譜的變化，誰變高誰變低，就可以確定不同載體從完全氧化態到部分有還原的 "時間順序"
+
 ![image alt](https://journals.physiology.org/cms/10.1152/ajpcell.00223.2006/asset/images/large/zh00120650820003.jpeg)
 
 ##### 透過抑制劑以及人工的電子受體
