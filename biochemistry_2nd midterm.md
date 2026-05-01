@@ -1088,3 +1088,144 @@ classDef nadph fill:#ffd6d6,stroke:#e74c3c,stroke-width:2px,color:#000
 classDef nadp fill:#ffe0e0,stroke:#e74c3c,stroke-width:2px,color:#000
 classDef pi fill:#f5c6c6,stroke:#c0392b,stroke-width:1.5px,stroke-dasharray:3 3,color:#000
 ```
+
+---
+
+## fatty acid biosynthesis and metabolism of glycerophospholipids
+- 我們目前知道，植物跟微生物能夠透過乙醛酸循環來將將乙醯輔酶A變成糖質新生前體，但是動物無法做這件事情，因此，動物的碳水化合物變成脂肪屬於單向的反應
+
+```mermaid
+flowchart LR
+g{glucose}-->|glycolysis|P1([pyruvate])-->|進入粒線體|P2([pyruvate])
+FA{fatty<br>acid}
+
+subgraph mitochondrion
+  direction TB
+  P2-->|pyruvate<br>dehydrogenase<br>complex|Acoa1([Acetyl-CoA])
+  Fac2-->|beta氧化|Acoa1
+  Acoa1-->|酮體生成|Kb([ketone<br>body])
+  Acoa1-->|citrate<br>synthase|C1([citrate])
+  C1-->TCA((TCA<br>cycle))
+end
+  C1-->|傳輸出去|C2([citrate])
+  C2-.->|轉變成|OAA([oxaloacetate])
+  C2-.->|轉變成|Acoa2([Acetyl-CoA])
+  
+  Acoa2-->|脂肪酸合成|FA
+  
+  FA-->|加上輔酶A|Facoa([fatty acyl-CoA])
+  Facoa-->|加上肉鹼|Fac1([Fatty acyl-<br>carnitine])
+  Fac1-->|肉鹼<br>穿梭機制|Fac2([Fatty acyl-<br>carnitine])
+```
+
+### biosynthesis of palmitate from acetyl-CoA
+#### malonyl-CoA的合成
+- 從acetyl-CoA加入碳酸氫根，在ATP跟acetyl-CoA carboxylase (ACC) 的幫助下生成malonyl-CoA ( $^-OCC-CH_2-C=O-S-CoA$ ):
+
+$$\text{acetyl-CoA} + ATP +  HCO_3^- \xrightarrow[ACC]{} \text{malonyl-CoA} + ADP + P_i + H^+$$
+
+- 此反應高度放能，幾乎不可逆，ACC基本上也有生物素 (biotin) 輔因子
+- ACC 在細胞裡可以以二聚體 (inactive form，非活化狀態) 或聚合體 (active filament form，活化的絲狀結構) 存在，因此，酵素的活性高低取決於它是否聚合成長鏈狀結構
+- citrate能和ACC結合，促進 ACC 聚合成活性纖維狀的結構，這樣ACC的活性就會大幅提升，能更有效地合成malonyl-CoA
+
+#### biotin的作用意義
+- carboxylase就是 "在底物上面多加一個 $COO^-$ 基團的酵素"
+- biotin (aka 維生素B7) 在酵素裡面就像是一隻 "手"，專門負責抓住並搬運 $CO_2$ (或更準確地說是 bicarbonate, $HCO_3^-$ )，讓它能夠被加到底物上
+- biotin的結構裡有一個**ureido ring**，能和 $CO_2$ 形成一個活化的 "羧基中間體"。這樣 $CO_2$ 就會被穩定地 "綁住"
+- **swinging arm**: biotin通常透過一個長的**lysine side chai**n附著在酵素上，這個 "分子手臂" 能在酵素的不同活性位點之間擺動，把 $CO_2$ 從 "活化位點" 搬到 "加到底物的位點"
+
+![image alt](https://img.magnific.com/premium-vector/biotin-vitamin-b7-molecule-vector-skeletal-formula_833685-593.jpg?w=2000)
+
+> [!Note]
+> 這種擺動手臂設計在**pyruvate carboxylase**、**acetyl-CoA carboxylase、propionyl-CoA carboxylase**等酵素裡都能看到 🐱
+
+- 由於 $CO_2$ 的活化需要ATP，biotin幫忙先把 $CO_2$ 和ATP的能量結合起來，形成biotin- $CO_2$ 中間體，再把它交給底物: 
+
+$$
+\begin{align}
+\text{E-biotin} + ATP + HCO_3^- & \rightarrow \text{E-N-carboxybiotin} + ADP + P_i\\
+\text{E-N-carboxybiotin} + \text{acetyl-CoA} & \rightarrow \text{malonyl-CoA} + \text{E-biotin}
+\end{align}
+$$
+
+
+![image alt](https://image.slideserve.com/523019/the-swinging-arm-mechanism-of-acetyl-coa-carboxylase-l.jpg)
+
+### malonyl-CoA變成棕梠酸
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/fatty_acid_synthesis_0501.jpg)
+
+#### fatty acid synthase
+- 脂肪酸合成不是靠一堆分散的酵素，而是由一個大型複合體**FAS** (fatty acid synthase)完成。裡面有好幾個domain，各自負責不同步驟
+
+```mermaid
+flowchart LR
+acoa([acetyl-CoA<br>乙醯輔酶A]):::substrate==>|acetyl-CoA-ACP<br>transacylase|aacp([acetyl-ACP<br>乙醯-ACP]):::intermediate
+mcoa([malonyl-CoA<br>丙二醯輔酶A]):::substrate==>|malonyl-CoA-ACP<br>transacylase|macp([malonyl-ACP<br>丙二醯-ACP]):::intermediate
+
+aacp==>|β-ketoacyl-ACP<br>synthase|aks([acetyl-KS]):::enzyme
+aks==>|β-ketoacyl-ACP<br>synthase|bkaacp(β-ketoacyl-ACP<br>β-酮醯-ACP):::intermediate
+macp==>|β-ketoacyl-ACP<br>synthase|bkaacp
+bkaacp-.->|產生|CO2((CO₂)):::co2
+bkaacp==>|β-Ketoacyl-ACP<br>reductase|3haacp([D-3-Hydroxyacyl-ACP<br>右旋-3-羥基醯基-ACP]):::intermediate
+NADPH1([NADPH]):::nadph-.->|消耗|3haacp
+3haacp-.->|產生|NADP1([NADP+]):::nadp
+3haacp==>|dehydratase|teacp([trans-Δ2-enoyl-ACP<br>反式-Δ2-烯醯基-ACP]):::intermediate
+teacp-.->|釋放|H2O((H₂O)):::water
+teacp==>|enoyl-ACP<br>reductase|bacp([butyryl-ACP<br>丁醯-ACP]):::intermediate
+NADPH2([NADPH]):::nadph-.->|消耗|bacp
+bacp-.->|釋放|NADP2([NADP+]):::nadp
+bacp==>|β-ketoacyl-ACP<br>synthase|bks([butyryl-KS]):::enzyme
+bks==>|如此循環<br>每個循環加兩碳|bkaacp
+
+
+classDef substrate fill:#ffb3b3,stroke:#c0392b,stroke-width:2px,color:#000
+classDef intermediate fill:#fff0b5,stroke:#daa520,stroke-width:2px,color:#000
+classDef enzyme fill:#d6f5d6,stroke:#27ae60,stroke-width:2px,color:#000
+classDef nadph fill:#9d2fc4,stroke:#630086,stroke-width:2px,color:#fff
+classDef nadp fill:#e7a2ff,stroke:#9d2fc4,stroke-width:2px,color:#000
+classDef co2 fill:#bdbdbd,stroke:#6b6b6b,stroke-width:1.5px,stroke-dasharray:3 3,color:#000
+classDef water fill:#99ccff,stroke:#1a5276,stroke-width:1.5px,stroke-dasharray:3 3,color:#000
+```
+
+| 酵素/功能區域 | 作用 | 
+| --- | --- |
+| **MAT (Malonyl/acetyl-CoA-ACP transacylase)** | 把acetyl-CoA或malonyl-CoA的acyl基團轉移到 ACP | 
+| **KS ( $\beta$ -ketoacyl-ACP synthase)** | 把acetyl基團和malonyl基團拼接，同時釋放 $CO_2$ | 
+| **KR ( $\beta$ -ketoacyl-ACP reductase)** | 把 $\beta$ -酮基還原成羥基，用 NADPH | 
+| **DH (Dehydratase)** | 去掉水分子，形成雙鍵 |
+| **ER (Enoyl-ACP reductase)** | 把雙鍵還原成單鍵，用 NADPH | 
+| **TE (Thioesterase)** | 當碳鏈長到16C，切斷並釋放脂肪酸，形成palmitate | 
+
+- 其中，ACP (acyl carrier protein) 是一個小蛋白，它的作用就是抓住acyl基團，在FAS的不同活性位點之間搬運，結構上長得非常像是coenzyme A
+- 在脂肪酸合成的循環裡面，是由ACP代替coenzyme A的位置進行的。無論是acetyl-CoA還是malonyl-CoA，在合成時都會先透過MAT把coenzyme A替換成ACP
+- 接下來，acetyl-ACP會接到KS酵素上面，該酵素再去抓malonyl-ACP，並且釋放一個碳，形成 $\beta$ -ketoacyl-ACP
+
+#### 酵素結構分析
+- 哺乳類的FAS是由兩個相同的多功能多肽鏈組成，每條鏈大約有2500個氨基酸。這兩條鏈並排在一起，形成一個 "雙臂工廠"，ACP也在裡面，像一隻靈活的手臂，能在不同活性位點之間擺動，把中間產物搬來搬去
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/fatty_acid_synthase_complex_0502.gif)
+
+#### 氧化跟合成的區別
+- 其實脂肪酸氧化跟脂肪酸合成在結構跟化學鍵節的改變方式極度類似 (只是兩個各走相反方向而已)，只是使用的輔因子以及反應未至以所不同:
+
+|選項|脂肪酸合成|脂肪酸氧化|
+|---|---|---|
+|**誰負責跟醯基結合**| ACP | CoA |
+|**甚麼酵素**|fatty acid synthase complex| $\beta$ -oxidation enzymes|
+|**作用位置**|細胞質|粒線體|
+|**電子攜帶輔因子**| $NADPH$ |$NADH/FADH_2$|
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/comparison_of_fatty_acid_synthesis_and_oxidation_0502.png)
+
+- palmitate合成需要跑完7個cycle，整體來說如下: 
+
+$$\text{acetyl-CoA} + 7\ \text{malonyl-CoA} + 14\ NADPH + 14\ H^+\rightarrow \text{palmitate} + 7\ CO_2 + 14\ NADP^+ + 8\ \text{CoA-SH} + 6H_2O$$
+
+- 當然，為了考慮合成malonyl-CoA時需要的ATP: 
+
+$$8\ \text{acetyl-CoA} + 7\ CO_2 + 7ATP\rightarrow 7\ \text{malonyl-CoA} + 7ADP + 7P_i + 7H^+$$
+
+- 整體的反應式應該要為:
+
+$$8\ \text{acetyl-CoA} + 7ATP + 14\ NADPH + 7\ H^+\rightarrow \text{palmitate} + 14\ NADP^+ + 8\ \text{CoA-SH} + 7ADP + 7P_i + 6H_2O$$
