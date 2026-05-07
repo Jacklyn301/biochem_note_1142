@@ -1588,6 +1588,8 @@ $$\text{squalene} + O_2+ NADPH + H^+\xrightarrow[]{squalene\ epoxidase} \text{sq
 
 ![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/terpenoids.webp)
 
+---
+
 ## metabolism of nitrogenous compounds
 ### 氮循環的利用
 - 所有生物都能將氨 ( $NH_3$ ) 變成有機氮化合物 (有 $C_N$ 鍵的物質)，但是不是所有生物都能將氮氣變成氨
