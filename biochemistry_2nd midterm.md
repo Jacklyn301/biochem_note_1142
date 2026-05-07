@@ -1229,3 +1229,767 @@ $$8\ \text{acetyl-CoA} + 7\ CO_2 + 7ATP\rightarrow 7\ \text{malonyl-CoA} + 7ADP 
 - 整體的反應式應該要為:
 
 $$8\ \text{acetyl-CoA} + 7ATP + 14\ NADPH + 7\ H^+\rightarrow \text{palmitate} + 14\ NADP^+ + 8\ \text{CoA-SH} + 7ADP + 7P_i + 6H_2O$$
+
+### 其他生物或是胞器的脂肪酸合成
+#### mitochondria
+- 粒線體裡有一套 mtFAS (mitochondrial fatty acid synthesis)，它不是像細胞質那樣的大型FAS 複合體，而是由分散的單一酵素組成
+- mtFAS的主要產物不是長鏈脂肪酸，而是 octanoyl-ACP (C8)
+- 這個C8中間體會用來合成lipoic acid (硫辛胺酸)，參與粒線體裡的多種酵素複合體，例如pyruvate dehydrogenase complex、 $\alpha$ -ketoglutarate dehydrogenase complex
+#### bacteria
+- triclosan專門結合在 **FabI (enoyl-acyl carrier protein reductase)** 上
+- 這個酵素負責脂肪酸合成循環中的最後還原步驟: 把enoyl-ACP (含有雙鍵的中間體) 還原成 飽和acyl-ACP
+- 它會跟 $NAD^+$ 共同形成一個穩定的三元複合體，阻止酵素進行還原反應
+- 這導致脂肪酸合成鏈無法延長，細菌失去合成膜脂的能力，進而抑制生長
+- 過去triclosan廣泛用於抗菌肥皂、牙膏、化妝品、清潔用品，因為它能抑制細菌膜脂合成，達到抗菌效果
+- 細菌的fabI基因突變 (例如改變結合位點)，會降低triclosan 的抑制效果，可能導致抗藥性菌株出現
+
+### citrate轉運、脂肪酸延長跟去飽和
+#### citrate shuttle
+- acetyl-CoA不能直接穿過粒線體膜，而是透過citrate shuttle的間接方式
+
+```mermaid
+flowchart LR
+
+subgraph mitochondrion [粒線體 Mitochondrion]
+  acoa1([acetyl-CoA]):::carbon
+  acoa1-->|citrate synthase|cit1([citrate]):::carbon
+  cit1-.->|釋放|coa1([CoA-SH]):::cofactor
+  OAA1([oxaloacetate]):::carbon-->|citrate synthase|cit1
+  pyr1([pyruvate]):::carbon-->|pyruvate carboxylase|OAA2([oxaloacetate]):::carbon
+  CO21((CO2)):::cofactor-.->|消耗於|OAA2
+  ATP1((ATP)):::energy-.->|消耗於|OAA2
+  OAA2-.->|產生|ADP((ADP)):::energy
+  OAA2-.->|產生|Pi1((Pi)):::cofactor
+  mal1([malate]):::carbon-->|malate dehydrogenase|OAA3([oxaloacetate]):::carbon
+  NAD1((NAD+)):::cofactor-.->|利用於|OAA3
+  OAA3-.->|產生|NADH1((NADH)):::energy
+  
+  OAA2-->|citrate synthase|cit1
+  OAA3-->|citrate synthase|cit1
+  Pi3((Pi)):::cofactor
+end
+
+subgraph cytosol [細胞質 Cytosol]
+  cit2([citrate]):::carbon-->|citrate lyase|acoa2([acetyl-CoA]):::carbon
+  cit2-->|citrate lyase|OAA4([oxaloacetate]):::carbon
+  ATP2((ATP)):::energy-.->|消耗於|acoa2
+  acoa2-.->|產生|ADP2((ADP)):::energy
+  acoa2-.->Pi2((Pi)):::cofactor
+  OAA4-->|malate dehydrogenase|mal2([malate]):::carbon
+  NADH2((NADH)):::energy-.->|消耗|mal2
+  mal2-.->|產生|NAD2((NAD+)):::cofactor
+  mal2-->|malic enzyme|pyr2([pyruvate]):::carbon
+  NADP((NADP+)):::cofactor-.->|消耗於|pyr2
+  pyr2-.->|產生|CO22((CO2)):::cofactor
+  pyr2-.->|產生|NADPH((NADPH)):::energy
+  NADPH-.->|用於|FA{fatty acid}:::fatty_acid
+  acoa2-->|用於|FA
+end
+
+subgraph 粒線體膜 [粒線體膜 Transporters]
+  cit1-->|交換於|CTP[ citrate transporter]:::transporter
+  CTP-->cit2
+  Pi2-->|交換於|CTP-->Pi3
+
+  cit1-->|交換於|CMA[citrate/malate antiporter]:::transporter
+  CMA-->cit2
+  mal2-->|交換於|CMA-->mal1
+  
+  pyr2-->|透過|MPC[mitochondrial pyruvate carrier]:::transporter
+  MPC-->|進入粒線體|pyr1
+end
+
+
+classDef carbon fill:#e0d6ff,stroke:#8e44ad,stroke-width:2px,color:#000
+classDef transporter fill:#a8d8ff,stroke:#2980b9,stroke-width:2px,color:#000
+classDef energy fill:#fff0b5,stroke:#daa520,stroke-width:2px,color:#000
+classDef cofactor fill:#f0f0f0,stroke:#7f8c8d,stroke-width:1.5px,stroke-dasharray:3 3,color:#000
+classDef fatty_acid fill:#ffd966,stroke:#e67e22,stroke-width:2px,color:#000
+```
+
+- citrate synthase可以將OAA跟acetyl-CoA變成citrate，但其屬於不可逆反應
+- 逆反應需要有ATP的參與，並且需要利用另一個酵素: citrate lyase:
+
+$$\text{citrate} + ATP + \text{CoA-SH}\rightarrow \text{acetyl-CoA} + ADP + Pi + \text{oxaloacetate}$$
+- malate dehydrogenase可以讓oxaloacetate跟malate之間進行可逆交換: 
+
+$$\text{oxaloacetste} + NADH + H^+\leftrightharpoons \text{malate}+NAD^+$$ 
+
+- 同時，malic enzyme可以把malate變成pyruvate，此也是可逆反應
+- 產生的NADPH用來合成脂肪酸:
+
+$$\text{malate} + NADP^+ + H_2O\leftrightharpoons \text{pyruvate} + HCO_3^- + NADPH + H^+$$
+
+- pyruvate在透過mitochondrial pyruvate carrier (MPC) 回到粒線體裡面後，可以透過pyruvate carboxylase變回OAA，該反應需要ATP水解的能量
+
+$$\text{pyruvate} + HCO_3^- + ATP\rightarrow \text{oxaloacetate} + ADP + P_i + 2H^+$$
+
+- 每一次的transport循環，轉移檸檬酸，都會產生以下的淨反應:
+
+$$NADP^+ + NADH + ATP + H_2O\rightarrow NADPH + NAD^+ + ADP + P_i + 2H^+$$
+
+#### elongation of fatty acid
+- 脂肪酸的延長主要在內質網膜上面進行，這個系統又稱為 "微粒體" (microsomal)
+- 這一系列酵素又稱為elongase system，延長反應很類似在FAS裡面的效果，只是其抓住醯基的物質是coenzyme A，而非ACP
+
+####  desaturation of fatty acid
+- 去飽和 (desaturation) 主要是在內質網的膜上進行，其重點酵素為脂肪酸去飽和酶 (fatty acyl-CoA desaturases)
+- 最常見的是 $\Delta$ 9-desaturase (stearoyl-CoA desaturase, SCD)，能把飽和脂肪酸 (stearoyl-CoA, $18:0$ ) 轉換成單不飽和脂肪酸 (oleoyl-CoA, $18:1c\Delta 9$ )
+- 需要cytochrome $b_5$ 和 NADH-cytochrome $b_5$ reductase，把電子傳遞給去飽和酶，才能在脂肪酸上插入雙鍵
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/fatty_acid_desaturation_system_0504.png)
+
+- 植物可以合成亞油酸 (linoleic, $18:2c\Delta 9, 12$ ，aka $\omega$ -6 ) 以及次亞麻酸 (linolenic, $18:2c\Delta 9, 12, 15$ ，aka $\omega$ -3)
+- 動物細胞雖然能在內質網進行去飽和，但只能在 $\Delta 9$ 位點插入雙鍵，而無法在 $\Delta 12$ 或是 $\Delta 15$ 位點插入雙鍵，動物無法自行合成亞油酸跟次亞馬麻酸
+- 亞油酸在動物身體裡面會變成花生四烯酸 (prostaglandins、leukotrienes的前驅物)，次亞麻酸在動物身體裡面會變成EPA和DHA (參與腦部、視網膜功能，以及抗發炎反應)
+
+```mermaid
+flowchart TB
+18_0([palmitate<br>18:0])
+18_0-->|Δ9 desaturation|18_1([oleic acid<br>18:1cΔ9])
+
+subgraph 植物體內
+18_1-->|Δ12 desaturation|18_2([linoleic<br>18:2cΔ9,12])
+18_2-->18_3_1([linolenic<br>18:3cΔ9,12,15])
+end
+
+18_2-->|Δ15 desaturation|18_3_2([18:3cΔ6,9,12])
+18_3_1-->|Δ15 desaturation|18_4([18:4cΔ6,9,12,15])
+
+subgraph 動物體內
+18_3_2-->|elongation|20_3([20:3cΔ8,11,14])-->|Δ5 desaturation|20_4_1([arachidonic acid<br>20:4cΔ5,8,11,14])
+
+18_4-->|elongation|20_4_2([20:4cΔ8,11,14,17])-->|Δ5 desaturation|EPA([EPA<br>20:5cΔ5,8,11,14,17])
+
+EPA-->|elongation|22_5([22:5cΔ7,10,13,16,19])-->|elongation|24_5([24:5cΔ9,12,15,18,21])
+
+24_5-->|Δ6 desaturation|24_6([24:6cΔ6,9,12,15,18,21])-->|β-oxidation<br>過氧化體中|DHA([DHA<br>22:6cΔ4,7,10,13,16,19])
+end
+```
+
+### 四大調控因子
+#### acetyl-CoA的活性
+- AMPK: 在能量不足時活化，磷酸化ACC → **抑制脂肪酸合成**
+- PKA：在glucagon/epinephrine訊號下活化，磷酸化ACC → **抑制脂肪酸合成**
+- citrate促進ACC 聚合成活性纖維 → **活化脂肪酸合成**
+
+#### insulin
+- 促進citrate lyase → 增加細胞質內的acetyl-CoA
+- 促進PDH phosphatase → 活化 PDH，增加粒線體內的acetyl-CoA
+
+> [!Note]
+> 整體會提供更多 acetyl-CoA作為脂肪酸合成原料 🐱
+
+#### NADPH 的量
+- 脂肪酸合成需要大量NADPH，來源通常為: 
+  - pentose phosphate pathway (PPP)
+  - malic enzyme (malate → pyruvate + NADPH)
+- 只有NADPH充足時，脂肪酸合成才能持續
+
+#### AMP/ATP ratio
+- 高AMP → AMPK活化 → **抑制ACC**
+- 高 ATP + 高 citrate → 活化ACC → 推動脂肪酸合成
+
+### 補充資料
+#### parabiosis
+- 共血實驗 (parabiosis) 用來研究肥胖和糖尿病的基因調控
+- 研究人員把兩隻小鼠的血液循環連在一起，讓它們共享血液中的激素，實驗設計是這樣的: 
+
+|基因型態|leptin|leptin受體|
+|---|----|---|
+|**Wild type**|能分泌 leptin|有功能性的 leptin receptor|
+|**Ob/Ob 小鼠**|缺乏 leptin|有功能性的 leptin receptor|
+|**Db/Db 小鼠**|能分泌 leptin|缺乏 leptin receptor，無法感知 leptin 訊號|
+
+##### Ob/Ob + Wild type
+- Wild type提供leptin → Ob/Ob接收到leptin → Ob/Ob體重減輕
+- 這證明Ob/Ob缺的是leptin本身
+
+##### Db/Db + Wild type
+- Db/Db分泌 leptin，但自己沒有 receptor
+- Wild type 接收到 leptin，其食慾下降、體重減輕。而Db/Db自己仍然肥胖
+- 這證明Db/Db缺的是leptin receptor
+
+##### Ob/Ob + Db/Db
+- Db/Db分泌leptin → Ob/Ob接收到leptin → Ob/Ob體重減輕
+- 然而Db/Db自己仍然肥胖，再次確認Ob缺leptin，Db缺receptor
+
+![image alt](https://cdn.kastatic.org/ka-content-images/a7ee66a12daacfabdd3d6d048699bd627450b37f.png)
+
+#### erythromycin synthesis
+- 紅黴素的前驅物為，由DEBS (6-deoxyerythronolide B synthase) 合成。該系統由三個大型多肽鏈組成: DEBS1、DEBS2、DEBS3
+- 每個多肽鏈上有多個模組 (modules)，每個模組負責一次 "兩碳延長" 延長反應。每個模組上也都有ACP、KS、KR、DH、ER等跟脂肪酸合成酶一膜一樣的亞基
+- 最終產物是6-Deoxyerythronolide B，一種環化的分子
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/benzyoyl_erythromycin_biosynthesis_0508.webp)
+
+### 三酸甘油脂的合成
+- 主要的三縮甘油脂前體就是actl-CoA跟G3P (glycerol-3-phosphate)
+- 起始骨架G3P在肝臟中，透過glycerol kinase，在ATP的幫助下把glycerol磷酸化。而在肝臟中，G3P來自於DHAP的還原，而DHAP來自於糖質新生 
+- 三酸甘油脂分解跟合成形成的循環，又稱為**glycerolipid/free fatty acid cycle (GL/FFA cycle)**
+
+> [!Tip]
+> ##### AMPK 到底在幹嘛
+> - AMPK (AMP-activated protein kinase) 是一個能量感測路徑
+> - 它的核心邏輯就是 **"細胞能量不足 (AMP↑, ATP↓)"**，就要關掉耗能的合成路徑，打開產能的分解路徑
+> - 但是AMPK相對來說是屬於 "省電模式" (不像是cAMP/PKA 是燒錢... 喔不，燒能量派 🤣)，所以簡單來說，暫時不要合成，同時也確保未來有能源可用
+> - 這對比到的，就是在促進脂肪酸氧化的時候，也避免TAG被大量分解釋放fatty acid → **HSL被抑制**
+
+```mermaid
+flowchart BT
+
+subgraph gs [glyceroneogenesis]
+  p([pyruvate]):::substrate
+  p-->|pyruvate carboxylase|OAA([oxaloacetate]):::Glu
+  OAA-->|PEP carboxykinase|PEP([phosphenolpyruvate]):::Glu
+  PEP-->DHAP([DHAP]):::Glu
+  DHAP-->|G3P dehydrogenase|G3P([glycerol-3-phosphate]):::Glu
+end
+   G3P-->|GPAT|LPA([lysophosphatidic acid]):::intermediate
+   
+subgraph Synthesis [合成途徑]
+  LPA-->|AGPAT|PA([phosphatidic acid]):::intermediate
+  PA-->|lipin|DAG2([diacylglycerol]):::intermediate
+  DAG2-->|DGAT|TAG([triacylglycerol]):::product
+end
+
+subgraph Degradation [分解途徑 ]
+  TAG_d([triacylglycerol]):::product
+  TAG_d-->|ATGL|DAG1([diacylglycerol]):::intermediate
+  DAG1-->|HSL|MAG([monoacylglycerol]):::intermediate
+  MAG-.->|MGL|Gly([glycerol]):::product
+  
+  DAG1-.->|釋放|ffa1([fatty acid]):::ffa
+  MAG-.->|釋放|ffa2([fatty acid]):::ffa
+  Gly-.->|釋放|ffa3([fatty acid]):::ffa
+end
+
+  ffa1 -->|+CoA-SH|acoa1(FA-CoA):::activated
+  ffa2 -->|+CoA-SH|acoa2(FA-CoA):::activated
+  ffa3 -->|+CoA-SH|acoa3(FA-CoA):::activated
+  acoa1 -.->|再利用|LPA
+  acoa2 -.->|再利用|PA
+  acoa3 -.->|再利用|TAG
+  Synthesis-.->R[合成的<br>triacylglycerol<br>一部份拿去分解]:::R
+  R-.->Degradation
+
+classDef substrate fill:#fff0b5,stroke:#daa520,stroke-width:2px,color:#000
+classDef intermediate fill:#e0d6ff,stroke:#8e44ad,stroke-width:2px,color:#000
+classDef product fill:#d6f5d6,stroke:#27ae60,stroke-width:2px,color:#000
+classDef ffa fill:#ffb3b3,stroke:#c0392b,stroke-width:2px,color:#000
+classDef activated fill:#a8d8ff,stroke:#2980b9,stroke-width:2px,color:#000
+classDef R fill: #c7c7c7, stroke:#474747, stroke-width:2px, stroke-dasharray: 5 5,color:#000
+classDef Glu fill: #ffb0dd, stroke: #be006c, stroke-width:2px, color:#000
+```
+
+| 步驟 | 中間產物 | 酵素 |
+| --- | --- | --- |
+| 起始 | Glycerol-3-phosphate | glycerol kinase/G3P dehydrogenase |
+| 1st 酯化 | Lysophosphatidic acid (LPA) | GPAT |
+| 2nd 酯化 | Phosphatidic acid (PA) | AGPAT |
+| 去磷酸化 | Diacylglycerol (DAG) | Lipin |
+| 3rd 酯化 | Triacylglycerol (TAG) | DGAT |
+
+### metabolism of glycerophospholipids
+#### short introduction
+- 三酸甘油脂合成的過程中產生的**phosphatidic acid (PA = G3P + 2FA + Pi)**，可以往TAG合成有，或是往磷脂合成走
+##### 真核/原核共通的合成路徑
+- **PA變成CDP-DAG**: 由CTP活化 (...三磷酸胞甘? 🤔)
+  - **CDP-DAG變成phosphatidyl-serine (PS)**: 加上serine，PS脫羧之後會產生**phosphatidyl-ethanolamine (PE)**
+  - **CDP-DAG變成phosphatidyl-glycerol (PG)**: 再加上一個G3P形成。PG聚合後會形成cardiolipin (CL)，可以用於粒線體
+
+##### 真核專屬路線
+- **ethanolamine形成PE**: 需要ATP + CTP活化，再和DAG結合
+- **choline形成PC (phosphatidyl-choline)**: 一樣需要ATP + CTP活化，再和DAG結合
+- **PE形成PC**: 三次甲基化 (S-adenosylmethionine)
+- **DHAP → Ether phospholipids → PI (Phosphatidyl-inositol)**: PI是訊號傳遞的重要磷脂 
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/synthesis_of_glycerophospholipid_0507.png)
+
+| 分子 | 主要位置 | 功能 | 特殊意義 |
+| --- | --- | --- | --- |
+| **Phosphatidyl-choline (PC)** | 細胞膜外層 | 維持膜結構、流動性 | 最常見的膜脂，和膽固醇互動穩定膜 |
+| **Phosphatidyl-ethanolamine (PE)** | 細胞膜內層 | 調整膜曲率、幫助膜融合 | 在囊泡運輸、線粒體膜特別重要 |
+| **Phosphatidyl-serine (PS)** | 細胞膜內層 | 訊號分子、凋亡標記 | 外翻到膜外層時是apoptosis信號 |
+| **Phosphatidyl-inositol (PI)** | 細胞膜 | 訊號傳遞 (PIP2, PIP3) | 調控 GPCR、RTK 等訊號路徑 |
+| **Phosphatidyl-glycerol (PG)** | 粒線體膜 | 形成Cardiolipin | 在能量代謝中扮演中間角色 |
+| **Cardiolipin (CL)** | 粒線體內膜 | 穩定電子傳遞鏈複合體 | 對ATP合成至關重要 |
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/distribution_of_different_phospholipids_in_outer_membrane_0415.png)ru
+
+### steroid metabolism
+-  isoprenoids (又叫 terpenes, 類異戊二烯化合物) 是一類超級大的分子家族，該家族包含膽酸、脂溶性維生素、肝臟合成的多萜醇 (dolichol)、長鏈植物醇、吉貝素 (gibberellins)、有isoprenoid tail的醌類 (包含PQ跟CoQ) 等等都是。也包含主角: 固醇類
+- steroid是屬於飽和的perhydrocyclopentanophenanthrene (全氫環勿並菲，反正就是個飽和四元環 🙂) 的衍伸物，其多個環己烷都是呈現出椅式構象 (忘記的請洽詢有機化學老師，感謝)，所以彈性較低
+- 膽固醇在細胞膜流動上呈現出buffer的效果，**高溫時避免流動太快，低溫時避免流動太慢**
+
+#### 合成路徑介紹
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/mevalonate-pathway-leads-to-cholesterol-synthesis.png)
+
+##### 起始
+- 合成開頭為acetyl-CoA (2C) + acetoacetyl-CoA (4C) ，該步驟可以想像成三個Acetyl-CoA，兩個加在一起形成 6C 的 HMG-CoA
+- HMG-CoA透過HMG-CoA reductase (HMGCR) 形成mevalonate (甲羥戊酸，6C) 需要用到兩個NADPH: 
+
+$$
+\begin{align}
+& \text{acetyl-CoA} + \text{acetoacetyl-CoA}\rightarrow \text{HMG-CoA}\\
+& \text{HMG-CoA} + 2NADPH + 2H^+\xrightarrow[]{\text{HMG-CoA  reductase}} \text{mevalonate} + 2 NADP + \text{CoA-SH}
+\end{align}
+$$
+
+>[!Note]
+> 這一步是速率限制步驟，也是statin藥物的靶點 (這就是個降血脂藥) 👀
+
+##### 活化
+- mevalonate經ATP消耗，形成isopentenyl-PP (IPP，異戊烯基焦磷酸酯) ，PP = pyrophosphate，焦磷酸鹽
+- IPP 跟 dimethylallyl-PP (DMAPP) 這兩個五碳化合物可以互相轉換
+
+$$
+\begin{align}
+& \text{mevalonate} + 3ATP\rightarrow \text{isopentenyl-PP} + 3ADP + P_i + CO_2\\
+& \text{isopentenyl-PP}\leftrightharpoons \text{dimethylallyl-PP}
+\end{align}
+$$
+
+##### 聚合: 5C → 10C → 15C → 30C
+- IPP + DMAPP = GPP (geranyl-PP, 10C)，期間丟掉一個PPi
+- GPP + IPP = FPP (farnesyl-PP, 15C)，期間丟掉一個PPi
+- FPP + FPP = squalene (角鯊烯，30C)
+  - squalene synthase在ER membrane上面
+  - 屬於頭對頭 (head-to-head) 的縮合反應。兩個FPP的 "頭端"(C1) 互相連接，形成一個 30C 的直鏈分子
+  - 需要NADPH作為還原力
+
+$$2\ \text{farnesyl-PP} + NADPH\xrightarrow[]{squalene\ synthase} \text{squalene} + NADP^+  + 2PP_i + H^+$$
+
+##### 環化
+- squalene先透過位於ER membrane上的squalene epoxidase產生環氧化物squalene-2,3-epoxide，該反應需要氧氣跟NADPH: 
+
+$$\text{squalene} + O_2+ NADPH + H^+\xrightarrow[]{squalene\ epoxidase} \text{squalene-2,3-epoxide} + H_2O + NADP^+$$
+
+- 接下來透過oxidosqualene cyclase (OSC) 環化: 
+  - 先讓epoxide開環 (斷鍵產生的電子會跑到酵素上面去)，這會形成碳陽離子 (carbocation)
+  - 這個正電荷沿著碳鏈滾動 (cascade)，觸發一連串的環化反應
+  - 最後折疊成四環骨架，也就是所謂的lanosterol
+  - 之後再透過去甲基化、還原、雙鍵移動等等，將lanosterol變成膽固醇 (cholesterol)
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/squalene_to_cholesterol_0507.png)
+
+- 膽固醇透過其他酵素的修飾，可以產生各種不同的類固醇激素
+
+![image alt](https://cdn.lecturio.com/assets/Overview-of-the-steroidogenesis-pathways-1-1536x1359.png)
+
+### terpenoid
+- terpenes代表純粹由isoprene ( $C_5H_8$ ) 單元組合而成的碳氫化合物，而terpenoid (類萜) 代表在terpenes的基礎下做修飾後的化合物
+
+> [!Tip]
+> terpenoid = terpene + 功能化修飾 🐱
+
+- 例子包含薄荷醇 (menthol) 、視黃醛 (retinal)、泛醌 (ubiquinone)、質體醌 (plastoquinone)、茄紅素 (lycopene)、吉貝素 (gibberellic acid) 等等
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/terpenoids.webp)
+
+## metabolism of nitrogenous compounds
+### 氮循環的利用
+- 所有生物都能將氨 ( $NH_3$ ) 變成有機氮化合物 (有 $C_N$ 鍵的物質)，但是不是所有生物都能將氮氣變成氨
+- 多數生物固氮 ( $N_2\rightarrow NH_3$ ) 屬於異常超能力，只有固氮細菌做得到。多數細菌跟微生物最多能做的其實是 $NO_3^- \rightarrow NH_3$ 反應
+- 氮循環就是氮跑到生物圈裡面跟跑到生物圈外面的過程，兩者保持平衡，通常: 
+  -  無機氮變成有機氮: 固氮作用、硝酸鹽還原
+  -  有機氮變成無機氮: 腐爛跟反硝化作用 (denitrification)
+
+```mermaid
+flowchart LR
+N2([N₂，氮氣<br>nitrogen])-->|固氮菌，如<br>根瘤菌、藍綠菌|NH3([NH₃，氨<br>ammonia])
+NH3-->|反硝化細菌|N2
+
+NH3-->|亞硝化單胞菌<br>Nitrosomonas|NO2([NO₂⁻，亞硝酸鹽<br>nitrite])
+NO2-->|多數植物<br>和細菌|NH3
+NO2-->|硝化桿菌<br>Nitrobacter|NO3([NO₃⁻，硝酸鹽<br>nitrate])
+NO3-->|多數植物<br>和細菌|NO2
+
+NH3-->|生物用來合成|syn[胺基酸、核甘酸、<br>胺基糖、輔酶等]
+syn-->|代謝廢物|NH3
+
+syn-->|生物用來合成|product[蛋白質、DNA、RNA、<br>多糖修飾、磷脂質等]
+product-->|大分子代謝|syn
+
+NH3-.->|透過|anammox(anammox<br>厭氧氨氧化)
+NO2-.->|透過|anammox
+anammox-.->|變回|N2
+```
+
+> [!Note]
+> **annomox反應:**  $NH_4^+ + NO_2^-\rightarrow N_2 + 2H_2O$ 🐱
+
+### 固氮作用
+- 氮氣有三鍵，鍵能很高 (940 kJ/mol)，所以難以還原。在工業上，是利用Haber-Bosch process來形成氨: 
+
+$$N_2 + 3H_2 \xrightarrow[450^\circ C,\ 270\ atm]{catalyst}2NH_3$$
+
+- 從形式上來看，光合作用的二氧化碳鍵能也很高，所以固氮其實也是一樣的，甚至酵素上面也對氧氣非常敏感 (還記得RuBisCo嗎? 😏)，固氮的酵素需要在無氧狀態下才能有效進行
+- 因此一些固氮菌會透過形成一個厭氧環境，專門用來固氮 (如藍綠菌的**heterocyst**)
+- 固氮作用是個非常耗能的過程...
+
+$$N_2 + 8H^+ + 16\ MgATP + 8e^- \rightarrow 2NH_3 + H_2 + 16\ MgADP + 16P_i$$
+
+- 由固氮酶 (nitrogenase) 催化，最常見的且研究最廣泛的就是鉬依賴性的固氮酶，molybdenum (Mo)-dependent enzyme
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/Nostoc_heterocysts.jpg)
+
+#### 根瘤菌跟豆科植物
+- leghemoglobin (根瘤血紅蛋白) 作為在根瘤中運送氧氣的角色，和肌紅蛋白 (myoglobin) 在肌肉裡的功能有點類似
+- leghemoglobin可以像血紅蛋白一樣能抓住氧氣，避免自由擴散，同時將氧氣有效率地拿去做ATP合成時需要地電子接收，既保護固氮酶，又讓呼吸作用能進行
+
+#### 固氮酶的機制
+- 通常固氮酶複合體分為兩個部分: 鐵蛋白跟鉬鐵蛋白
+
+##### Fe protein cycle
+- 鐵蛋白含有一個鐵硫簇 [4Fe-4S] ，可以接收電子 (這些電子可能來自於鐵氧還蛋白或是黃素依賴蛋白)
+- 整個蛋白屬於一個同源二聚體 (hemodimer)，由兩個 $\alpha$ subunits組成
+- 該蛋白通常上頭也結合ATP或是ADP 
+  - 氧化的鐵蛋白接收電子，鐵蛋白還原
+  - 鐵蛋白丟電子，ATP水解成ADP，促進電子丟給鉬鐵蛋白的P cluster
+  - 氧化鐵蛋白的ADP替換成ATP
+  - 如此循環...
+
+> [!Tip]
+> 傳一顆電子，水解一個ATP 🐱
+
+##### MoFe protein cycle
+- 鉬鐵蛋含有P cluster (也是鐵硫簇)，以及一個負責還原氮氣的反應中心: FeMo-cofactor (也被稱為cofactor of component I)
+- 整個蛋白屬於一個異源四聚體 (heterotetramer)，由兩個 $\alpha$ subunits 以及兩個 $\beta$ subunits 組成
+  - FeMo-co由1個鉬，7個鐵，9個硫，1個碳 (此為中心碳原子)，以及一個同檸檬酸 (homocitrate)，與Mo配位
+  - 由P cluster將電子傳給FeMo-co
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/FeMo-co_0507.png)
+
+- 該蛋白質一共有八種氧化態 ( $E_0$ ~ $E_8$ )，因此一個cycle，就是一次逐步接收8顆電子的過程
+- 打斷 N≡N 三鍵需要大量能量，FeMo-co 的多金屬簇提供了 "電子緩衝池" 來完成這件事
+- 當電子接收到一個狀態後，就能促進 $N_2$ 的還原
+- $N_2$ 進入FeMo-cofactor的活性位點後，依序接收電子跟質子，最終生成氨氣，並釋放副產物 $H_2$
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/nitrogenase-system.webp)
+
+### 硝酸鹽跟亞硝酸鹽的的還原
+-  幾乎所有植物、真菌跟細菌都有還原硝酸鹽，形成氨的能力
+#### nitrate reductase
+- 將硝酸鹽變成亞硝酸鹽，該反應由nitrate reductase催化
+- 該酵素在不同生物上都不太一樣，真核生物的nitrate reductase包含FAD輔因子、鉬、以及細胞色素 $b_5$ 
+- molybdopterin (鉬蝶呤) 是一種特殊的cofactor，含有pterin骨架，帶有硫醇基團
+- 基本上，除了固氮酶，其他酵素的鉬固定方式都是透過這種輔因子。很多鉬酵素 (如硝酸還原酶、亞硫酸鹽氧化酶) 都需要 molybdopterin
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/molybdopterin.webp)
+
+- 反應如下: 
+
+$$NO_3^- + NADH + H^+ \rightarrow NO_2^- + NAD^+ + H_2O$$
+
+> [!Tip]
+> 該還原反應的電子來自於**NADH or NADPH**，真菌的nitrate reductase使用的多數為NADPH 🐱
+
+#### nitrite reductase
+- 該反應需要六個電子的參與，將亞硝酸鹽變成氨，由nitrite reductase催化，酵素裡面也有輔因子molybdopterin
+- 除此之外，它也包含鐵硫簇，和特殊的血紅素衍生物: siroheme
+
+$$NO_2^-\rightarrow NO^-\rightarrow NH_2OH\rightarrow NH_3$$
+
+<div style="display: flex; gap: 20px">
+    <img src="https://raw.githubusercontent.com/Jacklyn301/image_bank/main/Siroheme.png" style="width: 80%; margin-right: 10%; margin-left: 10%;">
+</div>
+
+> [!Tip]
+> 該還原反應的電子來自於**ferredoxin** 🐱
+
+### 氨的利用方式
+> 由於這個是上一次考試的內容，這次也要考，所以我就快速帶過... 詳情請洽詢[biochemistry_1st midterm](https://hackmd.io/Nu-hPqjPSvOZo78JoJfoUA) 或是自己在[生化筆記repo](https://github.com/Jacklyn301/biochem_note_1142)裡面找，謝謝 🙂
+
+#### 固氮化合物的最終結局
+```mermaid
+flowchart LR
+    ammonia{ammonia<br>NH3，氨}:::ammonia
+
+    ammonia-->|加上|akg(α-ketoglutarate<br>α-酮戊二酸):::carbon
+    ammonia-->|加上|glu1(glutamate<br>麩胺酸):::glutamate
+    ammonia-->|加上|asp(aspartate<br>天門冬氨酸):::aspartate
+    ammonia-->|加上|co2(CO2, ATP):::cofactor
+
+    akg-.->|Glutamate<br>dehydrogenase|glu2(glutamate<br>麩胺酸):::glutamate
+    glu1-.->|Glutamine<br>synthetase|gln(glutamine<br>麩醯氨酸):::glutamine
+    asp-.->|Asparagine<br>synthetase|asn(asparagine<br>天門冬醯胺):::asparagine
+    co2-.->|Carbamoyl<br>phosphate<br>synthetase|cp(Carbamoyl phosphate<br>氨基甲醯磷酸):::carbamoyl
+
+    gln-.->|Glutamate<br>synthase|glu2
+    akg-.->|Glutamate<br>synthase|glu2
+
+    classDef ammonia fill:#ff4dad,stroke:#333,stroke-width:2px,color:#fff
+    classDef carbon fill:#4aa5c2,stroke:#333,stroke-width:2px,color:#fff
+    classDef glutamate fill:#4aa5c2,stroke:#333,stroke-width:2px,color:#fff
+    classDef glutamine fill:#c6ff93,stroke:#333,stroke-width:2px,color:#000
+    classDef aspartate fill:#FFB347,stroke:#333,stroke-width:2px,color:#000
+    classDef asparagine fill:#F39C12,stroke:#333,stroke-width:2px,color:#000
+    classDef carbamoyl fill:#9B59B6,stroke:#333,stroke-width:2px,color:#fff
+    classDef cofactor fill:#ffef64,stroke:#333,stroke-width:2px,color:#000
+```
+
+#### glutamate dehydrogenase, GDH
+
+$$\alpha -ketoglutarate + NH_3 + NADH + 2H^2\rightleftharpoons glutamate + H_2O + NAD^+$$
+
+> [!Tip]
+> 在細菌身上，該酵素負責產生谷氨酸；在動物身上，該酵素透過逆反應補足 $\alpha$ -ketoglutarate
+
+#### glutamate synthase, GOGAT (不用ATP)
+
+$$\alpha -ketoglutarate + glutamine + \text{還原劑}\rightarrow 2\ glutamate + \text{氧化過後的還原劑}$$
+
+#### glutamine synthetase, GS (需要ATP)
+
+$$glutamate\xrightarrow[]{+ATP} \gamma- glutamyl\ phosphate + ADP\xrightarrow[]{+NH_3}glutamine + P_i$$
+
+#### $NH_4^+$ 水平高時: GDH + GS
+
+$$
+\begin{align}
+NH_3 + \alpha -ketoglutarate + NADH & \xrightarrow[]{GDH} glutamate + NAD^+ + H_2O\\
+NH_3 + glutamate + ATP & \xrightarrow[]{GS} glutamine + ADP + P_i\\
+\Rightarrow\quad 2NH_3 + \alpha -ketoglutarate + NADH + ATP & \rightarrow glutamine + ADP + P_i + NAD^+ + H_2O
+\end{align}
+$$
+
+> [!Tip]
+> 使用能量較少，**處理兩分子氨僅需要1個ATP** 🐱
+
+#### $NH_4^+$ 水平低時: GS + GOGAT
+
+$$
+\begin{align}
+2NH_3 + 2\ glutamate + 2ATP & \xrightarrow[]{GS} 2\ glutamine + 2ADP + 2P_i\\
+\alpha -ketoglutarate + glutamine + \text{還原劑} & \xrightarrow[]{GOGAT} 2\ glutamate + \text{氧化過後的還原劑}\\
+\Rightarrow 2NH_3 + \alpha -ketoglutarate + \text{還原劑} + 2ATP & \rightarrow glutamine + 2ADP + 2P_i + \text{氧化過後的還原劑}
+\end{align}
+$$
+
+> [!Tip]
+> 使用能量較多，**處理兩分子氨需要2個ATP** 🐱
+
+#### 備註: GS的共價修飾
+##### adenylation
+- GS的調控方式被稱為腺苷酸化 (adenylation)
+  - 沒黏 AMP (deadenylated)，活性最強。🔥
+  - 黏了 AMP (adenylated)，活性被抑制。❄️
+
+> [!Note]
+> 通常會腺苷酸化GS的酪胺酸殘基 (AMP的磷酸基直接接在酪胺酸的苯環上面)，導致其對於異位調節的抑制劑更加 "敏感" 🐱
+ 
+- adenyltransferase (AT) 控制腺苷酸化。 $P_{II}$ 控制AT
+  -  $P_{II}$ 被尿苷酸化 (變成 $P_{II}-UMP$ )，它會叫AT把GS上的AMP拔掉 → **GS活化**
+  - 如果 $P_{II}$ 沒有 UMP，它會叫AT把AMP黏到GS上 → **GS 失活**
+
+> [!Note]
+> 尿甘酸磷酸基一樣是接在 $P_{II}$ 的酪胺酸殘基上面，接法跟腺苷酸化一模一樣 🐱
+
+- 尿苷轉移酶 (uridylyltransferase (UT)/uridylyl-removing enzyme (UR)，UT/UR，屬於**雙功能酵素**) 負責管 $P_{II}$ :
+  - **活化GS**： 當細胞內 $\alpha$ -ketoglutarate 很多 (代表需要處理氮源)，會刺激UT/UR的**UT活性**，把UMP裝到 $P_{II}$ 上
+  - **抑制GS**： 當glutamine太多 (產物過剩)，會刺激UT/UR的**UR活性**，把 $P_{II}$ 上的UMP拔掉
+
+```mermaid
+flowchart LR
+    akgi((α-ketoglutarate<br>濃度上升)):::signal_up
+    akgi-->|導致|UTa(UT/UR 的 UT 活化):::enzyme
+    UTa-->pUMP(UMP 加到 PII 上):::modification
+    pUMP-->AT_PII_UMP(PII-UMP被接到 AT 上面):::complex
+    AT_PII_UMP-->deade(去腺苷酸化 GS):::reaction
+    deade-->GSa(GS 活化):::gs_active
+    GSa-->R1{促進 glutamate<br>變成 glutamine}:::result
+
+    Glni((glutamine<br>濃度上升)):::signal_down
+    Glni-->|導致|URa(UT/UR 的 UR 活化):::enzyme
+    URa-->nUMP(拔掉 PII-UMP 的 UMP):::modification
+    nUMP-->AT_PII(PII 被接到 AT 上面):::complex
+    AT_PII-->ade(GS 被腺苷酸化):::reaction
+    ade-->GSi(GS 活性被抑制):::gs_inactive
+    GSi-->R2{glutamine<br>產量減少}:::result
+
+    classDef signal_up fill:#94ff66,stroke:#333,stroke-width:2px,color:#000
+    classDef signal_down fill:#fb33ae,stroke:#333,stroke-width:2px,color:#fff
+    classDef enzyme fill:#9B59B6,stroke:#333,stroke-width:2px,color:#fff
+    classDef modification fill:#0040d6,stroke:#333,stroke-width:2px,color:#fff
+    classDef complex fill:#5DADE2,stroke:#333,stroke-width:2px,color:#fff
+    classDef reaction fill:#8E44AD,stroke:#333,stroke-width:2px,color:#fff
+    classDef gs_active fill:#94ff9e,stroke:#333,stroke-width:2.5px,color:#000
+    classDef gs_inactive fill:#ff5386,stroke:#333,stroke-width:2.5px,color:#fff
+    classDef result fill:#F39C12,stroke:#333,stroke-width:2px,color:#000
+```
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/regulation_of_the_activity_of_GS.png)
+
+#### 轉氨作用
+- 一個 $\alpha$ -amino acid，就會配對上一個 $\alpha$ -keto acid。這種反應由轉氨酶transaminases (又被稱為aminotransferases) 催化
+- 多數轉氨酶用的一對一物質為glutamate/ $\alpha$ -ketoglutarate
+
+$$glutamate + \alpha -keto\ acid\rightleftharpoons \alpha -ketoglutarate + \alpha -amino\ acid$$
+
+|人體的必需胺基酸|人體的非必需胺基酸|
+|-------------|---------------|
+|Arg (僅能少量合成), His, Ile, Leu, Lys, Met (僅能少量合成), Phe, Thr, Trp, Val|Ala, Asn, Asp, Cys, Glu, Gln, Gly, Pro, Ser, Tyr|
+
+#### 胺基酸骨架去處
+
+| 類別 | 代表胺基酸 |
+| --- | --- |
+| **生糖** | Ala, Gly, Ser, Cys, Thr, Gln, Glu, Pro, Arg, His, Met, Val, Asp, Asn |
+| **生酮** | Leu, Lys, Thr |
+| **都有** | Ile, Phe, Tyr, Trp, Thr |
+
+<div style="display: flex; gap: 20px">
+    <img src="https://raw.githubusercontent.com/Jacklyn301/image_bank/main/fates_of_the_amino_acid_carbon_skeletons_0327.png" style="width: 80%; margin-right: 10%; margin-left: 10%;">
+</div>
+
+### 胺基酸的合成
+
+```mermaid
+flowchart TB
+
+G{glucose}:::core
+G-->|HK|G6P([glucose-6-P]):::core
+G6P-->|一系列步驟|3PG([3-phosphoglycerate]):::core
+3PG-->PEP([phosphoenol pyruvate]):::core
+PEP-->Pyr(pyruvate):::core
+Pyr-->|PDC|acoa([acetyl-CoA]):::core
+acoa-->|進入 TCA cycle|cit([citrate]):::core
+cit-->|一系列步驟|akg([α-ketoglutarate]):::core
+akg-->|一系列步驟|mal([malate]):::core
+mal-->|malate dehydrogenase|OAA([oxaloacetate]):::core
+OAA-->|循環|cit
+
+G6P-.->R5P([ribose 5-phosphate<br>核糖-5-磷酸]):::branch1
+R5P-.->|形成|H(histidine):::branch1
+
+3PG-.->E4P([erythrose 4-phosphate<br>赤藻糖-4-磷酸]):::branch2
+E4P-.->|形成|WFY(tryptophan<br>tyrosine<br>phenylalanine):::aa_aromatic
+PEP-.->|形成|WFY
+
+3PG-.->|形成|S(serine):::branch3
+S-.->|形成|GC(glycine<br>cysteine):::aa_sc
+
+Pyr-.->|形成|AVIL(alanine<br>valine<br>isoleucine<br>leucine):::aa_bc
+
+akg-.->|轉氨作用|E(glutamate):::branch5
+E-.->QPR(glutamine<br>proline<br>arginine):::aa_qpr
+
+OAA-.->|轉氨作用|D(aspartate):::branch6
+D-.->N(asparagine):::aa_n
+D-.->MTK(methionine<br>threonine<br>lysine):::aa_mtk
+
+classDef core fill:#a8d8ff,stroke:#2471a3,stroke-width:2px,color:#000
+classDef branch1 fill:#ffb0dd,stroke:#970357,stroke-width:1.5px,color:#000
+classDef branch2 fill:#fdebd0,stroke:#e67e22,stroke-width:1.5px,color:#000
+classDef branch3 fill:#fcf3cf,stroke:#f1c40f,stroke-width:1.5px,color:#000
+classDef branch4 fill:#e8daef,stroke:#8e44ad,stroke-width:1.5px,color:#000
+classDef branch5 fill:#d4efdf,stroke:#27ae60,stroke-width:1.5px,color:#000
+classDef branch6 fill:#fadbd8,stroke:#e74c3c,stroke-width:1.5px,color:#000
+classDef aa_aromatic fill:#fdebd0,stroke:#e67e22,stroke-width:2px,color:#000
+classDef aa_sc fill:#fcf3cf,stroke:#f1c40f,stroke-width:2px,color:#000
+classDef aa_bc fill:#e8daef,stroke:#8e44ad,stroke-width:2px,color:#000
+classDef aa_qpr fill:#d4efdf,stroke:#27ae60,stroke-width:2px,color:#000
+classDef aa_n fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#000
+classDef aa_mtk fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#000
+```
+
+#### Gln, Glu, Asp, Asn, Ala的合成
+- **PLP-dependent transamination**指透過吡哆醛磷酸 (**PLP, pyridoxal phosphate**) 作為輔酶，催化胺基酸和 $\alpha$ -keto acid 之間胺基轉移的反應
+- PLP屬於維生素 $B_6$ 的衍伸物，胺基可以從其中一個 $\alpha$ -amino acid轉移至PLP上面，形成PMP
+- 然後PMP再把氨基傳給 $\alpha$ -amino acid，形成新的氨基酸
+  - alanine的底物是pyruvate
+  - Glu、Gln的底物為 $\alpha$ -ketoglutarate
+  - Asp、Asn的底物為oxaloacetate
+
+#### 從aspartate生成Met, Thr, Lys
+- aspartate通常再動物身上除了用於arginine跟urea的生成，也會用來合成胞嘧啶
+- 然而，在植物跟細菌中，aspartate還可以用來生成三個胺基酸，這個轉換通常會利用到ATP以及NADPH
+  - 該反應主要由aspartate kinase催化，該酵素會透過水解ATP在aspartate的R group $COO^-$ 基團上面加入磷酸基，形成aspartyl- $\beta$ -phosphate
+  - 之後該 $COO^-$ 變成醛基，形成aspartate- $\beta$ -semialdehyde (...半醛? 🙂)，該產物可以進一步形成lysine
+  - 第三步由homoserine dehydrogenase催化，形成homoserine (...阿這產物是跟serine有啥不一樣? 🤣) ，之後進一步變成methionine跟threonine
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/synthesis_of_Met_Thr_and_Lys_from_Asp_0507.png)
+
+#### 芳香族類胺基酸的合成
+- shikimic acid pathwa (莽草酸途徑) 完成芳香族氨基酸的合成。這條路徑只存在於 植物、真菌、細菌，而動物沒有，所以我們必須從飲食中獲得這些胺基酸
+
+##### 糖代謝產物的起頭
+- 由PEP跟erythrose-4-phosphate 赤藻糖-4-磷酸) 結合，進入途徑，這兩個東西其實是糖解作用與磷酸戊糖途徑 (PPP) 的中間產物
+
+> [!Note]
+> ##### 這裡我們來小小澄清一下
+> - 我知道大家沒學過PPP，這裡有張圖給大家分析，其第一步為氧化階段，第二步為非氧化階段，如下: 
+> 
+> |階段|反應|主要產物|意義|
+> |---|---|---|---|
+> |氧化階段 (不可逆)|G6P → Ru5P + 二氧化碳 |	**2 NADPH + Ru5P**| 提供還原力 (NADPH) 與五碳糖前驅物|
+> |非氧化階段 (可逆)|Ru5P ↔ 各種糖磷酸酯|R5P、F6P、GAP、E4P|碳骨架重排，連接糖解作用|
+
+```mermaid
+flowchart TB
+
+subgraph Oxidative [🟢 氧化階段<br>Oxidative Phase<br>產生 NADPH + 核酮糖-5-P]
+  G6P([glucose-6-phosphate<br>葡萄糖-6-磷酸]):::sub
+  G6P-->|G6PD<br>glucose-6-phosphate<br>dehydrogenase|PGL([6-phosphogluconolactone<br>6-磷酸葡萄糖酸內酯]):::int
+  PGL-->|lactonase|PG([6-phosphogluconate<br>6-磷酸葡萄糖酸]):::int
+  PG-->|6PGD<br>6-phosphogluconate<br>dehydrogenase|Ru5P([ribulose-5-phosphate<br>核酮糖-5-磷酸]):::int
+  
+  G6P-.->|產生|NADPH1((NADPH)):::nergy
+  PG-.->|產生|NADPH2((NADPH)):::nergy
+  PG-.->|釋放|CO2((CO₂)):::co2
+end
+
+  Ru5P==>|進一步反應|Ru5P_rib
+  Ru5P==>|進一步反應|Ru5P_xyl
+subgraph NonOxidative [🔵 非氧化階段<br>Non-oxidative Phase<br>碳骨架重排，可逆]
+  Ru5P_rib([ribulose-5-phosphate<br>核酮糖-5-磷酸]):::int
+  Ru5P_xyl([ribulose-5-phosphate<br>核酮糖-5-磷酸]):::int
+  
+  Ru5P_rib-->|ribose-5-phosphate<br>isomerase|R5P([ribose-5-phosphate<br>核糖-5-磷酸]):::r5p
+  R5P-->|用於|nucleotide([核苷酸 & 核酸合成]):::use
+  
+  Ru5P_xyl-->|ribulose-5-phosphate<br>epimerase|Xu5P([xylulose-5-phosphate<br>木酮糖-5-磷酸]):::int
+  
+  Xu5P-->|transketolase|GAP([glyceraldehyde-3<br>phosphate<br>甘油醛-3-磷酸]):::gly
+  
+  R5P-->|transketolase|S7P([sedoheptulose-7<br>phosphate<br>景天庚酮糖-7-磷酸]):::int
+  Xu5P-->|transketolase|S7P
+  
+  S7P-->|transaldolase|E4P([erythrose-4-phosphate<br>赤藻糖-4-磷酸]):::int
+  S7P-->|transaldolase|F6P([fructose-6-phosphate<br>果糖-6-磷酸]):::gly
+  
+  E4P-->|transketolase|F6P2([fructose-6-phosphate<br>果糖-6-磷酸]):::gly
+  
+  
+  E4P-->|用於|aromatic([芳香族胺基酸<br>Phe, Tyr, Trp]):::use
+end
+
+  GAP-->|可進入|glycolysis([糖解作用<br>Glycolysis]):::gly_path
+  F6P-->|可進入|glycolysis
+  F6P2-->|可進入|glycolysis
+  
+  NADPH1-->|用於|antioxidant([抗氧化<br>還原性生合成]):::role
+  NADPH2-->|用於|antioxidant
+
+classDef sub fill:#fff0b5,stroke:#d4ac0d,stroke-width:2px,color:#000
+classDef int fill:#d6eaff,stroke:#2471a3,stroke-width:1.5px,color:#000
+classDef r5p fill:#fcf3cf,stroke:#f1c40f,stroke-width:2px,color:#000
+classDef gly fill:#e0d6ff,stroke:#8e44ad,stroke-width:1.5px,color:#000
+classDef nergy fill:#9bebb5,stroke:#27ae60,stroke-width:2px,color:#000
+classDef co2 fill:#f5b7b1,stroke:#c0392b,stroke-width:2px,color:#000
+classDef use fill:#fadbd8,stroke:#e74c3c,stroke-width:1.5px,color:#000
+classDef antioxidant fill:#aed6f1,stroke:#2e86c1,stroke-width:2px,color:#000
+classDef role fill:#d5f5e3,stroke:#1e8449,stroke-width:2px,color:#000
+classDef gly_path fill:#d2b4de,stroke:#6c3483,stroke-width:2px,color:#000
+```
+- 這兩個物質經過一系列酵素反應，生成shikimate，屬於這條路徑的 "中心中間體"
+- shikimate經過磷酸化、氧化，期間再與PEP結合，還水解了ADP，形成chorismate，後續可以走向不同芳香族胺基酸
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/shikimic_acid_pathway_0507.png)
+
+> [!Tip]
+> - EPSP synthase (5-enolpyruvylshikimate-3-phosphate synthase) 作用於上圖第六步驟 (對就是S3P + PEP + ATP = EPSP 那一步) 
+> - 它是除草劑glyphosate (草甘膦) 的作用靶點，一旦被抑制，植物無法合成芳香族胺基酸 → 生長停滯 → 最終死亡 😵
+
