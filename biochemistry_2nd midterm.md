@@ -1515,7 +1515,7 @@ classDef Glu fill: #ffb0dd, stroke: #be006c, stroke-width:2px, color:#000
 | **Phosphatidyl-glycerol (PG)** | 粒線體膜 | 形成Cardiolipin | 在能量代謝中扮演中間角色 |
 | **Cardiolipin (CL)** | 粒線體內膜 | 穩定電子傳遞鏈複合體 | 對ATP合成至關重要 |
 
-![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/distribution_of_different_phospholipids_in_outer_membrane_0415.png)ru
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/distribution_of_different_phospholipids_in_outer_membrane_0415.png)
 
 ### steroid metabolism
 -  isoprenoids (又叫 terpenes, 類異戊二烯化合物) 是一類超級大的分子家族，該家族包含膽酸、脂溶性維生素、肝臟合成的多萜醇 (dolichol)、長鏈植物醇、吉貝素 (gibberellins)、有isoprenoid tail的醌類 (包含PQ跟CoQ) 等等都是。也包含主角: 固醇類
