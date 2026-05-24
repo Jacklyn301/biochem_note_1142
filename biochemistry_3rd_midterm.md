@@ -3,17 +3,6 @@ title: biochemistry_3rd_midterm
 
 ---
 
-<style>
-    .markdown-body {
-        max-width: 1000px !important;
-        margin: 0 auto;
-    }
-    .markdown-body p img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>
 # biochem 3rd midterm
 ### before we start the class...
 #### what is metabolism?
