@@ -3,7 +3,7 @@ title: biochemistry_1st midterm
 
 ---
 
-# biochemistry 2nd midterm
+# biochemistry 1st midterm
 ## Carbs metabolism
 ### glycolysis 簡介
 - 糖解作用一共有10個步驟，一分子葡萄糖變成2個pyruvates，並產生2個ATP
