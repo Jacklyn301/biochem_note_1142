@@ -545,7 +545,415 @@ RNA-->|轉譯成|P(蛋白質)
 |**逆轉錄病毒**|基因組合成方式:ssRNA → dsDNA → ssRNA，mRNA轉錄方式:ssRNA → dsDNA → mRNA|
 |**反轉錄DNA病毒**|基因組合成方式:dsDNA → ssRNA → dsDNA，mRNA合成方式:dsDNA → mRNA|
 
+---
 
+## ch27
+### enzymology of RNA synthesis
+- 科學家可以透過 "重新組裝酵素" 來決定各個次單元的功能
+
+#### 什麼是 Reconstitution？
+- 假設你有一台電腦。把CPU，RAM，顯示卡，SSD全部拆開。然後一個一個裝回去，看看少了哪個零件電腦就不能做什麼。分子生物學家也幹一樣的事。🌚
+- 以細菌的 RNA polymerase 為例，其核心酵素 (core enzyme) 為 $\alpha_2 \beta \beta' \omega$ ，加上 $\sigma$ factor，變成 $\alpha_2 \beta \beta' \omega \sigma$ ，就變成 holoenzyme
+- 他們發現core enzyme可以合成 RNA。但是找不到正確 promoter。加入 $\sigma$ factor突然就能找到 promoter。
+- Reconstitution = 拆開再裝回去，觀察少了什麼功能。這是研究大型蛋白質複合體最經典的方法之一。
+
+#### RNA vs DNA pol
+- RNA polymerase 它跟 DNA polymerase 完全不一樣。DNA polymerase只能延長已有的鏈，不能自己開始，因此需要 primer。
+- RNA polymerase 能直接開始，它可以直接抓兩個 NTP (例如ATP、GTP)，然後自己形成第一個 phosphodiester bond
+- 所以他又叫做**de novo initiation**
+- 總結: 
+   - RNA polymerase 是多個 subunit 組成的機器
+   - 透過 reconstitution 可以知道每個 subunit 在幹嘛
+   - $\sigma$ factor 負責找 promoter
+   - 找到 promoter 後，RNA polymerase 不需要 primer
+   - 它直接用 NTP 自己建立第一個 phosphodiester bond
+   - transcription 是 **de novo initiation**。
+ 
+> [!Tip]
+> - DNA polymerase：我需要 primer。
+> - RNA polymerase：不用，我自己來。
+> - DNA polymerase：那你借我一段 RNA primer。🥺
+> - RNA polymerase：你他媽在跟我借我自己做的東西？🤣
+
+#### promoter recognition for initiation
+- RNA pol的core enzyme這套機器不太會認 promoter，所以必須配不同 sigma factor
+
+| $\sigma$ factor | function | 作用於 |
+|---|---|---|
+| $\sigma^{70}$ |• glycolysis<br>• DNA replication<br>• ribosome proteins<br>• tRNA<br>• 基本代謝|housekeeping gene，細菌今天沒有要搞事，只是想活著。|
+| $\sigma^H$ |開啟DnaK、DnaJ、GroEL、GroES等等chaperone|環境溫度變高時<br>(╯°□°）╯︵ ┻━┻|
+| $\sigma^F$ |負責鞭毛相關基因。例如flagellin|製造鞭毛|
+| $\sigma^S$ |開啟stress resistance、starvation genes、survival pathways|細菌快要餓死的時候用|
+| $\sigma^N$ |啟動氮代謝、氮固定、氮吸收相關基因，需要額外 activator| $NH_4^+$ 不足，氮含量低 |
+
+#### consesus sequences
+- 在 E. coli 中，RNA polymerase holoenzyme 要辨認 promoter，最重要的就是 -35 區域 (TTGACA) 和 -10 區域 (TATAAT，也叫 Pribnow box)
+- 這些序列在不同基因的 promoter 中會有些微差異，但這些序列有些地方相似，這被稱為 consensus sequence
+- 各種不同的基因 promoter 雖然都遵循 "-35/-10 + spacer" 的基本架構，但細微差異會影響: 
+  - 結合強度 (強 promoter vs 弱 promoter)
+  - 調控方式 (是否容易被阻遏蛋白或活化蛋白影響)
+
+> [!Note]
+> - 轉錄起始點以 +1 命名，而轉錄前的啟動子之類的就是以負號為主
+> - 中間的spacer長度大概就是 "16~18 bp"，因為 $\sigma$ 亞基的結構需要辨識-10 region跟-35 region
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/consensus_sequence_in_E.coli_0530.png)
+
+### initiation
+#### RNA polymerase如何逃離promoter
+
+```text
+1. 找 promoter
+2. 黏上 promoter
+3. 打開 DNA
+4. 開始合成 RNA
+5. 長到約 8~10 nt
+6. σ 離開
+7. 進入 elongation
+```
+
+
+- Core enzyme + $\sigma$ 一開始其實不是直接降落在 promoter。而是先隨便黏、沿著DNA滑行，然後找到 promoter (有點像警察在街上巡邏)
+- 當RNA polymerase 已經找到 promoter。但是DNA還沒打開，仍然是雙股。
+- $\sigma$ factor 幫忙定位後，RNA polymerase 自己把 promoter 附近撬開，形成 **transcription bubble**。這時候模板股暴露出來，RNA 才能開始合成。
+
+> [!Important] 
+> ##### 為什麼 -10 region 富含 A/T？
+> - A-T中間是，2 hydrogen bonds，AT-rich 比較容易被撬開。所以該區域為TATAAT，就是給 RNA polymerase 留的拉鍊開口。🌚
+
+- 轉錄開始時，RNA 第一個 nucleotide 常常是ATP或是GTP，RNA的5' 保留pppA或是pppG，因為它是 de novo synthesis，沒有 primer。
+
+> [!Important]
+> ##### Most initiations are abortive
+> - RNA polymerase 剛開始其實超廢。它常常：
+> ```text
+> 做2個核苷酸
+> ↓
+> 失敗 🧐
+>
+> 做4個核苷酸
+> ↓
+> 失敗 🙂
+>
+> 做7個核苷酸
+> ↓
+> 失敗 💀
+> ```
+> - RNA常常做一半就掉出去，重新開始，這叫做**abortive initiation**，產生小 RNA。
+
+- 當做到 8~10 nt的時候，這時候 RNA polymerase開始離開 promoter，開始進入穩定 elongation
+- 延長之後， $\sigma$ 通常脫離RNA polymerase
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/transcription_initiation_in_E.coli_0530.png)
+
+#### 反映催化
+- RNA的延長反應中: 
+
+$$RNA(n) + NTP\rightarrow RNA(n+1)+ PP_i$$
+
+- 本質就是形成 phosphodiester bond，需要一些輔因子的幫助，例如 $Mg^{2+}$
+- 只要形成磷酸二酯鍵，無論是對DNA pol還是RMA pol都需要 $Mg^{2+}$
+- 酵素下有一個 "funnel" 或是孔洞，可以讓NTPs進入，同時經過 $Mg^{2+}$ 的催化點
+- 上頭的clamp可以把DNA夾住，避免脫落
+- DNA從另一側的 "jaw" 進入，並且因為wall而轉彎，從lid出來後跟原股的DNA重新結合 (因此轉錄泡出現在RNA pol裡面)
+- rudder (英文翻譯成 "船舵") 可以把DNA跟轉錄出來的RNA分開，這導致當下真正互補雜交的DNA-RNA只有8~9 bp，分開的RNA會往exit離開
+- bridge Helix是一段 $\alpha$ -helix，位於 active site 附近。很多研究認為，它幫助 polymerase "一格一格往前走"
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/RNA_polymerase_structure_0531.png)
+
+#### 步驟詳述
+- 在holoenzyme中有一個構造，稱為trigger loop (TL)，主要功能就是做 "NTP檢查"。當其完全閉合時，會形成 $\alpha$ 螺旋 (又稱為trigger helix，TH) ，把NTP固定在DNA模板上
+- 如果互補的NTP不對，TL很難完全閉合，這導致催化效率大幅下降，此機制也成為fidelity 的來源之一
+- 也就是說，即使在有 $Mg^{2+}$ 的幫助下，要是沒有TL，反應還是會發生，只是比較慢
+
+```mermaid
+flowchart LR
+A([NTP進來])-->B([Trigger Loop<br>檢查])-->C([Trigger Loop<br>關閉])-->D([鎂離子<br>催化])-->E([RNA延長])-->F([RNA pol<br>前進一格])-->G([Trigger Loop<br>重新打開])-->A
+```
+
+- 兩個 $Mg^{2+}$ 的功能各有不同: 
+  - **MgI**: 固定並活化 RNA 3′ 端的羥基 (-OH)，使其成為親核基，攻擊 NTP 的 $\alpha$ -磷酸
+  - **MgII**: 穩定 NTP 的三磷酸結構，讓磷酸二酯鍵更容易形成
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/dsDNA_translocation_during_transcription_0531.png)
+
+#### 利福平的用處 
+- rifampicin 專門抑制細菌 RNA polymerase 的 initiation
+- 其結合在 RNA polymerase β 亞基 的一個口袋，通常是在exit channel附近 (相當於放了顆大石頭)
+- 因此，RNA pol可以從promoter開始，但是RNA只能延長幾個 nt 就結束了，造不出mRNA
+
+> [!Note]
+> 由於它只阻止**新轉錄的開始**。所以如果 RNAP 已經跑在 DNA 上，rifampicin 不會把它踢下來 🐱
+
+![image alt](https://as2.ftcdn.net/v2/jpg/02/05/28/77/1000_F_205287706_gwMEZctD1DhhRQ6iCJ21lqTFcRLm6oSd.jpg)
+
+### termination
+#### factor-independent termination 
+- 這種終止轉錄方式不需要蛋白質或是酵素幫忙，只需要RNA自己終點的序列以及構型改變就可以促進其完全脫離RNA pol，又稱為intrinsic termination 
+- 這種終止方式的 DNA 裡通常有 "GC-rich inverted repeat + 一串A" 的終點構型，例如: 
+
+```text
+5' ...GCCGCC....GGCGGC....AAAAAAA...3'
+```
+
+- 當轉錄完後，RNA會變成
+
+```text
+GCCGCC
+||||||
+CGGCGG
+```
+
+- RNA自己折起來，形成了hairpin，後面形成`UUUUUUU` (來自DNA終點的`AAAAAAA`)
+- 在結構上來說，這對轉錄是雙重打擊。一方面hairpin的形成會導致轉錄中的RNA polymerase 卡一下
+- 同時，RNA-DNA hybrid 裡面變成：
+
+```text
+A-U
+A-U
+A-U
+```
+- 由於`A-U`比`G-C` 鍵結脆弱 (只有兩個氫鍵)，所以 "hairpin拉動 + A-U太脆弱" 會導致RNA直接脫落。
+
+> [!Tip]
+> RNA polymerase: 等等你在幹嘛？🧐
+> RNA: 離職申請書。🌚
+
+
+#### factor-dependent termination
+- 這個就需要額外蛋白，主角是 Rho ( $\rho$ )，是個六聚體蛋白，長得像甜甜圈。🍩
+- 運作機制就是先找到 RNA 上的rut site (Rho utilization site)，當甜甜圈黏上去後就開始追RNA polymerase🏃💨
+- 一旦 RNA polymerase暫停、卡住、減速， $\rho$ 就會追到
+- 接下來用他的helicase活性，在ATP水解下，拆掉RNA-DNA hybrid
+
+> [!Tip]
+> RNA polymerase：我還沒寫完！💀
+> Rho：主管說你下班了 🙂
+
+|種類|Factor-independent|Factor-dependent|
+|---|---|---|
+|機制|Hairpin + UUUUUU| $\rho$ protein + ATP|
+|特色|不需要額外蛋白，RNA 自己脫落|Rho 追上後拆散 hybrid|
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/facctor-independent_and_dependent_termination_0531.png)
+
+### lac operon
+- 讓我們舉乳糖操作子為例:
+#### lacI 
+- I其實是repressor的意思，並不屬於操作子的一部份，因為lacI他也有屬於自己的promoter
+- 其會產生lacI protein，會抓著operator，阻止 RNA polymerase
+- lacI 是四聚體，由四個同樣的亞基組成
+- 每一個亞基都有一個DNA bindong domain，而兩個 DNA binding domain像鉗子一樣夾住 DNA
+- 在每一個亞基上面，N-terminal有Helix-Turn-Helix (HTH) 結構，其中一根 helix 會插進DNA major groove，用來讀取operator的鹼基序列
+- 當其和allolactose結合時，就會促進其打開，避免抓住operator
+
+> [!Important]
+> lacI可以讀取多個operator鹼基序列。*E. coli* 有O1、O2、O3三個 operator，一個lacI可以同時讀取並抓住兩個operator !! 👀👀
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/lacI_protein_structure_0531.png)
+
+##### plus: major and minor groove
+- DNA 是右手雙股螺旋 (B-DNA)，每一股的鹼基不是完全垂直，而是以一定角度 "斜插" 在螺旋裡
+- 因為糖-磷酸骨架的排列不對稱，兩股之間的 鹼基配對並不是剛好在中心對稱，而是偏向一邊
+- 這樣一來，螺旋表面就形成了 一條寬的溝 (major groove) 和 一條窄的溝 (minor groove)
+- 由於major groove比較寬敞，而且鹼基的化學基團 (氫鍵接受者/供體、甲基等) 暴露得比較完整，蛋白質 (如轉錄因子) 常利用 major groove 來辨認特定序列
+- 也因此，LacI N端的 HTH ，其中辨識螺旋就會插進 major groove裡面去分析
+
+> [!Important]
+> 蛋白質是沒有反密碼子的，也無法辨識真正的operator序列，但是他可以辨識正電、負電、氫鍵供體、氫鍵受體、疏水區域、甲基等等，自動判斷是否是operator ! 👀
+
+
+#### CRP site
+- 也被稱為CAP site，會和CRP/CAP protein結合，該蛋白需要有cAMP才可作用
+- CRP + cAMP 可以促進RNA pol的招募，作為positive regulation
+
+```mermaid
+flowchart LR
+A([葡萄糖少])-->B([cAMP高])-->C([CRP活化])-->D([lac operon更容易啟動])
+```
+#### promoter
+- 啟動子是RNA pol的結合區域，如果 promoter 被遮住，就沒辦法轉錄
+
+#### operator
+- 是lacI的結合位點，當repressor結合上去時，會導致RNA pol被擋住，無法轉錄
+
+#### lacZ
+- 是 $\beta$ -galactosidase 的轉錄基因，負責把乳糖變成兩個單醣
+- 同時，他也可以把少量乳糖轉成Allolactose
+- Allolactace屬於inducer，可以讓repressor失效，使RNA pol轉錄成功
+
+#### lacY
+- 是 permease 的轉錄基因，他是膜蛋白，負責將乳糖傳進來
+
+#### lacA
+- 是transacetylase的轉錄基因，其對乳糖代謝的存在感較低
+
+![image alt](https://cdn.savemyexams.com/cdn-cgi/image/f=auto,width=3840/https://cdn.savemyexams.com/uploads/2023/09/lac-operon-structure.webp)
+
+#### IPTG
+- 一般的乳糖無論是lactose還是allolactose，長相都是Galactose-O-Glucose
+- 而IPTG (Isopropyl β-D-thiogalactopyranoside) 的結構為Galactose-S-isopropyl
+- 其跟allolactose一樣可以跟lacI結合，促進operon開啟，但是無法被 $\beta$ -galactosidase 有效分解，這樣可以穩定控制operon的開關
+
+| 分子          | 會被代謝？ | 能誘導lac operon？ |
+| ----------- | ----- | -------------- |
+| Lactose     | ✅     | 間接             |
+| Allolactose | 部分    | ✅              |
+| IPTG        | ❌     | ✅              |
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/structure_of_lactose_allolactose_and_IPTG_0531.png)
+
+### trp operon
+#### trpR
+- 跟lacI一樣，不位於operon裡面，也有自己的promoter，但是lacI protein本身是有結合DNA的活性的，而Trp repressor 天生沒活性
+- 當Tryptophan很多，其會直接黏到 Repressor，活化，然後才可以跟operator結合
+- 因此，在乳糖操作子中，**allolactose是inducer**，在色胺酸操作子中，**tryptophan是corepressor**
+
+#### operator
+- 和lac operon類似，活化後的repressor結合operator，使RNA pol被擋住，轉錄下降
+
+#### trpE-D-C-B-A
+- 這分別對應五個酵素，專門負責用來合成trptophan
+
+#### trpL leader
+- 位於operator跟trpE之間，大約140 nt的**單股RNA**，作為attenuation的設計
+
+![image alt](https://biologydictionary.net/wp-content/uploads/2017/09/Trpoperon.jpg)
+
+
+#### Attenuation是什麼
+- 細菌的轉錄轉譯同時進行，RNA 剛做出來，ribosome 就開始翻譯，於是細胞可以即時知道色胺酸夠不夠
+- trpL leader裡面有一段 `UGG UGG` 序列，對應著兩個trp密碼子 (`UGG` 是唯一的trp codon)
+- 假如說ribosome讀到`UGG` 序列時，細胞如果缺 Trp，那ribosome就會無法繼續移動
+
+> [!Tip]
+> ribosome: 啊啊啊Trp-tRNA呢？😱
+
+- Leader RNA 會形成不同 hairpin，他一共有四個RNA區域: 1、2、3、4。他可以1-2，2-3，3-4排列，但是沒辦法同時存在
+  - 如果trp不足: 核糖體卡在1 region，形成2-3 antiterminator，這時3-4不會結合在一起，這並不會影響trp operon的轉錄
+  - 如果trp很多: 核糖體立即通過 `UGG UGG` 片段，一錄衝到2 region，這會形成intrinsic termination，也就是3-4 terminator hairpin結構，阻斷RNA pol在後面的轉錄
+
+> [!Tip]
+> ribosome: `UGG`？小意思。😏
+> RNA polymerase: 好我下班。🚶
+
+![image alt](https://microbenotes.com/wp-content/uploads/2018/09/Trp-Operon-Attenuation-768x812.png)
+
+### riboswitch
+- riboswitch = RNA 本身就是受體 (receptor) 和開關 (switch)，不需要蛋白質幫忙
+- 在基因調控上，往往是以位於 mRNA 5′ 非翻譯區 (5′ UTR) 的一段特殊 RNA 序列呈現出來
+- 它本身能直接 結合小分子代謝物 (例如氨基酸衍生物、核苷酸、維生素衍生物)。當代謝物結合後，mRNA 的二級結構會改變，進而影響**轉錄是否繼續**或**轉譯是否開始**
+   - 代謝物濃度高: riboswitch 結合代謝物 → mRNA 折疊成 terminator hairpin → 轉錄停止
+   - 代謝物濃度低: riboswitch 沒有結合 → mRNA 折疊成 anti-terminator hairpin → 轉錄繼續
+- 其中一個經典例子就是 TPP riboswitch (Thiamine Pyrophosphate，維生素 B1 的活性形式)
+- 當細胞很多TPP時，TPP 直接黏到 RNA，導致RNA 結構改變，關閉表現，不用蛋白質幫忙
+- 還有一個例子是*Bacillus subtilis* (枯草桿菌) 的SAM riboswitch，控制甲硫胺酸合成基因 (Met operon)
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/riboswitch_regulation_by_the_yitJ_leader_RNA_0508.png)
+
+| 特徵 | Attenuation (Trp operon) | Riboswitch (Met operon) |
+| --- | --- | --- |
+| 感測方式 | ribosome 翻譯速度 (tRNA 是否足夠) | mRNA 直接結合代謝物 (SAM) |
+| 調控分子 | ribosome + mRNA 結構 | mRNA 本身就是感測器 |
+| 需要蛋白質嗎 | 需要 ribosome (或 TRAP) | 不需要，純 RNA |
+| 生物學意義 | 偵測氨基酸供應狀況 | 偵測代謝物濃度 |
+
+- 古代的時候尚未有蛋白質或是酵素這種催化劑，因此這種調控方式就被認為異常古老
+   - RNA儲存資訊
+   - RNA催化反應
+   - RNA感測環境
+- 這證明 RNA 並不是 DNA 和蛋白質之間的快遞員而已。它本身就能當感測器、決策器、甚至控制器
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/riboswitch_example_0531.png)
+
+#### c-di-GMP
+- 全名叫做cyclic di-GMP，兩個 GMP 頭尾相接形成環
+- 有點類似於真核生物的cAMP或是cGMP等第二信使的功能，通常在細菌身上: 
+   - c-di-GMP低代表 **"流浪模式"** 🏃💨
+   - c-di-GMP高代表 **"定居模式"** 🏠
+- 在鞭毛製造上面，如果細菌決定 "我要形成biofilm"，還一直維持 "鞭毛全速運轉"，就很蠢
+- 當c-di-GMP上升時，會抑制鞭毛蛋白的形成，或是鞭毛的運轉
+- 如果c-di-GMP是作用在YcgR蛋白上，YcgR被活化，會抑制鞭毛的motor protein，導致鞭毛停止運轉
+- 而在riboswitch上，RNA 本身能感測 c-di-GMP，可能是: 
+   - 形成 terminator hairpin: 轉錄停止
+   - 遮住 Shine-Dalgarno sequence: 核糖體定位RNA起始信號消失，轉譯停止
+
+![image alt](https://biosciences.lbl.gov/wp-content/uploads/2018/07/cyclic-diGMP-cb-2017-01019k_0005.jpg)
+
+### RNA轉錄機制
+#### RNA 種類
+- 細胞內主要有三種RNA
+
+|name|mRNA|tRNA|rRNA|
+|----|----|----|----|
+|穩定性|不穩定|穩定|穩定|
+|功能|攜帶合成的polypeptide的信息，占E.coli的RNA的3%，半衰期只有1~3分鐘|胺基酸的載體，含有氨基酸連接位點跟反密碼子|核糖體的組成成分之一|
+|負責的polymerase|RNA pol II|RNA pol III|RNA pol I|
+
+- RNA polymerase 的核心催化機器從細菌到人類都非常保守，基本功能都是非常古老的，但從細菌開始之後有逐漸升級的趨勢，這可以從生物裡面RNA pol的亞基數量來看
+- Eukaryotic RNAP，很多也是從古菌型RNAP演化而來，所以古菌有時更像真核生物
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/RNA_polymerase_subunit_types_0531.png)
+
+#### $\alpha$ -Amanitin
+- 這東西用來殺真核細胞，作用在RNA pol II比較多 (當然也會作用在其他聚合酶，通常強度為Pol II >>> Pol III > Pol I)，主要存在於毒鵝膏菌 (death cap mushroom)🍄💀
+- 由於他會阻斷mRNA合成，導致肝細胞壞死，在潛伏期後出現嚴重肝損傷、腎衰竭
+
+> [!Tip]
+> 🐱: 只是香菇? 👀
+> 肝臟: 老子不幹了 💀
+
+- 其作用機制是針對於Trigger Loop 附近 (就是檢查NTP然後讓RNA pol一格一格走的東西)
+- 他主要限制Trigger Loop運動，導致TL沒辦法正常擺動，雖然還能催化聚合，但是速度變超慢
+- 同時 $\alpha$ -Amanitin 是cyclic peptide (8個胺基酸)，而且胺基酸上面經過一堆修飾，加熱後依然穩定
+
+![image alt](https://dccdn.de/www.doccheck.com/data/79/b3/5k/44/3p/vr/amanitin_lg.jpg)
+
+#### rRNA複製
+- 在核仁中，rRNA的形成來自於一個串聯拷貝的rRNA基因。其以 `18S-5.8S-28S | 18S-5.8S-28S | 18S-5.8S-28S ...` 的形式一直重複 (也就是tandem repeat)
+- 當然，三段RNA之間其實不是連續的，有spacer，會在修飾時被切掉，最後形成: 
+   - **small subunit**: 18S rRNA + 約30個蛋白 = 40S
+   - **large subunit:** 28S + 5.8S + 5S + 約50個蛋白 = 60S
+
+> [!Important]
+> **5S rRNA 是 RNA polymerase III 做的，不是 Pol I** ，所以它並非來自於這些tandem repeat !! 😲
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/ribosomal_RNA_and_tandem_repeat_0531.png)
+
+- 5S rRNA需要幾個蛋白質因子的幫忙，包含TFIIIA、TFIIIB、TFIIIC
+- TFIIIA需要先結合在5S rRNA基因上，然後TFIIIC、TFIIIB才能相繼結合上去
+- 一旦該複合體已經做好了，這就可以讓RNA pol III一直轉錄該基因，產生大量5S rRNA
+- 5S rRNA會反過來透過負回饋抑制自身轉錄。5S rRNA可以跟RNA pol III形成複合體，抑制其繼續轉錄
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/5S_rRNA_gene_transcription_0531.png)
+
+#### Zinc fingers
+- 鋅指是一種 DNA-binding motif，通常由一個 $Zn^{2+}$ ，以及4個cysteine殘基 (or 2 cysteine + 2 histidine) 結合組成，該配位讓蛋白質摺疊成一個指狀結構
+- 這個「指」能插入 DNA 的major groove，特異性辨識特定序列
+- 很多的transcription regulator proteins會有一個或是多個鋅指結構
+
+![image alt](https://www.med.nagasaki-u.ac.jp/phrmch1/lcn/files/C2H2zincfinger.jpg)
+
+- 剛剛我們提到了 TFIIIA 負責5S rRNA gene的轉錄，而 TFIIIA 是第一個被深入研究的 Zinc Finger 蛋白之一
+- 更離譜的是，TFIIIA 有9個 zinc fingers (☝️☝️☝️☝️☝️☝️☝️☝️☝️🌚) ，一路沿著 DNA 摸過去，辨認序列 (一樣去摸donor、acceptor、methyl等等化學訊號)
+- 每個 finger 通常辨認大約3 bp左右
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/zinc_finger_of_TFIIIA_0531.png)
+
+#### 其它motif介紹
+- motif $\ne$ domain
+  - motif 比較像蛋白質的常見結構零件，例如zinc finger、helix-turn-helix、leucine zipper等等
+  - domain 比較像是完整功能模組，如kinase domain、SH2 domain，規模通常比motif大
+- DNA-binding motif的種類通常有不少種
+
+|motif種類|結構|備註|舉例|
+|---|---|---|---|---|
+|zinc finger|一個 $Zn^{2+}$ + 四個胺基酸 |每根 finger 約認3 bp，所以好幾個fingers串起來就能讀長序列|TFIIIA|
+|helix-turn-helix|共兩個 $\alpha$ -helix，中間有短turn|Recognition Helix直接插進 major groove辨識，另一根 helix幫忙穩定定位|LacI、Cro、 $\lambda$ repressor、CAP|
+|leucine zipper|四條 $\alpha$ -helix|兩條 $\alpha$ -helix形成coiled coil (中間的疏水性leucine促進他倆抱在一起)，以及兩條recognition helix辨識DNA|c-fos、c-jun|
+|helix-loop-helix|共兩個 $\alpha$ -helix，中間有長loop|整體看起來像是一個dimer|MyoD|
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/DNA_binding_motif_types_0531.png)
 
 [^1]:https://www.kew.org/about-us/press-media/worlds-largest-genome
 [^2]:https://link.springer.com/chapter/10.1007/978-3-642-83709-8_3
