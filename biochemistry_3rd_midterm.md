@@ -716,8 +716,8 @@ A-U
 - 由於`A-U`比`G-C` 鍵結脆弱 (只有兩個氫鍵)，所以 "hairpin拉動 + A-U太脆弱" 會導致RNA直接脫落。
 
 > [!Tip]
-> RNA polymerase: 等等你在幹嘛？🧐
-> RNA: 離職申請書。🌚
+> - RNA polymerase: 等等你在幹嘛？🧐
+> - RNA: 離職申請書。🌚
 
 
 #### factor-dependent termination
@@ -727,8 +727,8 @@ A-U
 - 接下來用他的helicase活性，在ATP水解下，拆掉RNA-DNA hybrid
 
 > [!Tip]
-> RNA polymerase：我還沒寫完！💀
-> Rho：主管說你下班了 🙂
+> - RNA polymerase：我還沒寫完！💀
+> - Rho：主管說你下班了 🙂
 
 |種類|Factor-independent|Factor-dependent|
 |---|---|---|
@@ -834,8 +834,8 @@ A([葡萄糖少])-->B([cAMP高])-->C([CRP活化])-->D([lac operon更容易啟動
   - 如果trp很多: 核糖體立即通過 `UGG UGG` 片段，一錄衝到2 region，這會形成intrinsic termination，也就是3-4 terminator hairpin結構，阻斷RNA pol在後面的轉錄
 
 > [!Tip]
-> ribosome: `UGG`？小意思。😏
-> RNA polymerase: 好我下班。🚶
+> - ribosome: `UGG`？小意思。😏
+> - RNA polymerase: 好我下班。🚶
 
 ![image alt](https://microbenotes.com/wp-content/uploads/2018/09/Trp-Operon-Attenuation-768x812.png)
 
@@ -900,8 +900,8 @@ A([葡萄糖少])-->B([cAMP高])-->C([CRP活化])-->D([lac operon更容易啟動
 - 由於他會阻斷mRNA合成，導致肝細胞壞死，在潛伏期後出現嚴重肝損傷、腎衰竭
 
 > [!Tip]
-> 🐱: 只是香菇? 👀
-> 肝臟: 老子不幹了 💀
+> - 🐱: 只是香菇? 👀
+> - 肝臟: 老子不幹了 💀
 
 - 其作用機制是針對於Trigger Loop 附近 (就是檢查NTP然後讓RNA pol一格一格走的東西)
 - 他主要限制Trigger Loop運動，導致TL沒辦法正常擺動，雖然還能催化聚合，但是速度變超慢
