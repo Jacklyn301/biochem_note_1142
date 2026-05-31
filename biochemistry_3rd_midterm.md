@@ -947,7 +947,7 @@ A([葡萄糖少])-->B([cAMP高])-->C([CRP活化])-->D([lac operon更容易啟動
 - DNA-binding motif的種類通常有不少種
 
 |motif種類|結構|備註|舉例|
-|---|---|---|---|---|
+|---|---|---|---|
 |zinc finger|一個 $Zn^{2+}$ + 四個胺基酸 |每根 finger 約認3 bp，所以好幾個fingers串起來就能讀長序列|TFIIIA|
 |helix-turn-helix|共兩個 $\alpha$ -helix，中間有短turn|Recognition Helix直接插進 major groove辨識，另一根 helix幫忙穩定定位|LacI、Cro、 $\lambda$ repressor、CAP|
 |leucine zipper|四條 $\alpha$ -helix|兩條 $\alpha$ -helix形成coiled coil (中間的疏水性leucine促進他倆抱在一起)，以及兩條recognition helix辨識DNA|c-fos、c-jun|
