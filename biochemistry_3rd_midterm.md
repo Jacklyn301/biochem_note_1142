@@ -1064,7 +1064,8 @@ Enhancer → Activator → Mediator → Pol II 😏
    - **Tail**: 與 activators 結合
    - **Kinase module**: 調控 CTD 磷酸化，影響啟動/延伸
 
-![image alt](https://www.mdpi.com/cells/cells-14-01335/article_deploy/html/images/cells-14-01335-g002.png)
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/transcriptional_mediator_structure_0601.png)
+
 
 #### negative regulation
 - 不同於剛剛的 "增加轉錄"，mediator在一些抑制物的出現下也可以降低基因表達，具體來說: 
