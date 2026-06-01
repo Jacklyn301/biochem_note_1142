@@ -955,5 +955,192 @@ A([葡萄糖少])-->B([cAMP高])-->C([CRP活化])-->D([lac operon更容易啟動
 
 ![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/DNA_binding_motif_types_0531.png)
 
+#### promoter
+- promoter其實是整塊區域，而裡面可能有: BRE、TATA box、Inr、DPE、MTE等等元件
+
+##### Inr
+- Inr就是跨越 +1 的那個區域 (transcription start site，TSS)，例如 `YYANWYY`  (其中Y代表嘧啶、W代表嘌呤，N就是+1區域)
+- 相反的，細菌主要辨識的序列是 `-35 TTGACA` 跟 `-10 TATAAT` 兩個區域，沒有明顯的 Inr 概念，而是用 $\sigma$ factor辨識
+- 因此該構造通常在Pol II promoter才出現
+##### TATA box
+- 序列通常為 `TATAAAA` ，可以招募TATA binding protein (TBP)，在結合後會TBP 來了之後，TFIID、TFIIB、TFIIF、Pol II等依序結合
+
+##### B recognition element
+- BRE通常在TATA上游或是下游，用來招募TFIIIB
+
+##### downstream promoter element
+- DPE的位置大約在 `+28 ~ +32 bp` ，所以位於下游。很多promoter**沒有TATA box**，而TFIID 裡面的某些 subunit 可以辨認 Inr + DPE 組合，沒有TATA box也可以
+
+##### CAAT box
+- 序列通常為 `GGCCAATCT` ，結合CP1等轉錄因子提高效率，位置大概在`-75 bp` 左右
+
+##### GC box
+- 在人類身上常見，序列通常為 `GGGCGG`，位置大概在 `-100 ~ -40 bp` ，很多地方都可能出現
+- 會和SP1 (zinc finger蛋白)，常位於Housekeeping genes，例如tubulin、actin等等，也常常在**不需要TATA box的基因**出現
+
+##### octamer
+- 是一類有 `8 bp` 長度的序列，跟其結合的轉錄因子被稱為 Oct factors
+- Oct factor屬於一種POU家族的轉錄因子，該家族轉錄因子有分為兩個蛋白質域 : POU-specific domain + POU homeodomain
+- 兩個domains都會抓DNA，以此提升精確度
+
+> [!Important]
+> 四個轉錄因子做iPSC (誘導性多能幹細胞) : Oct4 + Sox2 + Klf4 + c-Myc [^3] 🐱
+
+### TF: a closer look
+
+| 因子 | 次單元數 | 功能重點 |
+| --- | --- | --- |
+| **TFIID** (TBP + TAFs) | TBP 1 + TAFs 12 | • **辨認核心 promoter**（TATA 或其他元素）<br>• 招募 TFIIB<br>• 同時能正/負調控 |
+| **TFIIA** | 3 | • **穩定 TBP 與 DNA 的結合**<br>• 防止抑制作用<br>• 加強 TAF–DNA 互動 |
+| **TFIIB** | 1 | • **招募 RNA pol II–TFIIF**<br>• 決定 +1 位置 |
+| **TFIIF** | 2 | • **帶領 RNA pol II 到 promoter**<br>• 避免非特異性 DNA 結合 |
+| **RNA pol II** | 12 | • **催化 RNA 合成**<br>• 招募 TFIIE |
+| **TFIIE** | 2 | • **招募 TFIIH**<br>• 調控 TFIIH 的 helicase/ATPase/kinase 活性<br>• 促進 promoter 解旋 |
+| **TFIIH** | 9 | • **解旋 DNA**（helicase）<br>• **CTD kinase** 幫助 promoter clearance 與轉錄延伸 |
+
+##### 🧬 1. Pre-initiation complex (PIC) 組裝
+- 這幾步驟基本上就是前面幾個的所有加總: 
+
+```mermaid
+timeline
+title PIC formation 🐱
+  TFIID : 辨認 TATA box 
+  TFIIA : TBP跟DNA<br>穩定結合
+  TFIIB : 招募 pol II : 決定 +1 位置
+  TFIIF : 帶 RNA pol II<br> 到 promoter
+  TFIIE : 招募helicase (TFIIH)
+  TFIIH : 利用 helicase <br>活性解開 DNA
+  PIC_closed : 所有因子聚集<br>在一起形成
+```
+
+##### 🔓 2. DNA melting → PIC_open
+- TFIIH 把 DNA 雙股打開，形成 "開放複合體"，起始點 (+1) 暴露出來，RNA pol II 準備開始合成 RNA
+
+##### 🚀 3. Initiation
+- RNA pol II開始嘗試合成前幾個核甘酸，時不時失敗 💀
+- 它還在 promoter 上，屬於 "試探性" 合成
+
+##### ⚡ 4. CTD phosphorylation & Promoter clearance
+- TFIIH kinase 磷酸化 RNA pol II 的 CTD (C-terminal domain)
+- 磷酸化後，RNA pol II 從 promoter脫離，進入 elongation 狀態，這個步驟叫 **promoter clearance**
+   - CTD 由許多 heptad repeats (序列 Tyr-Ser-Pro-Thr-Ser-Pro-Ser) 組成，這個區域被稱為Rpb1，是最大的pol II亞基之一
+   - 這些 Ser 殘基（特別是 Ser5、Ser2）會被 TFIIH kinase 等酵素磷酸化
+
+##### 🧩 5. Elongation
+- RNA pol II (此時稱為 Pol IIO) 持續延伸 RNA 鏈
+- 其他因子 (如 elongation factors) 加入，幫助穩定與防止中途停滯
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/initiation_of_RNA_transcription_in_eukaryotic_cell_0601.png)
+
+#### cis vs transacting factor
+
+|factor|cis-acting|trans-acting|
+|------|----------|------------|
+|定義|位於 DNA 上的特定序列|蛋白質或 RNA，能夠結合到 cis-acting 元件上|
+|例子|TATA box、BRE、Inr、DPE、CAAT box、GC box、enhancer|TBP、TFIID、TFIIA、TFIIB、TFIIE、TFIIF、TFIIH、Sp1、Oct factor、repressor、activator|
+
+#### activator and enhancer
+- enhancer屬於一段DNA序列，binding到上面的transcription factor就是activator
+- 它可以跟剛剛的轉錄起始複合體結合，形成一個 "**DNA-binding domains + activation domains**" 組合
+- activator可以跟TFIID的TAF結合，形成橋梁
+
+![image alt](https://www.activemotif.com/uploads/images/web_site/resources-page/blog/rna-polymerases/transcriptional-activation-web-2.png)
+
+### mediator and CTD
+#### positive regulation
+- 科學家原本以為轉錄只要有promoter、activator跟RNA pol II，以及必要的general轉錄因子放一起，就會有反應了
+- 結果當它們真正混合純化Activator + 純化Pol II + General TFs 時，反應集體裝死，才發現是少了mediator
+- mediator complex是一種真核生物特有的，大型的**多蛋白複合物** (人類的大約26~30個subunits)
+- 最主要功能就是把 enhancer 上的activators跟核心轉錄機器 (RNA pol II + GTFs) 連接起來，也就是: 
+
+```text
+Enhancer → Activator → Mediator → Pol II 😏
+```
+
+- 這個橋梁直接接觸 RNA pol II 的 CTD，幫助 RNA pol II 正確定位並進入起始狀態
+- activator 常常在很遠的地方，例如enhancer可能距離10 kb、50 kb、100 kb甚至更遠。而Pol II 在 promoter，兩邊根本見不到面
+- 不同的亞基模組（head, middle, tail, kinase module）負責不同功能: 
+   - **Head/Middle**: 與 RNA pol II 結合
+   - **Tail**: 與 activators 結合
+   - **Kinase module**: 調控 CTD 磷酸化，影響啟動/延伸
+
+![image alt](https://www.mdpi.com/cells/cells-14-01335/article_deploy/html/images/cells-14-01335-g002.png)
+
+#### negative regulation
+- 不同於剛剛的 "增加轉錄"，mediator在一些抑制物的出現下也可以降低基因表達，具體來說: 
+   - 某些抑制複合體（例如 Srb8–Srb11）會結合到 mediator
+   - 這樣 mediator 就不能再和 RNA pol II 互動
+   - 這阻斷 PIC 組裝，導致基因表達被壓制
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/activation_and_repression_of_transcriptional_mediator_in_eukaryotic_cell_0601.png)
+
+#### 路徑小總結
+
+| 路徑 | 主要結合對象 | 傳遞方式 | 特點 | 例子 |
+| --- | --- | --- | --- | --- |
+| **Activator → TAFs (TFIID)** | TFIID 的 TAFs | Activator 直接和 TAFs 結合 | **直接路徑**，通常針對特定 promoter 元件（非 TATA box） | 某些 activator 能直接接觸 TAFs，幫助 TFIID 辨認 initiator (Inr) 或 DPE |
+| **Activator → Mediator → RNA pol II** | Mediator 複合體 (tail module) | Activator 經由 Mediator 傳訊號給 RNA pol II | **橋樑路徑**，能整合多個 activator 訊號，並調控 CTD 磷酸化 | Mediator tail 接 activator，head/middle 接 RNA pol II，kinase module 調控 CTD |
+
+> [!Tip]
+> ##### by the way
+> - mediator真的很肥，做為比較你就可以看出差異: 
+> ```
+> Hemoglobin ≈ 64 kDa
+> Lac Repressor ≈ 150 kDa
+> RNA Pol II ≈ 500 kDa
+> Mediator ≈ 1,200 kDa 🙂 
+> ```
+
+#### CTD的主力
+- 還記得Pol II 最大 subunit (RPB1) 的尾巴嗎? 
+
+$$Tyr-Ser-Pro-Thr-Ser-Pro-Ser$$
+
+- 人類的CTD一共有52 repeats，所以實際上是`YSPTSPS - YSPTSPS - YSPTSPS - YSPTSPS ...` ，像一條超長章魚觸手 🐙
+- 在磷酸化時，重點是**Ser2和Ser5**，因為這兩個位置最常被磷酸化。
+- 於是形成**Ser5-P和Ser2-P**兩種訊號
+
+##### Initiation
+- 其主要標記為Ser5 phosphorylation
+- 由Kin28和hCdk7 (也就是TFIIH kinase) 來做這件事情
+- 這對應到我們剛才提到的路徑: **TFIIH → CTD phosphorylation → Promoter clearance**
+- Ser5-P會**招募capping factors**，也就是5' Cap machinery
+- **這時候主要是Ser5-P，Ser2鄰酸化程度較低**
+
+> [!Important]
+> 也就是說，5' 帽在RMA剛冒出來沒多久就被加上了 !! 🎩
+
+##### Elongation
+- 以時Pol II開始往前跑，同時Ser2 phosphorylation 慢慢增加
+- 主要參與酵素包含Ctk1和hCdk9 (也就是P-TEFb)，這導致了Ser2-P的增加
+- Ser2-P可以**招募很多轉錄延長相關蛋白**，例如Set2，和chromatin remodeling有關係
+- **這時候的Ser5-P跟Ser2-P都很高**
+
+##### chromatin remodeling
+- RNA pol II 在 elongation 過程中，遇到核小體會暫停
+- 某些 remodeling 複合體 (例如 SWI/SNF) 會被磷酸化的 CTD 招募，協助 RNA pol II 在延伸過程中維持開放的染色質
+- remodeling 複合體和 histone chaperones（例如 FACT）會幫忙移除或重新組裝 histone，使 RNA pol II 能順利通過
+- CTD 磷酸化還能招募 histone 修飾酶 (如 HATs、HDACs、HMTs) ，這些修飾會改變核小體的「可讀性」，進一步影響基因表達
+- CTD 的 Ser2 殘基在轉錄中末期會逐漸被磷酸化，這個磷酸化狀態能直接招募 Set2
+- Set2 是 histone methyltransferase，它會在轉錄中的 nucleosome 上面加 H3K36me3 (三甲基化)
+- 也就是說，Pol II走過，Set2跟著走，凡走過必留下H3K36 methylation，告訴細胞哪個區域的DNA剛剛被轉錄過
+
+> [!Note]
+> 總而言之，**轉錄和染色質改造**，在真核生物中其實同步進行 🐱
+
+##### Termination
+- 當Ser2-P整體水平很高時，這時招募Pcf11和Rtt103等終止因子
+- **此時主要是Ser2-P，Ser5鄰酸化程度較低**
+
+#### CTD的TF整理
+
+|選項|作用|舉例|負責|
+|---|---|---|---|
+|writers|加標記的人|Cdk7、Cdk9|加磷酸基團給Ser|
+|readers|讀標記的人|Set2、Pcf11|看Ser-P|
+|erasers|擦標記的人|Fcp1、Ssu72|去磷酸化、Pol II重置|
+
 [^1]:https://www.kew.org/about-us/press-media/worlds-largest-genome
 [^2]:https://link.springer.com/chapter/10.1007/978-3-642-83709-8_3
+[^3]: https://www.cell.com/fulltext/S0092-8674(06)00976-7
+
