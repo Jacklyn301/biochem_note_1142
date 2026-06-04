@@ -97,7 +97,7 @@ title: biochemistry_3rd_midterm
 - 解旋酶像一個楔子插入 DNA 雙股之間，並伴隨旋轉運動
 - 這種模型解釋了某些環狀解旋酶如何 "像馬達一樣" 旋轉分開 DNA
 
-![image alt](https://www.cell.com/cms/10.1016/S0092-8674(00)80716-3/asset/371241c8-71af-4815-9f97-d919bb799aa8/main.assets/gr1_lrg.jpg)
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/helicase_mechanism_and_models_0604.jpg)
 
 ### 早期研究跟酵素介紹
 - Watson and Crick在論文中提出三個假說: 
