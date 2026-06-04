@@ -1141,6 +1141,245 @@ $$Tyr-Ser-Pro-Thr-Ser-Pro-Ser$$
 |readers|讀標記的人|Set2、Pcf11|看Ser-P|
 |erasers|擦標記的人|Fcp1、Ssu72|去磷酸化、Pol II重置|
 
+### transcription regulation in eukaryote
+#### 染色體凝聚
+- 大約146個鹼基對的DNA會繞在組蛋白八聚體上，形成2.5圈
+- DNA + 組蛋白八聚體的結構就是核小體，是染色質的基本單位
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/nucleosome_structure_0604.jpg)
+
+#### Linear looping
+- 在更高階層，核小體會進一步折疊成30 nm的染色質纖維
+- 這些纖維會形成一個個環狀結構 (loop domains)，像是把長線折成一圈圈
+> [!Tip]
+> 這一步主要是把 DNA 從「珍珠項鍊」壓縮成「環狀串珠」
+
+#### Axial compression
+- 這些環狀結構會沿著一個鷹架蛋白質（scaffold）排列，像是把一堆圈圈套在一根軸上
+- 結果形成更粗的，大約300 nm的纖維，DNA 開始有 "棒狀" 的外觀
+
+#### Lateral compression
+- 最後，這些纖維再進一步橫向擠壓、折疊，形成大約700 nm的高度壓縮結構
+- 這就是我們在顯微鏡下看到的中期染色體 (metaphase chromosome)
+
+
+![image alt](https://www.genome.gov/sites/default/files/media/images/tg/Chromatin.jpg)
+
+
+#### 問題來了
+> 到底那些辨識蛋白是如何在histone出現的情況下跟DNA結合? 
+> 還有，RNA pol又是如何穿過nucleosome? 🧐
+
+- nucleosome通常由幾個東西組成，例如: 
+   - DNA (纏繞組蛋白)
+   - H1 protein (附著在核小體旁邊)
+   - histone octamer (H2A + H2B + H3 + H4)
+   - non-histone protein (在核小體之間)
+- 在消化分解時，會先把一長串的nucleosome變成單一的nucleosome (poly → mono)
+- 在進一步消化時，才會開始拆解蛋白質
+
+#### 組蛋白乙醯化
+- 組蛋白乙醯化可以促進凝聚的nucleosome分開，暴露出DNA，好促進RNA辨識其序列並與之結合
+- 乙醯化的目標主要是組蛋白尾部 (histone tail) 的lysine (K) 上面
+- Histone acetyltransferases (HATs) 在組蛋白乙醯化時，把 acetyl group 加到 lysine 的 $\varepsilon$ -amino group
+- lysine是正電荷，DNA是負電荷，所以他們通常是黏在一起的。當lysine被乙醯化時，其正電荷會減弱，histone跟DNA比較沒有那麼黏，所以會鬆開
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/acetylation_targeting_on_lysine_of_histone_tail_0604.png)
+
+> [!Tip]
+> 乙醯化的原料就是來自於 acetyl-CoA，兩個反應... 😼
+> 
+> $$
+> \begin{align}
+> lysine + Acetyl-CoA & \xrightarrow[]{HAT} lysine-O-CH_3 + CoA-SH\\
+> lysine-O-CH_3 & \xrightarrow[]{HDAC} lysine + acetate
+> \end{align}
+> $$
+> 
+> 其中: 
+> - HAT: **Histone Acetyltransferase**
+> - HDAC: **Histone DeAcetyltransferase**
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/acetylation_and_deacetylation_of_nucleosome_0604.png)
+
+#### 組蛋白也可以甲基化
+- 作用位點也是在lysine (K) 上面
+- 通常來說有兩個主要位點: 
+
+##### H3K4 methylation
+- 通常和**活化轉錄**有關
+- H3K4me3常見於 promoter 區域，標記 "這裡是活躍基因" 
+- 幫助招募轉錄因子與 RNA polymerase II
+
+##### H3K9 methylation
+- 通常和**抑制轉錄**有關
+- H3K9me3是 heterochromatin 的典型標記
+- 幫助招募 HP1 (heterochromatin protein 1)，讓染色質緊縮，基因沉默
+
+| 修飾位點 | 常見修飾 | 功能傾向 | 代表性蛋白 |
+| --- | --- | --- | --- |
+| **H3K4** | Methylation (me1, me2, me3) | 活化轉錄 | 招募 TFIID, RNA Pol II |
+| **H3K9** | Methylation (me2, me3) | 抑制轉錄 | HP1, heterochromatin |
+
+- 在辨識的時候，有些蛋白質本身帶有特定的辨識模組 (domain)，專門去認 histone 上面的修飾
+- **Bromodomain** 是一種大約 110 aa 左右的蛋白質結構，它的工作就是專門辨認 acetylated lysine 
+- BRD4就是帶 bromodomain 的蛋白，它看到 acetylated histone 會直接跑過來，然後**招募P-TEFb、RNA Pol II、transcription machinery**等
+
+> [!Note]
+> 很多癌症藥物其實在打 BRD4。你把 reader 幹掉，細胞就看不到acetylation 訊號了 🌚
+
+- 相反， **Chromodomain** 認 methylated lysine
+- HAT跟HDAC其實有一個問題，就是他會乙醯化跟去乙醯化，但是眼瞎，所以往往需要轉錄因子 (activator or repressor) 去招募他們來活化or抑制結合於轉錄因子的基因
+
+#### Polycomb repressive complex
+- 屬於 "封死一去不復返" 模式，可以永久關閉特定基因
+- 分為兩種: PRC1 跟 PRC2
+
+##### PRC2
+- PRC2裡面有個明星酵素: EZH2，它是 methyltransferase (甲基轉移酶)，可以在 H3K27 加三個甲基 (H3K27me3三甲基化)
+
+##### PRC1
+- PRC1有一些蛋白可以辨認H3K27me3，也就是PRC2留下來的標記
+- 他會招募蛋白質來 "壓縮染色體"，形成異染色質，HDAC也是這樣被召喚來的
+
+#### HP1
+- 又被稱為Heterochromatin Protein 1，在異染色質形成時，成為了 "材料" 的一部分
+   - HP1來了，因為它有 chromodomain，可以認出A的H3K9me。與其結合
+   - HP1招募 HMT ，把它抓過來，HMT跑去甲基化隔壁
+   - 甲基化的B又可以去招募HP1，如此循環
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/HDAC_HMT_and_HP1_mechanism_in_chromatin_remodeling_0604.png)
+
+#### 水解ATP來獲得能量
+- 所有會remodel chromatin的蛋白質，雖然長得各有不同，但是基因中都有一個區域，主要編碼ATPase。這個 ATPase 其實是它們的引擎，水舉ATP釋放能量後，然後把能量轉成機械力
+- NA在 histone 上纏了大約147 bp，而且有靜電作用、氫鍵、疏水作用等力，通常不會鬆開，所以需要 remodeler 用ATP "暴力施工"
+- 常見的remodeler包含: 
+
+| 複合體 | 主要 Domain | 招式特色 | 功能效果 | 
+| --- | --- | --- | --- | 
+| **SWI/SNF** | ATPase, Bromodomain | 暴力直接搬走 nucleosome | 暴露 promoter/enhancer，促進轉錄 |
+| **INO80 / SWR1** | ATPase | 替換組蛋白構造 (如 H2A → H2A.Z) | 改變染色質穩定性與可及性 | 
+| **CHD** | Chromodomain, ATPase, DNA-binding | 讀histone modification，滑動 nucleosome | 視修飾狀態決定促進或抑制轉錄 | 
+| **ISWI** | ATPase, SANT, SLIDE | 移動 nucleosome，調整間距 | 維持染色質整齊，避免 promoter 隨便暴露 |
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/nucleosome_remodeling_complexes_coupled_ATP_hydrolysis_0604.png)
+
+### DNA methylation
+- 除了組蛋白可以甲基化跟乙醯化，DNA本身其實也可以加上甲基
+- DNA methylation主要加在Cytosine上面，形成 5-methylcytosine，通常簡寫成 5mC (甲基長在 cytosine 的第5號碳):
+
+$$cytosine + SAM \xrightarrow[]{DNMTs} 5-methylcytosine$$
+
+- 在哺乳類中，DNA甲基化幾乎都發生在 CpG ，也就是 `5' - CG - 3` ，例如  `ATCGCGCGTACG` 裡面那些`CG`
+
+#### 半甲基化的解決方案
+- 假如說有一對同源染色體的基因如下:
+
+```text
+5' CG 3'
+3' GC 5'
+```
+
+- 如果上面那個C被甲基化: 
+
+```
+5' mCG 3'
+3' GC 5'
+```
+
+- DNA複製後，舊股還有甲基，新股沒有。這又被稱為 **hemimethylation**
+- 這時有一種蛋白叫做DNMTs (**DNA methyltransferases**)，當看到半甲基化的鹼基對時，會立刻補上甲基
+- 於是DNA methylation可以被繼承，這是 epigenetic memory 的核心機制之一
+
+| 酵素 | 主要功能 | 特性 | 生物學角色 |
+| --- | --- | --- | --- |
+| **DNMT1** | **維持性甲基化** | 偏好辨認**半甲基化 DNA** | 在 DNA 複製後，把新股補上甲基，確保表觀遺傳標記能傳遞 (maintenance methylation) |
+| **DNMT3A** | **新甲基化 (de novo)** | 能在 **未甲基化的 CpG** 上建立甲基化 | 在發育、分化過程中建立新的甲基化模式 |
+| **DNMT3B** | **新甲基化 (de novo)** | 功能類似 DNMT3A，但在某些基因區域 (例如重複序列、着絲粒附近) 特別重要 | 維持基因組結構穩定，避免異常轉錄 |
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/DNA_methylases-DNMT1_and_DMNT3_structure_0604.jpg)
+
+#### 5-Azacytidine
+- 這東西的架構非常像cytosine，結構上面基本上就是: 把原本 cytosine 的 C5 換成了一個 N = 5-azacytidine
+- 我們剛剛說過，DNA methyltransferase (DNMT) 最愛做的事就是在cytosine的5號碳加上甲基
+- 此時如果替換成 5-azacytidine，DNMT就沒地方加上甲基了，當DNMT試圖加上甲基的時候，5-azacytidine會卡在酵素活性位點上面下不來
+- 這導致了DNMT的報廢，如果這時細胞在打算繼續複製時，這個甲基化就沒有能力傳給下一代，原本甲基化的DNA就消失了
+- 對於癌細胞來說，許多抑癌基因其實是長期處於甲基化的，如果我們投放5-azacytidine，Tumor suppressor可能就可以重新表現
+
+> [!Tip]
+> 癌細胞: 哈哈哈哈我自由了 😼
+> ( + 5-azacytidine)
+> DNMT: 老兄對不起先走一步了 💀
+> 癌細胞: oh fuck. 🫠
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/5%E2%80%99-azacytidine_and_passive_demethylation_0604.png)
+
+### 複習時間... 🐱
+
+<details>
+<summary>👉 General Transcription Factors</summary>
+
+- 蛋白質包含: 
+   - TFIIA
+   - TFIIB
+   - TFIID
+   - TFIIE
+   - TFIIF
+   - TFIIH
+- 人話: 把 RNA polymerase II 發動起來
+- TFIIH最有特色，因為它有Helicase + Kinase 活性。打開DNA + 磷酸化CT，讓Pol II開始跑
+
+</details>
+
+<details>
+<summary>👉 TBP and TAF</summary>
+
+- TBP = TATA-binding protein，專門負責找到promoter
+- TAF = TBP-associated factors
+   - TBP自己其實有點瞎。它只會認TATA box，但很多基因根本沒有TATA
+   - TAFs負責認其他promoter element、接觸activator、穩定TFIID
+    
+</details>
+
+<details>
+<summary>👉 Mediator</summary>
+
+- Activator在enhancer，距離超遠；Pol II在promoter，距離超遠。mediator就是activator跟Pol II的中間訊號傳送體
+- 沒有Mediator，Enhancer喊破喉嚨，Pol II 都聽不到
+- CTD = RNA Pol II 的超長尾巴    
+- 轉錄前的複製機器為Pre-initiation Complex (PIC)
+- Ser5 phosphorylation後mediator才會放手讓Pol II往前跑
+    
+</details>
+
+
+<details>
+<summary>👉 Chromatin Remodeling Factors</summary>
+
+- 如SWI/SNF、CHD、ISWI、INO80
+- 它們利用水解ATP的力量搬動nucleosome，暴露DNA，好讓轉錄進行    
+    
+</details>
+
+<details>
+<summary>👉 Chromatin Modifying Factors</summary>
+
+- 他們不搬家具，他們貼標籤
+- HAT = Histone Acetyltransferase，histone 乙醯化鬆開染色質
+- HDAC = Histone Deacetylase，histone去乙醯化重新凝聚
+- HMT = Histone Methyltransferase，包含: 
+
+|H3K4me3|H3K9me3|H3K27me3|
+|-------|-------|--------|
+|開啟|關閉|Polycomb封印|
+
+- DNMT = DNA methyltransferase，CpG變成mCpG
+   - Dnmt1: 處理半甲基化
+   - Dnmt3a and 3b: 新甲基化，de novo methyltransferases  
+    
+</details>
+
+
 [^1]:https://www.kew.org/about-us/press-media/worlds-largest-genome
 [^2]:https://link.springer.com/chapter/10.1007/978-3-642-83709-8_3
 [^3]: https://www.cell.com/fulltext/S0092-8674(06)00976-7
