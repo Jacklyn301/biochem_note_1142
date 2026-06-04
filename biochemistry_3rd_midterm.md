@@ -1307,10 +1307,10 @@ $$cytosine + SAM \xrightarrow[]{DNMTs} 5-methylcytosine$$
 - 對於癌細胞來說，許多抑癌基因其實是長期處於甲基化的，如果我們投放5-azacytidine，Tumor suppressor可能就可以重新表現
 
 > [!Tip]
-> 癌細胞: 哈哈哈哈我自由了 😼
-> ( + 5-azacytidine)
-> DNMT: 老兄對不起先走一步了 💀
-> 癌細胞: oh fuck. 🫠
+> - 癌細胞: 哈哈哈哈我自由了 😼
+> - ( + 5-azacytidine)
+> - DNMT: 老兄對不起先走一步了 💀
+> - 癌細胞: oh fuck. 🫠
 
 ![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/5%E2%80%99-azacytidine_and_passive_demethylation_0604.png)
 
