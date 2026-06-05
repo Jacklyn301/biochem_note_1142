@@ -1488,9 +1488,6 @@ $$cytosine + SAM \xrightarrow[]{DNMTs} 5-methylcytosine$$
 - 胺基酸會透過水解ATP的方式，將其連接於tRNA的CCA位點
 - 主要反映酵素為aminoacyl-tRNA synthetase
 
-1G59_Glutamyl-tRNA%20synthetase%20complex%20with%20tRNA(Glu).html
-
-
 > [底下的3D模型可以縮放](https://www.nakb.org/atlas=1G59) 😏
 
 <iframe src="https://Jacklyn301.github.io/molecular_model/1G59_Glutamyl-tRNA%20synthetase%20complex%20with%20tRNA(Glu).html" width="100%" height="400px"></iframe>
@@ -1563,9 +1560,6 @@ $$aminoacyl-AMP + tRNA\rightarrow aminoacyl-tRNA + AMP$$
 > [!Tip]
 > - RNA 為核心，蛋白質為輔助
 > - 核糖體的催化心臟是 RNA，而蛋白質只是幫忙支撐和調控
-
-
-
 
 > [底下的50S大次單元3D模型可以縮放](https://www.nakb.org/atlas=1FFK) 😏
 
