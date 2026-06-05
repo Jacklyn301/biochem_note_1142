@@ -1432,6 +1432,281 @@ $$cytosine + SAM \xrightarrow[]{DNMTs} 5-methylcytosine$$
 ---
 
 
+## ch28
+- 三種RNA (mRNA、tRNA、rRNA)，mRNA最不穩定 (1~3 min的半衰期)，不過主要原因是生物特性 (酵素更常去降解mRNA)，不是物理特性 (mRNA以單股存在而且沒有三級結構)
+- 而且很多 mRNA 本身其實也有二級結構，例如hairpin、stem-loop、pseudoknot，並沒有你想像中那麼軟爛 🫠
+
+### tRNA
+- 所有的tRNA都有一個類似的結構，而且包含反密碼子 anticodon loop，在3' 的末三個核甘酸CCA是 "acceptor stem"，接收相應胺基酸
+
+> [底下的3D模型可以縮放](https://www.nakb.org/atlas=1EHZ) 😏
+
+<iframe src="https://Jacklyn301.github.io/molecular_model/1EHZ_the%20crystal%20structure%20of%20yeast%20phenylalanine%20tRNA.html" width="100%" height="400px"></iframe>
+
+#### tRNA modified bases
+- tRNA 剛被轉錄出來，原本也是 `AUCG` 組成的，之後一大堆酵素跑來改造這些鹼基
+
+##### Pseudouridine $\psi$
+- 它其實就是改裝版的U。正常尿苷的連結應該是: $Uracil-N-ribose$
+- 但是酵素把件換個位置，糖連接在 C5 而不是 N1，原本的N-C bond 變 C-C bond
+- 增加氫鍵能力，讓 RNA 結構更穩定，常見於 tRNA、rRNA，幫助維持正確摺疊與功能。
+##### Ribothymidine $T$
+- 在 uridine 的 C5 上加一個甲基 (T = 5-methyl-U)，在這裡，**胸腺嘧啶產生了 !!**
+- 這增加疏水性，影響 RNA 的局部結構
+- 這貨主要出現在 tRNA 的 $T\psi C$ loop
+
+##### Dihydrouridine $D$
+- 正常尿嘧啶有雙鍵，diydro就是把 uridine 的雙鍵氫化，變成飽和的環，整個鹼基變軟，形成D loop時，那附近比較容易彎曲，可幫助 tRNA 摺疊
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/modification_nitrogen_base_in_tRNA_0605.png)
+
+#### 🧬 tRNA 成熟的步驟
+##### 轉錄 (Transcription)
+- 由 RNA polymerase III 轉錄出 pre-tRNA
+- pre-tRNA 通常帶有 leader 序列 (5’ 端) 和 trailer 序列 (3’ 端)，還可能有 intron
+
+#### 切除 (Processing)
+- RNase P: 切掉 5’ leader 序列
+- RNase D: 切掉 3’ trailer 序列
+- 有些 tRNA 還需要 splicing enzyme 去除 intron
+- 這些核糖核酸酶的活性位點其實就是RNA，也就是說，RNA本身出現了催化劑的作用
+
+##### 加上 CCA 尾端
+- 在 3’ 端加上 CCA，這是 amino acid attachment site
+- 有些基因直接編碼 CCA，有些則由 tRNA nucleotidyltransferase 加上
+
+##### 修飾核苷酸 (Modification)
+- 加入 pseudouridine、ribothymidine、dihydrouridine 等修飾
+- 這些修飾幫助 tRNA 摺疊成正確的 cloverleaf 結構，並提升穩定性
+
+##### 摺疊
+- 形成 D loop、 $T\psi C$ loop、anticodon loop，最後摺疊成 L 型三維結構，準備進入核糖體
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/tRNA_modification_processing_0605.png)
+
+#### amino acid and tRNA
+- 胺基酸會透過水解ATP的方式，將其連接於tRNA的CCA位點
+- 主要反映酵素為aminoacyl-tRNA synthetase
+
+1G59_Glutamyl-tRNA%20synthetase%20complex%20with%20tRNA(Glu).html
+
+
+> [底下的3D模型可以縮放](https://www.nakb.org/atlas=1G59) 😏
+
+<iframe src="https://Jacklyn301.github.io/molecular_model/1G59_Glutamyl-tRNA%20synthetase%20complex%20with%20tRNA(Glu).html" width="100%" height="400px"></iframe>
+
+- 酵素先用 ATP 把胺基酸活化，形成 aminoacyl-AMP (胺基酸和 AMP 的中間產物)
+
+$$amino\ acid + ATP\rightarrow aminoacyl-AMP + PP_i$$
+
+- 酵素再把胺基酸從 aminoacyl-AMP 轉移到 tRNA 的 CCA
+
+$$aminoacyl-AMP + tRNA\rightarrow aminoacyl-tRNA + AMP$$
+
+- 最後形成 aminoacyl-tRNA (帶胺基酸的 tRNA)
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/aminoacyl-tRNA_synthetase_0605.jpeg)
+
+#### proofreading
+- aminoacyl-tRNA synthetase 不只是把胺基酸接到 tRNA 上，它還有 proofreading 機制，確保不會接錯
+##### 活化階段
+- 酵素先用 ATP 把胺基酸活化成 aminoacyl-AMP
+- 如果胺基酸大小或化學性質差不多 (例如 Ile vs Val，只差了一個甲基) ，可能會被錯誤活化
+
+##### 轉移階段
+- 把胺基酸轉移到 tRNA 的 3’ 端時，有些 synthetase 在這一步設有 "篩選"，避免錯誤胺基酸進入
+
+##### 校正階段 
+- 如果錯誤胺基酸真的接上了 tRNA，某些 synthetase 會有 editing site
+- 這個 editing site 會把錯誤的 aminoacyl-tRNA 水解掉
+- 例如Isoleucyl-tRNA synthetase 會把錯誤的 Val-tRNA 水解 (Hydrolysis) 掉，只保留 Ile-tRNA
+
+> [!Note]
+> Activation site 負責選胺基酸，Editing site 負責驗貨 🐱
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/aminoacylation-and-proofreading-of-tRNA.webp)
+
+### Ribosome
+#### 細菌跟真核
+##### 🧬 尺寸比較
+- **原核生物 (細菌)** 
+  - 核糖體大小: **70S** 
+  - 由 **50S 大次單元** + **30S 小次單元**組成 
+  - rRNA 組成: 23S + 5S (大次單元)，16S (小次單元) 
+- **真核生物** 
+  - 核糖體大小: **80S** 
+  - 由 **60S 大次單元** + **40S 小次單元**組成 
+  - rRNA 組成:　28S + 5.8S + 5S (大次單元)，18S (小次單元) 
+
+##### 🎯 差異意義
+- **大小差異**: 真核核糖體更大、更複雜，含有更多蛋白質。 
+- **功能差異**: 雖然基本功能相同 (蛋白質合成)，但真核核糖體有更多調控機制，能處理更複雜的 mRNA
+- **藥理學意義**: 許多抗生素 (如 tetracycline、erythromycin) 專門針對 **70S 核糖體**，因此能抑制細菌但不影響真核細胞
+
+
+> [底下的30S小次單元3D模型可以縮放](https://www.nakb.org/atlas=1FJG) 😏
+
+<iframe src="https://Jacklyn301.github.io/molecular_model/1FJG_Structure%20of%20the%20Thermus%20Thermophilus%2030S%20Ribosomal%20Subunit%20in%20Complex%20With%20the%20Antibiotics%20Streptomycin%2C%20Spectinomycin%2C%20and%20Paromomycin.html" width="100%" height="400px"></iframe>
+
+
+#### 50S 到底是什麼
+- 可以分為主要兩個部分:
+- rRNA
+   - 是 50S 的" 骨架" 與 "催化核心"
+   - 是催化肽鍵形成的真正活性中心 (peptidyl transferase center)
+   - 整個大次單元的中心是 RNA，而不是蛋白質。
+
+- 核糖體蛋白質
+   - 分布在 rRNA 的外圍，像是 "支架" 或 "護欄"
+   - 它們幫助 rRNA 摺疊成正確的三維構型，並穩定整個結構
+
+> [!Tip]
+> - RNA 為核心，蛋白質為輔助
+> - 核糖體的催化心臟是 RNA，而蛋白質只是幫忙支撐和調控
+
+
+
+
+> [底下的50S大次單元3D模型可以縮放](https://www.nakb.org/atlas=1FFK) 😏
+
+<iframe src="https://Jacklyn301.github.io/molecular_model/1FFK_Cristal%20Structure%20of%20the%2050S%20Ribosomal%20Subunit%20From%20Haloarcula%20marismortui.html" width="100%" height="400px"></iframe>
+
+##### ribosome and tRNA
+- 核糖體的兩個亞基有三個tRNA結合位點，30S 次單元主要著重於密碼子跟反密碼子的配對，50S 大次單元主要著重於肽見的形成
+
+### mRNA
+- 大多生物體的遺傳密碼通常相同
+- 當AUG用作起始密碼子時，在原核生物中，編碼**N-甲醯甲硫胺酸** (N-formylmethionine, fMet)，在真核生物裡面就是**甲硫胺酸** (methionine, Met)
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/N-formylmethionine_amd_methionine_structure_0605.jpg)
+
+- 通常來說，遺傳密碼是有以下三種特性: 
+
+| 特徵                           | 解釋                   |
+| ---------------------------- | -------------------- |
+| degeneracy/redundancy<br>退化性 | 多個密碼子對應同一種胺基酸        |
+| unambiguous<br>不模糊性          | 特定一種密碼子只對應一種胺基酸      |
+| universal<br>廣泛性             | 所有生物共用同一套遺傳密碼，雖然偶有差異 |
+
+#### redundancy和搖擺效應
+- 在wobble effect的狀況下，通常來說，tRNA 的 anticodon 和 mRNA 的 codon 配對時，前兩個鹼基必須嚴格 A–U, G–C 配對
+- 但 第三個位置 (codon 的 3’ 端 / anticodon 的 5’ 端) 可以有 "不那麼嚴格" 的配對
+- 當時科學家發現: 
+   - 細胞裡的 tRNA 數量 少於 codon 數量，但蛋白質合成仍然精準
+   - 這就暗示某些 tRNA 必須能夠 "一對多"，不只認一個 codon
+   - 透過結構研究，發現 anticodon 的 5’ 位點有特殊修飾核苷酸 (如 Inosine, I)，能和多種鹼基形成穩定但非典型的配對
+- 其中，所有多對一的密碼子們，前兩個核甘酸會形成強烈的watson-crick鍵結，所以前兩個核甘酸總是相同
+- 這也允許 "靜默突變" 的發生: 核甘酸的點突變影響密碼子，但不影響配對的胺基酸
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/codon-chart-of-amino-acid_0605.jpeg)
+
+##### 整理表如下
+
+|tRNA的第一個反密碼子鹼基|配對的mRNA的第一個密碼子鹼基|
+|--------------------|------------------------|
+|G|C或是U|
+|U|A或是G|
+|I (次黃嘌呤, Inosine))|A、U 或是 C|
+
+##### Inosine到底是何方神聖
+- inosine原本是Adenosine，也就是A，經過tRNA-specific adenosine deaminase，把 $-NH_2$ ，變成羰基 ( $=O$ )，屬於deamination (去胺作用)
+
+> [!Important]
+> 記得，Inosine是屬於tRNA修飾，**只有在tRNA出現 !!** 😲
+
+![image alt](https://raw.github.com/Jacklyn301/image_bank/main/inosine_formation_and_pairing_with_other_nucleotide_0605.png)
+
+##### G跟C or U
+- 正常的 G-C 配對有三個氫鍵，最穩定
+- G-U配對中，你會發現神奇的事情。它們不是標準配對，但它們還是可以形成2個氫鍵 😳
+- 而為了維持氫鍵，其中一個鹼基必須稍微移動，稍微歪一點點
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/guanine_paired_with_C_or_U_0605.png)
+
+#### 核糖體的辨認機制
+- A1492、A1493、G530等核甘酸。它們都是16S rRNA的一部分 (Small ribosomal subunit)，畢竟ribosome 裡真正幹活的很多地方都是 rRNA
+
+##### A1492 和 A1493 
+- 平常A1492和A1493躲在 rRNA 裡面
+- 當 tRNA 進入 A site，codon-anticodon 形成正確 Watson-Crick 配對，這兩顆 A 會 Flip out (翻出來)
+- 這其實也叫做 A-minor interaction，A會去摸第一跟第二個鹼基對的 minor groove (第三可以歪，反正wobble effect嘛)
+
+##### G530
+- G530會改變構型，然後一起參與檢查
+- 這三個核甘酸形成一個假碼中心，確保密碼子跟反密碼子是配對的。核糖體正在摸這些鹼基，確保檢基隊的形狀是對的
+
+> [!Important]
+> 基本上所謂會 "偵測序列" 的蛋白質或是核酸，最後都不是真正知道編碼，而是透過摸的，透過基團以及形狀確保的
+> - 如果形狀正確，EF-Tu 水解 GTP，tRNA 進入 A site
+> - 如果形狀錯誤，EF-Tu 不會動，tRNA 被踢出去
+> - 其中， EF-Tu是幫忙tRNA進入核糖體A位的酵素
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/interaction_between_ribosome_tRNA_and_mRNA_0605.png)
+
+### 轉譯的調控
+- 轉譯主要三步驟: initiation、elongation、termination，每一步都會有蛋白質因子參與
+
+#### 起始 
+- 在細菌的轉錄中，其實fMet是在Met已經接到了tRNA之後才發生的反應，也就是說，該tRNA是配對fMet的，只是暫時跟Met配對
+- 他會利用Transformylase加上一個 $CHO$ 基團 (formyl group)，該基團來自 tetrahydrofolate (THF) 攜帶的一碳單位: $N^{10}$ -formyl-tetrahydrofolate: 
+
+$$N^{10} \text{-formyl-THF} + Met-tRNA^{fmet} \rightarrow fMet-tRNA^{fmet} + THF$$
+
+- 細菌利用 mRNA 上的 Shine-Dalgarno sequence 跟核糖體小亞基的 16S rRNA 配對，來決定起始密碼子 AUG 在哪裡
+- 假如說現在有一條 mRNA，上面有很多很多AUG，那你怎麼知道哪一個 AUG 才是真正的起始點? 
+- 真核生物的解法是從5' capping開始掃描，找到合適的那一個AUG後開始複製，這又叫做**Scanning model**
+- 細菌不是，它直接在 AUG 前面放一個**Shine-Dalgarno sequence** (例如 `AGGAGG`
+- 30S 裡面有 16S rRNA，而16S rRNA尾端有一段序列: `CCUCCU` ，剛好互補，可以直接鹼基配對 ! 😏
+
+![image alt](https://wou.edu/chemistry/files/2020/08/shine-dalgarno-sequence.jpg)
+
+- 在沒有效應物的情況下，配體結合位點 (L) 未被佔據
+- 如果核糖開關在轉譯層級上發揮作用，Shine-Dalgarno 序列的區域不會跟其互補序列 (Anti-Shine-Dalgarno) 結合，Shine-Dalgarno暴露，轉錄啟動
+- 在效應物存在的情況下，mRNA 三級結構可以改變，使 Shine-Dalgarno 序列與 Anti-Shine-Dalgarno 配對，因此無法啟動轉譯
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/Shine-Dalgarno_sequence_and_riboswitch_0605.png)
+
+#### 轉譯循環
+##### 起始
+- 小次單元 (30S/40S) 結合 mRNA，定位在起始密碼子 (AUG)
+- 起始因子幫助第一個帶有甲硫氨酸 (or fMet) 的 tRNA 進入 P 位 
+   - 起始因子主要為IF-2 (原核) / eIF2 (真核)，靠 GTP 水解完成定位
+- 接著，大次單元 (50S/60S) 加入，形成完整核糖體
+   - 其中，eIF5B (真核) 幫忙協助大次單元加入，也需要 GTP
+
+
+##### 延伸
+- **A 位 (aminoacyl-tRNA)**: 新 aminoacyl-tRNA 進入
+- **P 位 (peptidyltRNA)**: 帶有生長中的多肽鏈的 tRNA
+- **E 位 (exit)**: 釋放已經卸下胺基酸的 tRNA
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/model_of_A_P_and_E_site_of_ribosome_0606.png)
+
+##### 循環開始
+-  tRNA 進入 A 位 
+   - 此反映由EF-Tu (原核) / eEF1A (真核)參與，把 aminoacyl-tRNA 帶到 A 位，而且只有正確配對時才水解 GTP
+-  肽鍵形成，由 rRNA (23S/28S) 催化，將多肽鏈轉移到 A 位的胺基酸上
+-  轉位發生，核糖體往前移一個 codon，A → P，P → E 
+   - 轉位的因子主要是EF-G (原核) / eEF2 (真核)，也要靠 GTP 提供能量
+
+##### 終止
+- 當遇到終止密碼子 (UAA, UAG, UGA)，沒有對應的 tRNA
+- 釋放因子結合上去，促使多肽鏈釋放
+  - RF3 (原核) 會幫助釋放因子離開核糖體，也要靠 GTP
+
+| 階段 | 主要事件 | 關鍵因子 |
+|------|----------|----------|
+| 起始 | 小次單元定位 AUG，Met-tRNA 進入 P 位 | IF/eIF |
+| 延伸 | A 位進入新 tRNA，肽鍵形成，轉位 | EF-Tu/eEF1A, EF-G/eEF2 |
+| 終止 | 終止密碼子 → 多肽釋放 | RF/eRF |
+| 循環 | 核糖體解離，mRNA/tRNA 釋放 | RRF, EF-G |
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/initiation_and_elongation_mechanism_in_translation_0606.png)
+
+---
+
+#### 資料來源 🐱
+
 [^1]:https://www.kew.org/about-us/press-media/worlds-largest-genome
 [^2]:https://link.springer.com/chapter/10.1007/978-3-642-83709-8_3
 [^3]: https://www.cell.com/fulltext/S0092-8674(06)00976-7
