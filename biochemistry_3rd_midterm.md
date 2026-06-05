@@ -1,10 +1,6 @@
----
-title: biochemistry_3rd_midterm
-
----
 
 # biochem 3rd midterm
-### before we start the class...
+## before we start the class...
 #### what is metabolism?
 - 代謝跟能量、生物質 (biomass) 有關係
 - 身體的能量來源是來自於NTP、FADH2、NADH、NADPH等
@@ -72,7 +68,7 @@ title: biochemistry_3rd_midterm
 - 吸光值會在260 nm區域顯著上升，這就是所謂的 "超色效應"  (hyperchromic effect)
 
 > [!Note]
-> - 熔解溫度 (Tm) = 吸光值達到最大與最小之間的 50% 時的溫度
+> - 熔解溫度，Tm = 吸光值達到最大與最小之間的 50% 時的溫度
 > - GC 含量高 → 熔解溫度高 → 變性較難 🐱
 
 ### 複製前介紹
@@ -314,6 +310,10 @@ title: biochemistry_3rd_midterm
 
 ![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/structure_of_topoisomerase_I_0520.png)
 
+> [底下的topoisomerase I + DNA的3D模型可以縮放](https://rcsb.org/structure/1EJ9) 😏
+
+<iframe src="https://Jacklyn301.github.io/molecular_model/1EJ9_Crystal%20Structure%20of%20Human%20Topoisomerase%20I%20DNA%20Complex.html" width="100%" height="400px"></iframe>
+
 - Tyr 殘基的 $OH^-$ 是個超強親核基，電子攻擊DNA的磷原子，這會形成enzyme-DNA中間體，同時斷開DNA雙股
 
 ![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/topoisomerase_tyrosine_residue_reaction_mechanism_0520.png)
@@ -340,6 +340,10 @@ title: biochemistry_3rd_midterm
 
 ![image alt](https://cdn.prod.website-files.com/63dc099d352018653241b1a7/63fe9d93692391ac6f0a6150_image3.png)
 
+> [底下的DNA gyrase + DNA的3D模型可以縮放](https://www.nakb.org/atlas=8YON) 😏
+
+<iframe src="https://Jacklyn301.github.io/molecular_model/8YON_structure%20of%20phage%20T6%20full-length%20topoisomerase%20II%20bound%20with%20DNA.html" width="100%" height="400px"></iframe>
+
 #### primase
 - 在細菌裡面，DnaG protein就是屬於細菌的primase，primase合成primer (引子，屬於一小段RNA)
 - 在複製過程中會由 5'→3' 外切酶活性切除
@@ -355,10 +359,8 @@ title: biochemistry_3rd_midterm
 ### replisome 詳細介紹
 - 基本上在原核生物裡面這就是DNA polymerase III 組成的 holoenzyme (這傢伙到底出現了多少次了... never mind then 🙂)
 - 由於這個holoenzyme被認為長得有點像是管樂器的長號 (你告訴我哪裡像了??) ，所以又稱為 "trombone model"
-- clamp loader complex ( $\tau$ + $\delta/\delta\text{'}$ + $\gamma$ + $\psi$ + $\chi$ ) 會水解ATP把 $\beta$ -clamp打開又關閉，好固定DNA
-- 其中， $\tau$ 也負責聚合酶的二聚化，兩個聚合酶一個複製leading strand，一個複製lagging strand
 
-#### clamp loading
+#### $\beta$ -clamp
 - $\beta$ -clamp看起來像是一個甜甜圈似的，通常還連接著聚合酶
 
 >[!Tip] 
@@ -372,9 +374,30 @@ title: biochemistry_3rd_midterm
 - 當 clamp loader complex 等亞基結合ATP時，loader會改變構象，把 $\beta$ -clamp 撐開
 - clamp loader 識別RNA primer後，在該處把 $\beta$ -clamp套上去
 
+> [底下的beta clamp 的 3D模型可以縮放](https://www.nakb.org/atlas=1VPK) 😏
+
+<iframe src="https://Jacklyn301.github.io/molecular_model/1VPK_Crystal%20structure%20of%20DNA%20polymerase%20III%2C%20beta%20subunit%20(TM0262)%20from%20Thermotoga%20maritima.html" width="100%" height="400px"></iframe>
+
+
+#### clamp loader
+- clamp loader complex ( $\tau$ + $\delta/\delta\text{'}$ + $\gamma$ + $\psi$ + $\chi$ ) 會水解ATP把 $\beta$ -clamp打開又關閉，好固定DNA
+- 其中， $\tau$ 也負責聚合酶的二聚化，兩個聚合酶一個複製leading strand，一個複製lagging strand
+
+> [底下的模型是clamp loader打開beta clamp的樣子](https://www.nakb.org/atlas=1VPK) 😏
+
+<iframe src="https://Jacklyn301.github.io/molecular_model/9OYI_Structure%20of%20the%20E.%20coli%20clamp%20loader%20DnaX-complex%20loading%20beta-clamp%20onto%2010-nt%20gapped%20DNA%20with%20open%20clamp%20and%20unsettled%20DNA.html" width="100%" height="400px"></iframe>
+
+
 #### primase 
 - 在大腸桿菌中，primase (DnaG) 會暫時和 helicase (DnaB) 結合
-- DnaB 是六聚體環狀結構，解開 DNA 雙股。primase會在helicase打開的單股膜板上面合成一段約10~12 bp的引子
+- DnaB 是**六聚體環狀結構**，解開 DNA 雙股。primase會在helicase打開的單股膜板上面合成一段約10~12 bp的引子
+
+> [底下的3D模型可以縮放看DnaB結構](https://rcsb.org/3d-view/7T20) 😏
+
+<iframe src="https://Jacklyn301.github.io/molecular_model/7T20_E.%20coli%20DnaB%20bound%20to%20ssDNA%20and%20AMPPNP.html" width="100%" height="400px"></iframe>
+
+7T20_E.%20coli%20DnaB%20bound%20to%20ssDNA%20and%20AMPPNP.html
+
 - 合成之後， $\chi$ 亞基透過和SSB的交互作用，幫助 "把primase從DNA上拆掉" ，避免它阻礙後續的clamp裝載與 pol III 延伸
 
 ![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/interaction_between_chi_subunit_and_primase_in_replisome_of_E.coli_0521.png)
@@ -544,6 +567,7 @@ RNA-->|轉譯成|P(蛋白質)
 |**-ssRNA**|基因組合成方式:-ssRNA → +ssRNA → -ssRNA，mRMA合成方式:-ssRNA → mRNA|
 |**逆轉錄病毒**|基因組合成方式:ssRNA → dsDNA → ssRNA，mRNA轉錄方式:ssRNA → dsDNA → mRNA|
 |**反轉錄DNA病毒**|基因組合成方式:dsDNA → ssRNA → dsDNA，mRNA合成方式:dsDNA → mRNA|
+
 
 ---
 
@@ -761,6 +785,10 @@ A-U
 
 > [!Important]
 > 蛋白質是沒有反密碼子的，也無法辨識真正的operator序列，但是他可以辨識正電、負電、氫鍵供體、氫鍵受體、疏水區域、甲基等等，自動判斷是否是operator ! 👀
+
+> [底下的3D模型可以縮放](https://rcsb.org/structure/2PE5) 😏
+
+<iframe src="https://Jacklyn301.github.io/molecular_model/2PE5_Crystal%20Structure%20of%20the%20Lac%20Repressor%20bound%20to%20ONPG%20in%20repressed%20state.html" width="100%" height="400px"></iframe>
 
 
 #### CRP site
@@ -1066,7 +1094,6 @@ Enhancer → Activator → Mediator → Pol II 😏
 
 ![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/transcriptional_mediator_structure_0601.png)
 
-
 #### negative regulation
 - 不同於剛剛的 "增加轉錄"，mediator在一些抑制物的出現下也可以降低基因表達，具體來說: 
    - 某些抑制複合體（例如 Srb8–Srb11）會結合到 mediator
@@ -1147,6 +1174,10 @@ $$Tyr-Ser-Pro-Thr-Ser-Pro-Ser$$
 - DNA + 組蛋白八聚體的結構就是核小體，是染色質的基本單位
 
 ![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/nucleosome_structure_0604.jpg)
+
+> [底下的3D模型可以縮放](https://www.nakb.org/atlas=1KX5) 😏
+
+<iframe src="https://Jacklyn301.github.io/molecular_model/1KX5_X-Ray%20Structure%20of%20the%20Nucleosome%20Core%20Particle.html" width="100%" height="400px"></iframe>
 
 #### Linear looping
 - 在更高階層，核小體會進一步折疊成30 nm的染色質纖維
@@ -1422,11 +1453,10 @@ $$cytosine + SAM \xrightarrow[]{DNMTs} 5-methylcytosine$$
 
 ![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/branching_point_in_RNA_splicing_0605.png)
 
-> the overview of branch site.
-> - 那個藍色的 A 就是主角。更精確地說，課本常說 "branch site sequence"，是指 UACUU**A**U 整段序列，但真正發動攻擊的是最後那個A。
-> - 第一部分是辨識訊號 (左邊)，5' splice site (GGGUG) 被U1認出來。然後branch sequence UACUUAU被U2認出來，形成摺疊
-> - 第二部分是化學反應 (右邊)，藍色的 2'-OH 去攻擊粉紅色那個 phosphate，請注意，這裡不是一般的 3'→5' 磷酸二酯鍵，而是 2'→5' 磷酸二酯鍵
-> - 第二次攻擊中，圖中粉紅色箭頭 Exon1 的 3'-OH，攻擊另一個exon 2 的 phosphate，這導致兩個exon被接起，最後留下 Lariat intron 套索 🐱
+> the overview of branch site. 那個藍色的 A 就是主角。更精確地說，課本常說 "branch site sequence"，是指 UACUU**A**U 整段序列，但真正發動攻擊的是最後那個A。
+> 第一部分是辨識訊號 (左邊)，5' splice site (GGGUG) 被U1認出來。然後branch sequence UACUUAU被U2認出來，形成摺疊
+> 第二部分是化學反應 (右邊)，藍色的 2'-OH 去攻擊粉紅色那個 phosphate，請注意，這裡不是一般的 3'→5' 磷酸二酯鍵，而是 2'→5' 磷酸二酯鍵
+> 第二次攻擊中，圖中粉紅色箭頭 Exon1 的 3'-OH，攻擊另一個exon 2 的 phosphate，這導致兩個exon被接起，最後留下 Lariat intron 套索 🐱
 
 
 ---
@@ -1488,7 +1518,11 @@ $$cytosine + SAM \xrightarrow[]{DNMTs} 5-methylcytosine$$
 - 胺基酸會透過水解ATP的方式，將其連接於tRNA的CCA位點
 - 主要反映酵素為aminoacyl-tRNA synthetase
 
-> [底下的3D模型可以縮放](https://www.nakb.org/atlas=1G59) 😏
+1G59_Glutamyl-tRNA%20synthetase%20complex%20with%20tRNA(Glu).html
+
+
+
+> [底下的3D模型可以縮放](https://rcsb.org/structure/1VPK)😏 
 
 <iframe src="https://Jacklyn301.github.io/molecular_model/1G59_Glutamyl-tRNA%20synthetase%20complex%20with%20tRNA(Glu).html" width="100%" height="400px"></iframe>
 
@@ -1560,6 +1594,9 @@ $$aminoacyl-AMP + tRNA\rightarrow aminoacyl-tRNA + AMP$$
 > [!Tip]
 > - RNA 為核心，蛋白質為輔助
 > - 核糖體的催化心臟是 RNA，而蛋白質只是幫忙支撐和調控
+
+
+
 
 > [底下的50S大次單元3D模型可以縮放](https://www.nakb.org/atlas=1FFK) 😏
 
@@ -1701,7 +1738,7 @@ $$N^{10} \text{-formyl-THF} + Met-tRNA^{fmet} \rightarrow fMet-tRNA^{fmet} + THF
 
 #### 資料來源 🐱
 
-[^1]:https://www.kew.org/about-us/press-media/worlds-largest-genome
-[^2]:https://link.springer.com/chapter/10.1007/978-3-642-83709-8_3
+[^1]: https://www.kew.org/about-us/press-media/worlds-largest-genome 
+[^2]: https://link.springer.com/chapter/10.1007/978-3-642-83709-8_3
 [^3]: https://www.cell.com/fulltext/S0092-8674(06)00976-7
 
