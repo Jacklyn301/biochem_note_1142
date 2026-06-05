@@ -1379,6 +1379,58 @@ $$cytosine + SAM \xrightarrow[]{DNMTs} 5-methylcytosine$$
     
 </details>
 
+### mRNA processing
+- RNA做出來之後，5'加入7-甲基鳥甘酸 (7-methylgranylate)
+- 5' cap的7-methylgranylate結構有點像是: $guanine-ribose-3pi-mRNA$ 中間有5'-to-5' 的三個磷酸基的橋接
+- 3' 加入多腺甘酸尾 (poly A tail)
+- 真核生物的基因code是不連續的，裡面是introns跟exons的混合
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/RNA_processing_overview_0605.jpg)
+
+#### 真核生物如何中止轉錄
+- RNA polymerase II的轉錄**沒有明確的終止子序列**，主要依靠 polyadenylation signal，也就是 `AAUAAA`
+- 當 RNA polymerase II 轉錄到 poly(A) signal，下游會被 endonuclease 切割。切割後，RNA 3’ 端加上 poly(A) tail，RNA pol II繼續跑
+- RNA polymerase II 繼續往下跑，但因為失去保護，最後被 torpedo model 終止
+   - Xrn2 exonuclease 從切口開始快速降解 RNA，追上 polymerase，迫使它解離
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/transcription_termination_in_eukaryotic_cell_0605.webp)
+
+
+##### intron loop
+- 基本上intron在RNA processing時會切掉
+- 在切掉intron時是由splicesome完成的
+- 切地時在顯微鏡下可以看到DNA形成的環，稱為R loops
+
+##### 🧬 Spliceosome 的組成
+- 主要成分為snRNPs (small nuclear ribonucleoproteins): U1、U2、U4、U5、U6
+- 裡面也有各種 splicing factors、ATP-dependent helicases
+   - snRNA 辨認 intron 的 splice sites（5’ splice site、branch point、3’ splice site）
+   - 蛋白質協助 RNA 摺疊成正確構型，並催化兩次轉酯化反應
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/RNA_alternative_splicing_0605.jpeg)
+
+#### spliceosome 如何找到 intron 的邊界
+##### GU-AG Rule 
+- intron的5'往往是GU，intron的3'往往是AU，例如 `Exon | GU ... (intron) ... AG | Exon`
+- 這是 spliceosome 最先看的路標，以確認intron的範圍
+
+##### branch site
+- 是一個位於 3’ splice site 上游約 18–40 個核苷酸，核心殘基是一個 adenosine (A)，它的 2’-OH 是反應的主角
+- 在第一次轉酯化反應中，branch site 的 A 會用它的 2’-OH 去攻擊 5’ splice site 的磷酸鍵，形成一個 lariat 結構 (套索狀的中間產物)
+- 當5' splice site 被切開 ，`Exon1 | GU....` ，這時 branch site 的 A 出手。它的2'-OH，會攻擊 5' splice site
+- intron 的 5’ 端和 branch site A 連接，形成套索
+- 接著 exon 1 的 3’-OH 攻擊 3’ splice site，exon 1 和 exon 2 連接，intron 被切除
+
+![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/branching_point_in_RNA_splicing_0605.png)
+
+> the overview of branch site.
+> - 那個藍色的 A 就是主角。更精確地說，課本常說 "branch site sequence"，是指 UACUU**A**U 整段序列，但真正發動攻擊的是最後那個A。
+> - 第一部分是辨識訊號 (左邊)，5' splice site (GGGUG) 被U1認出來。然後branch sequence UACUUAU被U2認出來，形成摺疊
+> - 第二部分是化學反應 (右邊)，藍色的 2'-OH 去攻擊粉紅色那個 phosphate，請注意，這裡不是一般的 3'→5' 磷酸二酯鍵，而是 2'→5' 磷酸二酯鍵
+> - 第二次攻擊中，圖中粉紅色箭頭 Exon1 的 3'-OH，攻擊另一個exon 2 的 phosphate，這導致兩個exon被接起，最後留下 Lariat intron 套索 🐱
+
+
+---
+
 
 [^1]:https://www.kew.org/about-us/press-media/worlds-largest-genome
 [^2]:https://link.springer.com/chapter/10.1007/978-3-642-83709-8_3
