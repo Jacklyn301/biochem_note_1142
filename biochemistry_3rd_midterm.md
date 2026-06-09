@@ -168,6 +168,12 @@ title: biochemistry_3rd_midterm
 
 ![image alt](https://raw.githubusercontent.com/Jacklyn301/image_bank/main/structure_of_DNA_pol_I_in_E.coli_0519.png)
 
+
+> [底下的polymerase I的3D模型可以旋轉](https://www.nakb.org/atlas=8OO6) 😏
+
+<iframe src="https://Jacklyn301.github.io/molecular_model/8OO6_Pol%20I%20bound%20to%20extended%20and%20displaced%20DNA%20section.html" width="100%" height="400px"></iframe>
+
+
 #### 深入解析聚合酶作用機制
 - 手掌 (palm)、手指 (fingers)、拇指 (thumb) 三個區域共同協調反應
 
